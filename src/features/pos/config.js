@@ -1,0 +1,41 @@
+export const CAT_COLORS = {
+  All: { bg: "#E6F6FD", border: "#7DD3FC", text: "#0C4A6E", active: "#009DE0" },
+  Bowls: { bg: "#ECFDF5", border: "#6EE7B7", text: "#065F46", active: "#059669" },
+  Wraps: { bg: "#FFFBEB", border: "#FCD34D", text: "#78350F", active: "#D97706" },
+  Salads: { bg: "#EFF6FF", border: "#93C5FD", text: "#1E3A8A", active: "#2563EB" },
+  Smoothies: { bg: "#F0FDFA", border: "#5EEAD4", text: "#134E4A", active: "#0D9488" },
+  Snacks: { bg: "#FFF7ED", border: "#FDBA74", text: "#7C2D12", active: "#EA580C" },
+  Extras: { bg: "#F5F3FF", border: "#C4B5FD", text: "#3B0764", active: "#7C3AED" },
+};
+
+export const ORDER_TYPES = ["Counter", "Takeaway", "Delivery", "Dine in"];
+
+export const MENU_DATA = [
+  { section: "Bowls" },
+  { name: "GP Chicken Bowl", price: 800, pop: true },
+  { name: "Beef & Quinoa Bowl", price: 900 },
+  { name: "Falafel Bowl", price: 750, pop: true },
+  { name: "Tuna Poke Bowl", price: 850 },
+  { name: "Tofu Buddha Bowl", price: 720 },
+  { section: "Wraps" },
+  { name: "Grilled Chicken Wrap", price: 650 },
+  { name: "Veggie Hummus Wrap", price: 600 },
+  { name: "Beef Shawarma Wrap", price: 680, pop: true },
+  { section: "Salads" },
+  { name: "Greek Salad", price: 580 },
+  { name: "Caesar Salad", price: 620 },
+  { name: "Power Greens", price: 640, pop: true },
+  { section: "Smoothies" },
+  { name: "Green Power", price: 650, pop: true },
+  { name: "Protein Shake", price: 700 },
+  { name: "Mango Lassi", price: 580 },
+  { name: "Acai Blend", price: 720 },
+  { section: "Snacks" },
+  { name: "Protein Bar", price: 350 },
+  { name: "Energy Balls x3", price: 420 },
+  { name: "Rice Cakes", price: 280 },
+  { section: "Extras" },
+  { name: "Extra Sauce", price: 150 },
+  { name: "Side Salad", price: 320 },
+  { name: "Brown Rice", price: 200 },
+];
