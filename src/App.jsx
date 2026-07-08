@@ -3867,6 +3867,61 @@ input,select{font-family:var(--f)}
 
 /* HR doc badge */
 .ep-doc-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:100px;font-size:11px;font-weight:600}
+
+/* ── Waste FAB ── */
+.wl-fab{position:fixed;bottom:88px;left:50%;margin-left:calc(215px - 74px);z-index:210;height:48px;padding:0 18px 0 15px;border-radius:24px;border:none;background:var(--green);color:#0c1f18;display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;letter-spacing:0.01em;box-shadow:0 6px 22px rgba(61,214,140,0.38),0 2px 6px rgba(0,0,0,0.35);transition:transform .12s,box-shadow .15s}
+.wl-fab:active{transform:scale(0.94)}
+@media (max-width:430px){.wl-fab{left:auto;right:16px;margin-left:0}}
+/* ── Waste sheet ── */
+.wl-bg{position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(2px);z-index:900;display:flex;align-items:flex-end;justify-content:center;animation:wlFade .18s ease both}
+@keyframes wlFade{from{opacity:0}to{opacity:1}}
+.wl-sheet{width:100%;max-width:430px;max-height:90vh;background:var(--surface);border-radius:24px 24px 0 0;display:flex;flex-direction:column;overflow:hidden;animation:wlUp .26s cubic-bezier(.32,.72,0,1) both}
+@keyframes wlUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.wl-head{display:flex;align-items:center;justify-content:space-between;padding:16px 14px 10px;flex-shrink:0}
+.wl-title{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-0.01em}
+.wl-back{width:34px;height:34px;border-radius:9px;border:none;background:var(--faint);display:flex;align-items:center;justify-content:center}
+.wl-dots{display:flex;gap:6px;justify-content:center;padding:0 0 14px}
+.wl-dot{width:24px;height:3px;border-radius:2px;background:var(--faint);transition:background .2s}
+.wl-dot.on{background:var(--green)}
+.wl-dot.done{background:var(--green-dim)}
+.wl-body{padding:0 18px 24px;overflow-y:auto;flex:1}
+.wl-err{background:var(--red-dim);border:1px solid var(--red);color:var(--red);font-size:13px;font-weight:500;padding:11px 14px;border-radius:12px;margin-bottom:14px;line-height:1.4}
+.wl-search{display:flex;align-items:center;gap:9px;background:var(--faint);border:1px solid var(--border2);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.wl-search-in{flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:14px;font-weight:500}
+.wl-search-in::placeholder{color:var(--muted)}
+.wl-list{display:flex;flex-direction:column}
+.wl-item{display:flex;align-items:center;gap:12px;padding:13px 4px;background:none;border:none;border-bottom:1px solid var(--border);text-align:left}
+.wl-item-main{flex:1;min-width:0}
+.wl-item-name{font-size:14px;font-weight:600;color:var(--ink);line-height:1.25}
+.wl-item-sku{font-size:11px;color:var(--muted);margin-top:2px;font-family:var(--mono)}
+.wl-empty{text-align:center;color:var(--muted);font-size:13px;padding:28px 0}
+.wl-ctx{font-size:13px;font-weight:600;color:var(--ink);background:var(--faint);border-radius:12px;padding:12px 14px;margin-bottom:16px;display:flex;flex-direction:column;gap:3px}
+.wl-ctx-reason{font-size:11.5px;font-weight:500;color:var(--green)}
+.wl-reasons{display:flex;flex-direction:column;gap:18px}
+.wl-rgroup-lbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px}
+.wl-ritem{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 14px;background:var(--card);border:1px solid var(--border);border-radius:11px;margin-bottom:6px;color:var(--ink);font-size:14px;font-weight:500;text-align:left;transition:border-color .12s}
+.wl-ritem:active{border-color:var(--green)}
+.wl-qty-wrap{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.wl-qty-in{flex:1;background:var(--faint);border:1px solid var(--border2);border-radius:14px;padding:18px 18px;font-size:32px;font-weight:700;color:var(--ink);outline:none;font-family:var(--mono);width:100%}
+.wl-qty-in::placeholder{color:var(--muted)}
+.wl-unit-toggle{display:flex;background:var(--faint);border-radius:12px;padding:3px;gap:2px}
+.wl-unit{padding:12px 16px;border:none;background:none;border-radius:9px;font-size:15px;font-weight:700;color:var(--muted);transition:all .12s}
+.wl-unit.on{background:var(--green);color:#0c1f18}
+.wl-qty-eq{font-size:12.5px;color:var(--sub);font-weight:500;margin-bottom:18px}
+.wl-photo{width:100%;display:flex;align-items:center;gap:11px;padding:15px 16px;background:var(--faint);border:1px dashed var(--border2);border-radius:13px;color:var(--ink);margin-bottom:6px;text-align:left}
+.wl-photo-img{width:40px;height:40px;border-radius:9px;object-fit:cover;flex-shrink:0}
+.wl-photo-txt{font-size:13.5px;font-weight:600}
+.wl-photo-clear{background:none;border:none;color:var(--red);font-size:12px;font-weight:600;padding:2px 4px;margin-bottom:12px}
+.wl-note{width:100%;background:var(--faint);border:1px solid var(--border2);border-radius:12px;padding:13px 14px;font-size:14px;color:var(--ink);outline:none;resize:none;margin:12px 0 4px;font-family:var(--f)}
+.wl-note::placeholder{color:var(--muted)}
+.wl-done{display:flex;flex-direction:column;align-items:center;padding:8px 0 4px}
+.wl-done-ring{width:64px;height:64px;border-radius:50%;background:var(--green-dim);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.wl-done-title{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:18px}
+.wl-done-card{width:100%;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:6px 16px;margin-bottom:20px}
+.wl-done-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--sub)}
+.wl-done-row:last-child{border-bottom:none}
+.wl-done-row b{color:var(--ink);font-weight:600;text-align:right;max-width:60%}
+.wl-done-actions{display:flex;gap:10px;width:100%}
 `;
 
 /* ─── EP UTILS ───────────────────────────────────────────────────────────── */
@@ -3937,6 +3992,11 @@ function EpIcon({name,size=20,color="currentColor"}) {
     doc:<><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></>,
     out:<><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></>,
     trend:<><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></>,
+    trash:<><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></>,
+    camera:<><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></>,
+    plus:<><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></>,
+    search:<><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></>,
+    back:<><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></>,
   };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color}
@@ -4511,10 +4571,315 @@ function EpProfile({employee,onSignOut}) {
   );
 }
 
+/* ─── WASTE LOGGING ──────────────────────────────────────────────────────── */
+/* Reason codes mirror the seeded waste_reasons table. UNSOLD_PREP and
+   THEFT_SUSPECTED are intentionally hidden from the floor picker (deferred). */
+const WASTE_REASON_GROUPS = [
+  { cat:"SPOILAGE",   label:"Spoilage", reasons:[
+    {code:"EXPIRED",    label:"Product Expired"},
+    {code:"MOULDY",     label:"Mould / Contamination"},
+    {code:"TEMP_ABUSE", label:"Temperature Abuse"},
+  ]},
+  { cat:"PREP",       label:"Preparation", reasons:[
+    {code:"OVER_PREP",  label:"Over Preparation"},
+    {code:"TRIM_WASTE", label:"Trim / Peel Waste"},
+  ]},
+  { cat:"PRODUCTION", label:"Production", reasons:[
+    {code:"BATCH_LOSS",     label:"Production Batch Loss"},
+    {code:"YIELD_VARIANCE", label:"Yield Below Spec"},
+  ]},
+  { cat:"PLATE",      label:"Service", reasons:[
+    {code:"PLATE_RETURN", label:"Plate Return"},
+  ]},
+  { cat:"DAMAGE",     label:"Damage", reasons:[
+    {code:"DROP_SPILL", label:"Drop / Spill"},
+    {code:"PKG_DAMAGE", label:"Packaging Damage"},
+  ]},
+  { cat:"OTHER",      label:"Other", reasons:[
+    {code:"OTHER", label:"Other"},
+  ]},
+];
+const WASTE_REASON_LABEL = code => {
+  for (const g of WASTE_REASON_GROUPS) {
+    const r = g.reasons.find(x=>x.code===code);
+    if (r) return r.label;
+  }
+  return code;
+};
+
+function WasteLogModal({ employee, onClose, onLogged }) {
+  // step: pick_product → pick_reason → enter_qty → done
+  const [step,setStep]       = useState("pick_product");
+  const [products,setProducts] = useState([]);
+  const [prodLoading,setProdLoading] = useState(true);
+  const [q,setQ]             = useState("");
+  const [product,setProduct] = useState(null);
+  const [reason,setReason]   = useState(null);
+  const [unit,setUnit]       = useState("g");        // entry unit: g | kg
+  const [amount,setAmount]   = useState("");          // raw value in chosen unit
+  const [note,setNote]       = useState("");
+  const [photo,setPhoto]     = useState(null);        // File
+  const [photoPreview,setPhotoPreview] = useState(null);
+  const [submitting,setSubmitting] = useState(false);
+  const [err,setErr]         = useState("");
+  const [result,setResult]   = useState(null);        // {qtyKg, photoOk}
+  const fileRef = useRef(null);
+
+  useEffect(()=>{ loadProducts(); },[]);
+  const loadProducts = async () => {
+    setProdLoading(true);
+    const { data } = await SB.from("master_products")
+      .select("id,sku_code,product_name,inventory_uom,product_type,status")
+      .eq("status","ACTIVE")
+      .order("product_name");
+    setProducts(data||[]);
+    setProdLoading(false);
+  };
+
+  const filtered = products.filter(p=>{
+    if(!q.trim()) return true;
+    const s=q.trim().toLowerCase();
+    return p.product_name?.toLowerCase().includes(s) || p.sku_code?.toLowerCase().includes(s);
+  });
+
+  // grams entered ÷1000; kg entered as-is. Stored quantity is always KG.
+  const qtyKg = (()=>{
+    const n = parseFloat(amount);
+    if(isNaN(n)||n<=0) return 0;
+    return unit==="g" ? n/1000 : n;
+  })();
+  const qtyValid = qtyKg>0;
+
+  const pickPhoto = (e) => {
+    const f = e.target.files?.[0];
+    if(!f) return;
+    setPhoto(f);
+    setPhotoPreview(URL.createObjectURL(f));
+  };
+  const clearPhoto = () => {
+    setPhoto(null);
+    if(photoPreview) URL.revokeObjectURL(photoPreview);
+    setPhotoPreview(null);
+    if(fileRef.current) fileRef.current.value="";
+  };
+
+  const submit = async () => {
+    if(!product || !reason || !qtyValid) return;
+    setSubmitting(true); setErr("");
+    try{
+      // 1. Log the waste first (captured even if photo upload later fails)
+      const { data:logId, error:logErr } = await SB.rpc("log_waste",{
+        p_location_id:        employee.home_location_id,
+        p_product_id:         product.id,
+        p_waste_reason_code:  reason,
+        p_quantity:           qtyKg,
+        p_waste_date:         new Date().toISOString().slice(0,10),
+        p_notes:              note.trim()||null,
+        p_production_batch_id:null,
+      });
+      if(logErr) throw new Error(logErr.message);
+
+      // 2. Optional photo: upload to waste-photos, attach. Path MUST start with brand_id (RLS).
+      let photoOk = null;
+      if(photo && logId){
+        photoOk = false;
+        try{
+          const ext  = (photo.name.split(".").pop()||"jpg").toLowerCase();
+          const path = `${employee.brand_id}/${employee.id}/${logId}_${Date.now()}.${ext}`;
+          const { error:upErr } = await SB.storage.from("waste-photos").upload(path, photo, {upsert:false});
+          if(upErr) throw upErr;
+          const { error:attErr } = await SB.rpc("attach_waste_photo",{
+            p_waste_log_id:  logId,
+            p_storage_path:  path,
+            p_mime_type:     photo.type||"image/jpeg",
+            p_file_size_bytes: photo.size||null,
+          });
+          if(attErr) throw attErr;
+          photoOk = true;
+        }catch(_){ photoOk = false; } // log already saved; watchdog will flag no-photo
+      }
+
+      setResult({ qtyKg, photoOk });
+      setStep("done");
+      if(onLogged) onLogged();
+    }catch(e){
+      setErr(e.message||"Could not log waste. Try again.");
+    }
+    setSubmitting(false);
+  };
+
+  const resetForNext = () => {
+    clearPhoto();
+    setProduct(null); setReason(null); setAmount(""); setUnit("g"); setNote("");
+    setResult(null); setErr(""); setQ("");
+    setStep("pick_product");
+  };
+
+  const fmtKg = kg => kg>=1 ? `${(+kg).toFixed(kg%1?2:0)} kg` : `${Math.round(kg*1000)} g`;
+
+  return (
+    <div className="wl-bg" onClick={onClose}>
+      <div className="wl-sheet" onClick={e=>e.stopPropagation()}>
+        {/* Handle + header */}
+        <div className="wl-head">
+          {step!=="pick_product" && step!=="done" ? (
+            <button className="wl-back" onClick={()=>setStep(step==="enter_qty"?"pick_reason":"pick_product")}>
+              <EpIcon name="back" size={18} color="var(--sub)"/>
+            </button>
+          ) : <div style={{width:34}}/>}
+          <div className="wl-title">
+            {step==="pick_product" && "Log Waste"}
+            {step==="pick_reason"  && "Why was it wasted?"}
+            {step==="enter_qty"    && "How much?"}
+            {step==="done"         && "Logged"}
+          </div>
+          <button className="wl-back" onClick={onClose}>
+            <EpIcon name="close" size={18} color="var(--sub)"/>
+          </button>
+        </div>
+
+        {/* Progress dots */}
+        {step!=="done" && (
+          <div className="wl-dots">
+            {["pick_product","pick_reason","enter_qty"].map(s=>(
+              <div key={s} className={`wl-dot ${
+                s===step ? "on" :
+                (["pick_product","pick_reason","enter_qty"].indexOf(s) < ["pick_product","pick_reason","enter_qty"].indexOf(step) ? "done":"")
+              }`}/>
+            ))}
+          </div>
+        )}
+
+        <div className="wl-body">
+          {err && <div className="wl-err">{err}</div>}
+
+          {/* STEP 1 — product */}
+          {step==="pick_product" && (
+            <>
+              <div className="wl-search">
+                <EpIcon name="search" size={15} color="var(--muted)"/>
+                <input autoFocus value={q} onChange={e=>setQ(e.target.value)}
+                  placeholder="Search ingredient or prep item…" className="wl-search-in"/>
+              </div>
+              {prodLoading ? (
+                <div className="wl-empty">Loading products…</div>
+              ) : filtered.length===0 ? (
+                <div className="wl-empty">No products match “{q}”.</div>
+              ) : (
+                <div className="wl-list">
+                  {filtered.slice(0,80).map(p=>(
+                    <button key={p.id} className="wl-item" onClick={()=>{setProduct(p);setStep("pick_reason");}}>
+                      <div className="wl-item-main">
+                        <div className="wl-item-name">{p.product_name}</div>
+                        <div className="wl-item-sku">{p.sku_code} · {p.product_type==="SF"?"Semi-finished":"Ingredient"}</div>
+                      </div>
+                      <EpIcon name="chev" size={16} color="var(--muted)"/>
+                    </button>
+                  ))}
+                  {filtered.length>80 && <div className="wl-empty" style={{padding:"12px 0"}}>Showing first 80 — keep typing to narrow.</div>}
+                </div>
+              )}
+            </>
+          )}
+
+          {/* STEP 2 — reason */}
+          {step==="pick_reason" && (
+            <>
+              <div className="wl-ctx">{product?.product_name}</div>
+              <div className="wl-reasons">
+                {WASTE_REASON_GROUPS.map(g=>(
+                  <div key={g.cat} className="wl-rgroup">
+                    <div className="wl-rgroup-lbl">{g.label}</div>
+                    {g.reasons.map(r=>(
+                      <button key={r.code} className="wl-ritem" onClick={()=>{setReason(r.code);setStep("enter_qty");}}>
+                        {r.label}
+                        <EpIcon name="chev" size={15} color="var(--muted)"/>
+                      </button>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {/* STEP 3 — quantity + photo */}
+          {step==="enter_qty" && (
+            <>
+              <div className="wl-ctx">
+                {product?.product_name}
+                <span className="wl-ctx-reason">{WASTE_REASON_LABEL(reason)}</span>
+              </div>
+
+              <div className="wl-qty-wrap">
+                <input type="number" inputMode="decimal" autoFocus value={amount}
+                  onChange={e=>setAmount(e.target.value)} placeholder="0" className="wl-qty-in"/>
+                <div className="wl-unit-toggle">
+                  {["g","kg"].map(u=>(
+                    <button key={u} className={`wl-unit ${unit===u?"on":""}`} onClick={()=>setUnit(u)}>{u}</button>
+                  ))}
+                </div>
+              </div>
+              {qtyValid && <div className="wl-qty-eq">= {fmtKg(qtyKg)} logged</div>}
+
+              <button className="wl-photo" onClick={()=>fileRef.current?.click()}>
+                {photoPreview ? (
+                  <>
+                    <img src={photoPreview} className="wl-photo-img" alt="waste"/>
+                    <div className="wl-photo-txt">Photo attached · tap to change</div>
+                  </>
+                ) : (
+                  <>
+                    <EpIcon name="camera" size={20} color="var(--sub)"/>
+                    <div className="wl-photo-txt">Add a photo <span style={{color:"var(--muted)"}}>(optional)</span></div>
+                  </>
+                )}
+              </button>
+              {photoPreview && (
+                <button className="wl-photo-clear" onClick={clearPhoto}>Remove photo</button>
+              )}
+              <input ref={fileRef} type="file" accept="image/*" capture="environment"
+                onChange={pickPhoto} style={{display:"none"}}/>
+
+              <textarea value={note} onChange={e=>setNote(e.target.value)} rows={2}
+                placeholder="Note (optional)" className="wl-note"/>
+
+              <button className="ep-btn-primary" disabled={!qtyValid||submitting}
+                style={{marginTop:4,opacity:(!qtyValid||submitting)?0.5:1}} onClick={submit}>
+                {submitting ? "Logging…" : "Log Waste"}
+              </button>
+            </>
+          )}
+
+          {/* DONE */}
+          {step==="done" && result && (
+            <div className="wl-done">
+              <div className="wl-done-ring"><EpIcon name="check" size={30} color="var(--green)"/></div>
+              <div className="wl-done-title">Waste logged</div>
+              <div className="wl-done-card">
+                <div className="wl-done-row"><span>Product</span><b>{product?.product_name}</b></div>
+                <div className="wl-done-row"><span>Reason</span><b>{WASTE_REASON_LABEL(reason)}</b></div>
+                <div className="wl-done-row"><span>Quantity</span><b>{fmtKg(result.qtyKg)}</b></div>
+                <div className="wl-done-row"><span>Photo</span><b style={{color:result.photoOk===false?"var(--amber)":"var(--ink)"}}>
+                  {result.photoOk===true?"Attached":result.photoOk===false?"Upload failed — log saved":"None"}
+                </b></div>
+              </div>
+              <div className="wl-done-actions">
+                <button className="ep-btn-ghost" style={{flex:1}} onClick={resetForNext}>Log another</button>
+                <button className="ep-btn-primary" style={{flex:1,width:"auto"}} onClick={onClose}>Done</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── PARTNERS PORTAL ROOT ────────────────────────────────────────────────── */
 function PartnersPortal({session,onSignOut}) {
   const [tab,setTab]=useState("shift");
   const [unread,setUnread]=useState(0);
+  const [wasteOpen,setWasteOpen]=useState(false);
 
   const NAV=[
     {id:"shift", icon:"shift", label:"Shift"},
@@ -4599,7 +4964,6 @@ function FinanceSidebar({page,setPage,exp,setExp,reportsOpen,setReportsOpen,acti
     {id:"fc-inbox",      icon:"inbox",   label:"Inbox",       badge:pendingCount>0?pendingCount:null},
     {id:"fc-tasks",      icon:"task",    label:"Tasks",       badge:flagCount>0?flagCount:null, badgeCls:"warn"},
     {id:"fc-ledger",     icon:"reports", label:"Ledger"},
-    {id:"fc-attendance", icon:"clock",   label:"Attendance"},
   ];
   return (
     <div className={`sb-wrap ${exp?"exp":"col"}`}>
@@ -6509,69 +6873,18 @@ function AttendancePage({session,locations,brands,employees,allLocations}) {
         <div style={{width:1,height:18,background:'var(--divider)',flexShrink:0}}/>
 
         {/* Employee search filter — location-cascade, Tab autocomplete */}
-        {(()=>{
-          const _allEmps=[...(employees||[]),...localEmps];
-          // Cascade: if locFilter active, only employees at that location
-          const poolEmps=locFilter
-            ? _allEmps.filter(e=>e.location_id===locFilter||e.home_location_id===locFilter)
-            : _allEmps;
-          const dedupEmps=Object.values(Object.fromEntries(poolEmps.map(e=>[e.employee_id||e.id,e])));
-          const suggestions=empSearch.trim().length>0
-            ? dedupEmps.filter(e=>(e.full_name||'').toLowerCase().includes(empSearch.toLowerCase())).slice(0,8)
-            : [];
-          const selectedEmp=empFilter?dedupEmps.find(e=>(e.employee_id||e.id)===empFilter):null;
-          const handleEmpKeyDown=(ev)=>{
-            if(ev.key==='Tab'&&suggestions.length>0){
-              ev.preventDefault();
-              const match=suggestions[0];
-              const eid=match.employee_id||match.id;
-              setEmpFilter(eid);
-              setEmpSearch(match.full_name||'');
-              setEmpSugOpen(false);
-            }
-            if(ev.key==='Escape'){setEmpSugOpen(false);}
-          };
-          return (
-            <div style={{position:'relative',flexShrink:0}}>
-              <div style={{display:'flex',alignItems:'center',gap:6,padding:'5px 10px',borderRadius:9,border:`1px solid ${empFilter?'var(--acc)':'var(--border)'}`,background:empFilter?'var(--acc-bg)':'var(--bg2)',minWidth:160,maxWidth:200,transition:'border-color .13s'}}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0,color:'var(--muted)'}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input
-                  ref={empSearchRef}
-                  value={empSearch}
-                  onChange={e=>{setEmpSearch(e.target.value);setEmpSugOpen(true);if(!e.target.value){setEmpFilter('');}}}
-                  onFocus={()=>setEmpSugOpen(true)}
-                  onBlur={()=>setTimeout(()=>setEmpSugOpen(false),150)}
-                  onKeyDown={handleEmpKeyDown}
-                  placeholder={selectedEmp?selectedEmp.full_name:'Partner…'}
-                  style={{background:'transparent',border:'none',outline:'none',fontSize:12.5,fontWeight:empFilter?600:400,color:empFilter?'var(--acc)':'var(--ink)',width:'100%',minWidth:0}}
-                />
-                {empFilter&&(
-                  <button onClick={()=>{setEmpFilter('');setEmpSearch('');}} style={{background:'none',border:'none',cursor:'pointer',padding:0,display:'flex',color:'var(--muted)',flexShrink:0}}>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  </button>
-                )}
-              </div>
-              {empSugOpen&&suggestions.length>0&&(
-                <div style={{position:'absolute',top:'calc(100% + 4px)',left:0,minWidth:220,background:'var(--card)',border:'1px solid var(--border)',borderRadius:10,boxShadow:'0 8px 24px rgba(0,0,0,.10)',zIndex:400,overflow:'hidden'}}>
-                  {suggestions.map((e,i)=>{
-                    const eid=e.employee_id||e.id;
-                    return (
-                      <div key={eid}
-                        onMouseDown={()=>{setEmpFilter(eid);setEmpSearch(e.full_name||'');setEmpSugOpen(false);}}
-                        style={{padding:'8px 14px',cursor:'pointer',fontSize:13,color:'var(--ink)',background:i===0?'var(--acc-bg)':'transparent',display:'flex',alignItems:'center',gap:9,transition:'background .1s'}}
-                        onMouseEnter={ev=>ev.currentTarget.style.background='var(--bg2)'}
-                        onMouseLeave={ev=>ev.currentTarget.style.background=i===0?'var(--acc-bg)':'transparent'}>
-                        <div style={{width:22,height:22,borderRadius:'50%',background:'var(--acc-bg)',color:'var(--acc)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,fontWeight:700,flexShrink:0}}>{(e.full_name||'?').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase()}</div>
-                        <span style={{flex:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{e.full_name}</span>
-                        {i===0&&<span style={{fontSize:10,color:'var(--muted)',fontWeight:500,flexShrink:0}}>Tab ↹</span>}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          );
-        })()}
+        <EmpSearchFilter
+          employees={employees}
+          localEmps={localEmps}
+          locFilter={locFilter}
+          empSearch={empSearch}
+          setEmpSearch={setEmpSearch}
+          empFilter={empFilter}
+          setEmpFilter={setEmpFilter}
+          empSugOpen={empSugOpen}
+          setEmpSugOpen={setEmpSugOpen}
+          empSearchRef={empSearchRef}
+        />
 
         <div style={{width:1,height:18,background:'var(--divider)',flexShrink:0}}/>
 
@@ -8003,7 +8316,7 @@ function RMShifts({session,team}){
                   <th key={d} style={{padding:'10px 8px',textAlign:'center',fontSize:11,fontWeight:700,color:'var(--wt-muted)',borderBottom:'1px solid var(--wt-border)',minWidth:80}}>
                     {d.toUpperCase()}
                     <div style={{fontSize:10,fontWeight:400,marginTop:2}}>
-                      {(()=>{ const dt=new Date(monday); dt.setDate(dt.getDate()+i); return dt.getDate(); })()}
+                      {new Date(new Date(monday).setDate(new Date(monday).getDate()+i)).getDate()}
                     </div>
                   </th>
                 ))}
@@ -8757,9 +9070,6 @@ function FinanceCommandCentre({session,onSignOut}) {
                 </div>
               </div>
             )}
-            {page==="fc-attendance"&&(
-              <AttendancePage session={session} locations={[]} brands={[]} employees={[]} allLocations={[]}/>
-            )}
           </div>
         </div>
       </div>
@@ -8906,8 +9216,8 @@ const SC_CSS = `
 .sc-ib-l{font-size:10px;font-weight:700;color:var(--sc-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
 .sc-ib-v{font-size:13.5px;font-weight:600;color:var(--sc-ink)}
 /* ── Overlay / detail panel ─── */
-.sc-overlay{position:fixed;top:108px;left:var(--sc-overlay-left,232px);right:0;bottom:0;background:rgba(7,10,20,.4);z-index:900;display:flex;align-items:flex-start;justify-content:center;padding:24px 40px 40px 40px}
-.sc-dp{background:var(--sc-card);border-radius:18px;width:100%;max-height:calc(100vh - 148px);display:flex;flex-direction:column;box-shadow:0 32px 96px rgba(0,0,0,.28),0 4px 16px rgba(0,0,0,.12);overflow:hidden}
+.sc-overlay{position:fixed;inset:0;background:rgba(16,24,40,.45);backdrop-filter:blur(2px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:40px;overflow-y:auto}
+.sc-dp{background:var(--sc-card);border-radius:18px;width:100%;max-height:calc(100vh - 80px);display:flex;flex-direction:column;box-shadow:0 32px 96px rgba(0,0,0,.28),0 4px 16px rgba(0,0,0,.12);overflow:hidden}
 .sc-dp-hdr{padding:22px 24px;border-bottom:1px solid var(--sc-divider);display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0;gap:16px}
 .sc-dp-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px;border:1.5px solid var(--sc-border);background:var(--sc-bg);cursor:pointer;transition:background .1s,border-color .1s,box-shadow .1s;flex-shrink:0}
 .sc-dp-close:hover{background:#fff;border-color:var(--sc-sub);box-shadow:0 2px 8px rgba(0,0,0,.10)}
@@ -8934,6 +9244,49 @@ const SC_CSS = `
 @keyframes scFadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 .sc-fu{animation:scFadeUp .28s ease both}
 .sc-d1{animation-delay:.04s}.sc-d2{animation-delay:.08s}.sc-d3{animation-delay:.12s}.sc-d4{animation-delay:.16s}.sc-d5{animation-delay:.2s}.sc-d6{animation-delay:.24s}
+
+/* MPR page */
+.sc-page-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:16px}
+.sc-page-title{font-size:20px;font-weight:800;color:var(--sc-ink);letter-spacing:-0.02em}
+.sc-page-sub{font-size:13px;color:var(--sc-muted);margin-top:3px;font-weight:500}
+.sc-btn-primary{display:inline-flex;align-items:center;gap:7px;padding:10px 16px;border-radius:10px;border:none;background:var(--sc-acc);color:#fff;font-size:13px;font-weight:600;font-family:inherit;transition:opacity .12s,transform .1s}
+.sc-btn-primary:active{transform:scale(0.97)}
+.sc-btn-ghost{padding:10px 16px;border-radius:10px;border:1px solid var(--sc-border);background:#fff;color:var(--sc-sub);font-size:13px;font-weight:600;font-family:inherit;transition:border-color .12s}
+.sc-btn-ghost:hover{border-color:var(--sc-acc);color:var(--sc-acc)}
+.sc-icon-btn{width:34px;height:34px;border-radius:9px;border:1px solid var(--sc-border);background:#fff;display:flex;align-items:center;justify-content:center}
+.sc-mpr-controls{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sc-mpr-search{flex:1;min-width:220px;display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--sc-border);border-radius:10px;padding:10px 14px}
+.sc-mpr-search input{flex:1;border:none;outline:none;font-size:13.5px;color:var(--sc-ink);font-family:inherit;background:none}
+.sc-mpr-search input::placeholder{color:var(--sc-muted)}
+.sc-seg{display:flex;background:var(--sc-faint);border-radius:10px;padding:3px;gap:2px}
+.sc-seg-btn{padding:8px 13px;border:none;background:none;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--sc-sub);font-family:inherit;transition:all .12s}
+.sc-seg-btn.on{background:#fff;color:var(--sc-acc);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.sc-table{width:100%;border-collapse:collapse;font-size:13px}
+.sc-table thead th{text-align:left;padding:11px 16px;font-size:10.5px;font-weight:700;color:var(--sc-muted);text-transform:uppercase;letter-spacing:0.06em;background:var(--sc-faint);border-bottom:1px solid var(--sc-border)}
+.sc-table tbody td{padding:12px 16px;border-bottom:1px solid var(--sc-divider)}
+.sc-tr-click{cursor:pointer;transition:background .1s}
+.sc-tr-click:hover{background:var(--sc-acc-bg)}
+.sc-type-pill{display:inline-block;padding:2px 9px;border-radius:100px;font-size:10.5px;font-weight:700;letter-spacing:0.03em}
+.sc-type-pill.ri{background:var(--sc-teal-bg);color:var(--sc-teal)}
+.sc-type-pill.sf{background:var(--sc-violet-bg);color:var(--sc-violet)}
+.sc-spinner{width:26px;height:26px;border:3px solid var(--sc-faint);border-top-color:var(--sc-acc);border-radius:50%;animation:scSpin .7s linear infinite;margin:0 auto}
+@keyframes scSpin{to{transform:rotate(360deg)}}
+/* MPR drawer */
+.sc-drawer-bg{position:fixed;inset:0;background:rgba(2,6,23,.4);z-index:900;display:flex;justify-content:flex-end;animation:scFade .16s ease both}
+@keyframes scFade{from{opacity:0}to{opacity:1}}
+.sc-drawer{width:min(480px,94vw);height:100%;background:var(--sc-app);display:flex;flex-direction:column;box-shadow:-8px 0 40px rgba(0,0,0,.18);animation:scSlide .22s cubic-bezier(.32,.72,0,1) both}
+@keyframes scSlide{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.sc-drawer-head{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 22px 16px;border-bottom:1px solid var(--sc-border);flex-shrink:0}
+.sc-drawer-body{flex:1;overflow-y:auto;padding:20px 22px}
+.sc-drawer-foot{display:flex;gap:10px;justify-content:flex-end;padding:16px 22px;border-top:1px solid var(--sc-border);background:#fff;flex-shrink:0}
+.sc-fl{display:block;font-size:11.5px;font-weight:600;color:var(--sc-sub);margin:14px 0 5px}
+.sc-fl:first-child{margin-top:0}
+.sc-in{width:100%;background:#fff;border:1px solid var(--sc-border);border-radius:9px;padding:10px 12px;font-size:13.5px;color:var(--sc-ink);outline:none;font-family:inherit;transition:border-color .12s}
+.sc-in:focus{border-color:var(--sc-acc)}
+.sc-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sc-check{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--sc-ink);margin-top:16px;cursor:pointer;font-weight:500}
+.sc-check input{width:16px;height:16px;accent-color:var(--sc-acc)}
+.sc-form-err{background:var(--sc-neg-bg);border:1px solid var(--sc-neg);color:var(--sc-neg);font-size:12.5px;font-weight:500;padding:10px 13px;border-radius:9px;margin-bottom:14px}
 `;
 
 /* ── SVG icon set ─────────────────────────────────────────────────────────── */
@@ -8982,16 +9335,18 @@ const scPColor = p => p>=4?'var(--sc-neg)':p>=3?'var(--sc-warn)':'var(--sc-sub)'
 const taskLbl= c => ({SC_ALLOCATE_DELIVERY:'Allocate Delivery',QUARANTINE_REVIEW:'Quarantine Review',RECEIVE_DELIVERY:'Receive Delivery',SC_REVIEW_RECEIVING:'Review Receiving',SC_REVIEW_COUNT:'Review Count',WATCHDOG_SC_ALLOCATION_STALE:'Stale Allocation',WATCHDOG_DELIVERY_OVERDUE:'Delivery Overdue',INVOICE_STALE_PARTIAL:'Stale Partial',PROD_VARIANCE_REVIEW:'Variance Review',WATCHDOG_LOW_STOCK:'Low Stock',WATCHDOG_NEG_STOCK:'Negative Stock',WATCHDOG_QUARANTINE_STALE:'Stale Quarantine',WATCHDOG_AWAITING_DELIVERY_OVERDUE:'Awaiting Delivery Overdue'}[c]||c?.replace(/_/g,' ')||'—');
 
 /* ── SC Sidebar ───────────────────────────────────────────────────────────── */
-function SCSidebar({page,setPage,exp,setExp,session,openAlloc,openQuar,overdueSLA,onSignOut,activeReport,setActiveReport,taskBadge}) {
+function SCSidebar({page,setPage,exp,setExp,session,openAlloc,openQuar,overdueSLA,onSignOut,activeReport,setActiveReport,taskBadge,grpReqBadge}) {
   const [repOpen,setRepOpen] = useState(page==='sc-reports');
   const isRep = page==='sc-reports';
 
   const nav = [
-    {id:'sc-home',  icon:'grid',  l:'Command Centre'},
-    {id:'sc-tasks', icon:'zap',   l:'Tasks',      badge:taskBadge},
-    {id:'sc-quar',  icon:'alert', l:'Quarantine', badge:openQuar, bw:overdueSLA>0},
-    {id:'sc-alloc', icon:'layers',l:'Allocations',badge:openAlloc},
-    {id:'sc-recv',  icon:'truck', l:'Receiving'},
+    {id:'sc-home',    icon:'grid',   l:'Command Centre'},
+    {id:'sc-tasks',   icon:'zap',    l:'Tasks',          badge:taskBadge},
+    {id:'sc-quar',    icon:'alert',  l:'Quarantine',     badge:openQuar, bw:overdueSLA>0},
+    {id:'sc-alloc',   icon:'layers', l:'Allocations',    badge:openAlloc},
+    {id:'sc-recv',    icon:'truck',  l:'Receiving'},
+    {id:'sc-mpr',     icon:'pkg',    l:'Master Products'},
+    {id:'sc-dir',     icon:'db',   l:'Groups & Categories', badge:grpReqBadge},
   ];
 
   const handleReports = () => {
@@ -9438,9 +9793,9 @@ function SCHome({d,setPage}) {
 /* ══════════════════════════════════════════════════════════════════════════
    TASKS PAGE
    ══════════════════════════════════════════════════════════════════════════ */
-const SC_CODES = ['SC_ALLOCATE_DELIVERY','QUARANTINE_REVIEW','RECEIVE_DELIVERY','SC_REVIEW_RECEIVING','SC_REVIEW_COUNT','WATCHDOG_SC_ALLOCATION_STALE','WATCHDOG_DELIVERY_OVERDUE','WATCHDOG_AWAITING_DELIVERY_OVERDUE','INVOICE_STALE_PARTIAL','PROD_VARIANCE_REVIEW','WATCHDOG_LOW_STOCK','WATCHDOG_NEG_STOCK','WATCHDOG_QUARANTINE_STALE'];
+const SC_CODES = ['SC_ALLOCATE_DELIVERY','QUARANTINE_REVIEW','RECEIVE_DELIVERY','SC_REVIEW_RECEIVING','SC_REVIEW_COUNT','WATCHDOG_SC_ALLOCATION_STALE','WATCHDOG_DELIVERY_OVERDUE','WATCHDOG_AWAITING_DELIVERY_OVERDUE','INVOICE_STALE_PARTIAL','PROD_VARIANCE_REVIEW','WATCHDOG_LOW_STOCK','WATCHDOG_NEG_STOCK','WATCHDOG_QUARANTINE_STALE','PRODUCT_GROUP_REVIEW_REQUIRED'];
 
-function SCTasksPage({tasks=[],search,exp=true,onReload}) {
+function SCTasksPage({tasks=[],search,exp=true,onReload,setPage}) {
   const [filter,setFilter] = useState('ALL');
   const [sel,setSel] = useState(null);
   const scTasks = tasks.filter(t=>SC_CODES.includes(t.task_type_code) && t.status!=='DONE');
@@ -9468,7 +9823,10 @@ function SCTasksPage({tasks=[],search,exp=true,onReload}) {
               <tbody>{filtered.map(t=>{
                 const od=t.due_at&&new Date(t.due_at)<new Date();
                 const vendor=t.payload?.vendor_name||t.vendor_name||'—';
-                return <tr key={t.id} style={{cursor:'pointer'}} onClick={()=>setSel(t)}
+                return <tr key={t.id} style={{cursor:'pointer'}} onClick={()=>{
+                    if(t.task_type_code==='PRODUCT_GROUP_REVIEW_REQUIRED'){ if(setPage) setPage('sc-dir'); return; }
+                    setSel(t);
+                  }}
                   onMouseEnter={e=>e.currentTarget.style.background='var(--sc-hover)'}
                   onMouseLeave={e=>e.currentTarget.style.background=''}>
                   <td style={{fontFamily:'monospace',fontSize:11.5,color:'var(--sc-muted)'}}>#{ t.id?.slice(-8).toUpperCase()}</td>
@@ -9489,23 +9847,34 @@ function SCTasksPage({tasks=[],search,exp=true,onReload}) {
    QUARANTINE WORKBENCH
    ══════════════════════════════════════════════════════════════════════════ */
 /* ── Price Deviation line detail sub-card ───────────────────────────────── */
-function SCQuarPriceLineCard({line,onClose,onResolved}) {
+function SCQuarPriceLineCard({line,onClose,onResolved,roleCode}) {
   const [busy,setBusy] = useState(false);
   const [done,setDone] = useState(false);
   const [err,setErr]   = useState('');
+  const [reason,setReason] = useState('');
+  const [newBaseline,setNewBaseline] = useState(line.unit_price!=null?String(line.unit_price):'');
 
   const devPct = line.deviation_pct != null ? +line.deviation_pct : null;
   const devColor = devPct == null ? 'var(--sc-muted)' : Math.abs(devPct) > 20 ? 'var(--sc-neg)' : 'var(--sc-warn)';
+  const canUpdateBaseline = ['FINANCE_MANAGER','CFO','SYSTEM_ADMIN'].includes(roleCode);
 
   const resolve = async(action) => {
+    if(!reason.trim()){ setErr('A reason is required.'); return; }
+    if(action==='UPDATE_BASELINE' && (!newBaseline || isNaN(+newBaseline) || +newBaseline<0)){
+      setErr('Enter a valid new baseline price.'); return;
+    }
     setBusy(true); setErr('');
     try {
-      const {error} = await SB.from('quarantine_lines').update({
-        status:'APPROVED_UPDATE', resolution_note: action, resolved_at: new Date().toISOString()
-      }).eq('id', line.id);
+      const {data,error} = await SB.rpc('resolve_quarantine_price_deviation',{
+        p_quarantine_line_id: line.id,
+        p_action: action,
+        p_note: reason.trim(),
+        p_new_baseline: action==='UPDATE_BASELINE' ? Number(newBaseline) : null,
+      });
       if(error) throw error;
+      if(!data || data.ok===false) throw new Error(data?.message||'Resolve failed');
       setDone(true);
-      setTimeout(()=>onResolved(action),600);
+      setTimeout(()=>onResolved(action),700);
     } catch(e){ setErr(e.message||'Error'); setBusy(false); }
   };
 
@@ -9537,14 +9906,35 @@ function SCQuarPriceLineCard({line,onClose,onResolved}) {
           </div>
         ))}
       </div>
+      {/* New baseline (Finance only) */}
+      {canUpdateBaseline && (
+        <div style={{marginBottom:12}}>
+          <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>New baseline price (for Update Baseline)</div>
+          <input type="number" value={newBaseline} onChange={e=>setNewBaseline(e.target.value)}
+            style={{width:180,background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box'}}/>
+        </div>
+      )}
+      {/* Reason — required */}
+      <div style={{marginBottom:12}}>
+        <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Reason *</div>
+        <input value={reason} onChange={e=>setReason(e.target.value)} placeholder="Required — brief justification"
+          style={{width:'100%',background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box'}}/>
+      </div>
       {/* 3 action buttons */}
       <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
         <button className="sc-btn sc-btn-g" disabled={busy} onClick={()=>resolve('ACCEPT_ONE_TIME')}>
           Accept One-Time
         </button>
-        <button className="sc-btn sc-btn-p" disabled={busy} onClick={()=>resolve('UPDATE_BASELINE')}>
-          Update Baseline
-        </button>
+        {canUpdateBaseline ? (
+          <button className="sc-btn sc-btn-p" disabled={busy} onClick={()=>resolve('UPDATE_BASELINE')}>
+            Update Baseline
+          </button>
+        ) : (
+          <button className="sc-btn sc-btn-p" disabled title="Only Finance can update the baseline price"
+            style={{opacity:.5,cursor:'not-allowed'}}>
+            Update Baseline (Finance)
+          </button>
+        )}
         <button className="sc-btn sc-btn-d" disabled={busy} onClick={()=>resolve('REJECT_LINE')}>
           Reject Line
         </button>
@@ -9587,36 +9977,13 @@ function _MprSelectInput({label,value,onChange,options,hint}) {
   );
 }
 
-const SC_CATEGORIES = [
-  {value:'0845e8f7-0978-495e-985c-c48eb680ba57',label:'Bread Powder'},
-  {value:'b9d52d4e-cc05-4ce1-be2f-587f9c126ac9',label:'Carbohydrates'},
-  {value:'3e9c3147-cbcd-445f-a768-de56267b48c5',label:'Cereal'},
-  {value:'a74743ff-e98d-4ad6-994d-544dcf96d4fd',label:'Dairy'},
-  {value:'c7cb7c48-e5a3-42b8-88be-f50d2bef95e6',label:'Dressings'},
-  {value:'0750c886-c0cb-403b-a8a5-06170d79db6a',label:'Egg'},
-  {value:'d4e81f0e-39df-479c-8cdb-2fa23f470f08',label:'Flour'},
-  {value:'4d427e75-caab-42c5-8b38-54e5899da4a8',label:'Fruits'},
-  {value:'949e0d1c-66f9-450a-8378-2ddff7279713',label:'Grains'},
-  {value:'07aad2b4-a82d-4619-9111-8bd79c33894b',label:'Meat'},
-  {value:'3a38b3ba-bcbb-4c5e-abb1-3e0f5ecd5497',label:'Nuts'},
-  {value:'9b21de72-7757-4a44-87e1-6cf078947e8e',label:'Oil'},
-  {value:'0af3f9dc-bf50-47bc-9470-83df04df20fe',label:'Sauce'},
-  {value:'088f20a9-4a21-4b01-a1e7-78572b396ac2',label:'Seeds'},
-  {value:'8072c19f-4ac7-4ef2-a60a-e084b46b49b8',label:'Syrup'},
-  {value:'fdfedb64-923c-4362-b6cd-26eb9a1cf4e9',label:'Tofu'},
-  {value:'f47bd85c-5032-4f21-9ab5-8d077e42aa74',label:'Vegan Milk'},
-  {value:'c94e71a8-62ec-47b8-b4bc-fa215c2e2f18',label:'Vegetables'},
-  {value:'183b2619-f317-4414-a678-de0ffc6172e0',label:'Yeast'},
-  {value:'9ee39426-6f41-42e8-95a1-18eee695f8a7',label:'Condiment'},
-  {value:'e6427828-51da-4470-b595-36ba1a886541',label:'Pickles'},
-];
 const SC_UOMS = ['KG','G','L','ML','UNIT','CASE','BOX','BAG','LITRE','PIECE'].map(u=>({value:u,label:u}));
 const SC_STORAGE = [{value:'AMBIENT',label:'Ambient'},{value:'DRY_STORAGE',label:'Dry Storage'},{value:'REFRIGERATED',label:'Refrigerated'},{value:'FROZEN',label:'Frozen'}];
 
 const _MPR_EMPTY = {
-  sku_code:'', product_name:'', category_id:'', group_search:'', group_id:'', group_name:'', group_code:'',
+  sku_code:'', product_name:'', category_id:'', category_search:'', group_search:'', group_id:'', group_name:'', group_code:'',
   purchase_uom:'', inventory_uom:'', purchase_to_inventory_factor:'1',
-  baseline_price:'', price_tolerance_pct:'5',
+  baseline_price:'', price_tolerance_pct:'3',
   storage_type:'', shelf_life_days:'',
   vendor_item_name:'', vendor_item_code:'', vendor_uom:'',
 };
@@ -9642,7 +10009,7 @@ const SC_VENDOR_CATEGORIES = [
 ];
 
 function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
-  const lines = ticket.quarantine_lines || [];
+  const [lines,setLines] = useState(ticket.quarantine_lines || []);
 
   /* Auto-generate vendor_code from name: "DEVI 20-GRUP SHPK" → "DEV20GRP" */
   const _autoCode = (name) => (name||'')
@@ -9676,6 +10043,8 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
   const [mprMode,      setMprMode]      = useState(null);
   const [form,         setForm]         = useState(_MPR_EMPTY);
   const [groupResults, setGroupResults] = useState([]);
+  const [dbCategories, setDbCategories] = useState([]);
+  const [catOpen,      setCatOpen]      = useState(false);
   const [groupBusy,    setGroupBusy]    = useState(false);
   const [mprBusy,      setMprBusy]      = useState(false);
   const [mprErr,       setMprErr]       = useState('');
@@ -9734,6 +10103,15 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
       });
   },[ticket.fiscal_invoice_id]);
 
+  /* Live-fetch categories from DB — replaces hardcoded SC_CATEGORIES */
+  useEffect(()=>{
+    SB.rpc('sc_list_categories').then(({data})=>{
+      if(Array.isArray(data)) setDbCategories(
+        data.map(c=>({value:c.id,label:c.category_name,count:c.group_count}))
+      );
+    });
+  },[]);
+
   /* Patch NIPT into form once async fetch resolves */
   useEffect(()=>{
     if(!sellerNipt) return;
@@ -9753,21 +10131,46 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
     if(!vForm.vat_number.trim()){setVErr('VAT / NIPT is required.');return;}
     setVBusy(true); setVErr('');
     try {
-      const {data:v, error:vE} = await SB.from('vendors').insert({
-        name:               vForm.vendor_name.trim(),
-        vendor_name:        vForm.vendor_name.trim(),
-        vendor_code:        vForm.vendor_code.trim()||null,
-        vat_number:         vForm.vat_number.trim(),
-        tax_id:             vForm.tax_id.trim()||vForm.vat_number.trim(),
-        contact_person:     vForm.contact_person.trim()||null,
-        phone:              vForm.phone.trim()||null,
-        email:              vForm.email.trim()||null,
-        address:            vForm.address.trim()||null,
-        payment_terms_days: parseInt(vForm.payment_terms_days)||30,
-        category:           vForm.category||null,
-        status:             'ACTIVE',
-      }).select('id,name').single();
-      if(vE) throw vE;
+      const _nipt = (vForm.tax_id.trim()||vForm.vat_number.trim());
+      let v = null;
+
+      /* ── Find-or-create by NIPT: an existing vendor must be reused, not re-inserted ── */
+      const {data:existing} = await SB.from('vendors')
+        .select('id,name').ilike('tax_id', _nipt).limit(1);
+      if(existing && existing.length){
+        v = existing[0];  // vendor already registered → reuse it
+      } else {
+        /* Guard the auto-code against collisions: if taken, suffix -2,-3,… */
+        let _code = vForm.vendor_code.trim()||null;
+        if(_code){
+          const {data:codeHit} = await SB.from('vendors').select('id').eq('vendor_code',_code).limit(1);
+          if(codeHit && codeHit.length){
+            let n=2, free=null;
+            while(!free && n<50){
+              const cand=`${_code}-${n}`;
+              const {data:h} = await SB.from('vendors').select('id').eq('vendor_code',cand).limit(1);
+              if(!h || !h.length) free=cand; else n++;
+            }
+            _code = free || `${_code}-${Date.now().toString().slice(-4)}`;
+          }
+        }
+        const {data:ins, error:vE} = await SB.from('vendors').insert({
+          name:               vForm.vendor_name.trim(),
+          vendor_name:        vForm.vendor_name.trim(),
+          vendor_code:        _code,
+          vat_number:         vForm.vat_number.trim(),
+          tax_id:             _nipt,
+          contact_person:     vForm.contact_person.trim()||null,
+          phone:              vForm.phone.trim()||null,
+          email:              vForm.email.trim()||null,
+          address:            vForm.address.trim()||null,
+          payment_terms_days: parseInt(vForm.payment_terms_days)||30,
+          category:           vForm.category||null,
+          status:             'ACTIVE',
+        }).select('id,name').single();
+        if(vE) throw vE;
+        v = ins;
+      }
       /* Back-fill vendor_id on the quarantine ticket + fiscal invoice */
       await SB.from('quarantine_tickets').update({vendor_id:v.id}).eq('id',ticket.id);
       await SB.from('fiscal_invoices').update({vendor_id:v.id}).eq('id',ticket.fiscal_invoice_id);
@@ -9790,14 +10193,13 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
       product_name:     line.product_name_raw||'',
       baseline_price:   line.unit_price||'',
       purchase_uom:     line.uom||'',
-      inventory_uom:    line.uom||'',
+      inventory_uom:    'KG',
       vendor_item_name: line.product_name_raw||'',
       vendor_item_code: line.vendor_item_code||'',
       vendor_uom:       line.uom||'',
     });
-    /* Fetch next SKU code from DB sequence — guaranteed unique */
-    const {data} = await SB.rpc('generate_sku_code', {p_name: null});
-    if(data) set('sku_code', data);
+    /* SKU code is auto-assigned by the DB trigger on insert (GP-RI-XXXX / GP-SF-XXXX). */
+    set('sku_code', 'Auto-assigned on save');
   };
 
   const searchGroups = async(q) => {
@@ -9815,7 +10217,6 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
   };
 
   const validate = () => {
-    if(!form.sku_code.trim())   return 'SKU Code is required.';
     if(!form.product_name.trim()) return 'Product Name is required.';
     if(!form.category_id)       return 'Category is required.';
     if(!form.group_id)          return 'Group is required — search and select one.';
@@ -9833,23 +10234,23 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
     setMprBusy(true); setMprErr('');
     try {
       const {data:mp,error:mpErr} = await SB.from('master_products').insert({
-        sku_code:    form.sku_code.trim(),
         product_name: form.product_name.trim(),
+        product_type: 'RI',
         category_id: form.category_id,
         group_id:    form.group_id,
         purchase_uom: form.purchase_uom,
-        inventory_uom: form.inventory_uom,
+        inventory_uom: 'KG',
         purchase_to_inventory_factor: parseFloat(form.purchase_to_inventory_factor),
         baseline_price:      parseFloat(form.baseline_price),
         last_purchase_price: parseFloat(form.baseline_price),
-        price_tolerance_pct: parseFloat(form.price_tolerance_pct)||5,
+        price_tolerance_pct: form.category_id==='c94e71a8-62ec-47b8-b4bc-fa215c2e2f18' ? 10 : 3,
         storage_type:  form.storage_type,
         shelf_life_value: form.shelf_life_days?parseInt(form.shelf_life_days):null,
         shelf_life_unit:  form.shelf_life_days?'DAYS':null,
         primary_vendor_id: vendorId||null,
         status:    'ACTIVE',
         is_new_sku: true,
-      }).select('id').single();
+      }).select('id,sku_code').single();
       if(mpErr) throw mpErr;
 
       /* Resolve seller_nipt — if async fetch hasn't completed, fetch now synchronously */
@@ -9893,8 +10294,17 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
         await SB.from('quarantine_tickets').update({status:'CLOSED',closed_at:new Date().toISOString()}).eq('id',ticket.id);
       }
 
+      // Mark this line resolved locally so the ticket view updates in place
+      setLines(prev=>prev.map(l=>l.id===selLine.id?{...l,status:'APPROVED_UPDATE',product_id:mp.id}:l));
+
       setMprOk(true);
-      setTimeout(()=>{setMprMode(null);setMprOk(false);setSelLine(null);onResolved();},1500);
+      setTimeout(()=>{
+        setMprMode(null); setMprOk(false); setSelLine(null); setMprBusy(false);
+        if(remaining.length===0){
+          onResolved();           // all lines done → close ticket, back to queue
+        }
+        // else: stay on the ticket line list for the next ingredient
+      },1200);
     } catch(e){ setMprErr(e.message||'Error registering SKU'); setMprBusy(false); }
   };
 
@@ -10048,10 +10458,43 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
                   hint="Your system's canonical name (not vendor's)"/>
               </div>
               <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginBottom:4}}>
-                <_MprSelectInput label="Category *" value={form.category_id} onChange={e=>set('category_id',e.target.value)}
-                  options={SC_CATEGORIES}/>
                 <div>
-                  <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Group *</div>
+                  <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Category *</div>
+                  <div style={{position:'relative'}}>
+                    <input value={form.category_search} placeholder="Search categories…"
+                      onChange={e=>{set('category_search',e.target.value);set('category_id','');setCatOpen(true);}}
+                      onFocus={()=>setCatOpen(true)}
+                      onBlur={()=>setTimeout(()=>setCatOpen(false),150)}
+                      style={{width:'100%',background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,
+                        padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box'}}/>
+                    {catOpen&&(()=>{
+                      const ql=(form.category_search||'').trim().toLowerCase();
+                      const cats=ql?dbCategories.filter(c=>c.label.toLowerCase().includes(ql)):dbCategories;
+                      if(cats.length===0) return null;
+                      return (
+                        <div style={{position:'absolute',top:'100%',left:0,right:0,zIndex:50,background:'var(--sc-card)',
+                          border:'1px solid var(--sc-border)',borderRadius:10,boxShadow:'0 8px 30px rgba(16,24,40,.12)',overflow:'hidden',marginTop:4,maxHeight:240,overflowY:'auto'}}>
+                          {cats.map((c,ci)=>(
+                            <div key={c.value} onMouseDown={()=>{set('category_id',c.value);set('category_search',c.label);setCatOpen(false);}}
+                              style={{padding:'9px 12px',cursor:'pointer',fontSize:13,color:'var(--sc-ink)',
+                                display:'flex',justifyContent:'space-between',alignItems:'baseline',gap:10,
+                                opacity:(c.count===0?0.55:1),
+                                borderTop:ci===0?'none':'1px solid var(--sc-divider)'}}
+                              onMouseEnter={e=>e.currentTarget.style.background='var(--sc-hover)'}
+                              onMouseLeave={e=>e.currentTarget.style.background=''}>
+                              <span style={{fontWeight:600}}>{c.label}</span>
+                              <span style={{fontSize:11,color:'var(--sc-muted)',flexShrink:0}}>{c.count!=null?`${c.count} groups`:''}</span>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
+                  </div>
+                  {form.category_id&&<div style={{fontSize:10,color:'var(--sc-pos)',marginTop:3}}>✓ {form.category_search}</div>}
+                  {!form.category_id&&<div style={{fontSize:10,color:'var(--sc-muted)',marginTop:3}}>Type to search categories</div>}
+                </div>
+                <div>
+                  <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Group Name *</div>
                   <div style={{position:'relative'}}>
                     <input value={form.group_search} placeholder="Search groups…"
                       onChange={e=>{set('group_search',e.target.value);set('group_id','');set('group_name','');set('group_code','');searchGroups(e.target.value);}}
@@ -10060,14 +10503,16 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
                     {groupBusy&&<div style={{position:'absolute',right:10,top:8,fontSize:11,color:'var(--sc-muted)'}}>…</div>}
                     {groupResults.length>0&&(
                       <div style={{position:'absolute',top:'100%',left:0,right:0,zIndex:50,background:'var(--sc-card)',
-                        border:'1px solid var(--sc-border)',borderRadius:8,boxShadow:'0 4px 16px rgba(0,0,0,.12)',overflow:'hidden',marginTop:2}}>
-                        {groupResults.map(g=>(
+                        border:'1px solid var(--sc-border)',borderRadius:10,boxShadow:'0 8px 30px rgba(16,24,40,.12)',overflow:'hidden',marginTop:4,maxHeight:240,overflowY:'auto'}}>
+                        {groupResults.map((g,gi)=>(
                           <div key={g.id} onClick={()=>selectGroup(g)}
-                            style={{padding:'8px 12px',cursor:'pointer',fontSize:13,color:'var(--sc-ink)',borderBottom:'1px solid var(--sc-divider)'}}
+                            style={{padding:'9px 12px',cursor:'pointer',fontSize:13,color:'var(--sc-ink)',
+                              display:'flex',justifyContent:'space-between',alignItems:'baseline',gap:10,
+                              borderTop:gi===0?'none':'1px solid var(--sc-divider)'}}
                             onMouseEnter={e=>e.currentTarget.style.background='var(--sc-hover)'}
                             onMouseLeave={e=>e.currentTarget.style.background=''}>
                             <span style={{fontWeight:600}}>{g.group_name}</span>
-                            <span style={{fontSize:11,color:'var(--sc-muted)',marginLeft:8,fontFamily:'monospace'}}>{g.group_code}</span>
+                            <span style={{fontSize:11,color:'var(--sc-muted)',fontFamily:'monospace',flexShrink:0}}>{g.group_code}</span>
                           </div>
                         ))}
                       </div>
@@ -10082,8 +10527,8 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
               <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12,marginBottom:4}}>
                 <_MprSelectInput label="Purchase UOM *" value={form.purchase_uom} onChange={e=>set('purchase_uom',e.target.value)}
                   options={SC_UOMS} hint="How vendor invoices it"/>
-                <_MprSelectInput label="Inventory UOM *" value={form.inventory_uom} onChange={e=>set('inventory_uom',e.target.value)}
-                  options={SC_UOMS} hint="How you track it internally"/>
+                <_MprTextInput label="Inventory UOM" value="KG" readOnly
+                  hint="System standard — always KG"/>
                 <_MprTextInput label="Conversion Factor *" value={form.purchase_to_inventory_factor}
                   onChange={e=>set('purchase_to_inventory_factor',e.target.value)}
                   type="number" hint="e.g. 1 case = 12 units → 12"/>
@@ -10091,12 +10536,12 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
 
               {sec('Pricing')}
               <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginBottom:4}}>
-                <_MprTextInput label="Baseline Price (ALL) *" value={form.baseline_price}
-                  onChange={e=>set('baseline_price',e.target.value)}
-                  type="number" hint="Auto-filled from invoice — confirm or adjust"/>
-                <_MprTextInput label="Price Tolerance %" value={form.price_tolerance_pct}
-                  onChange={e=>set('price_tolerance_pct',e.target.value)}
-                  type="number" hint="Default 5% — deviation above this triggers quarantine"/>
+                <_MprTextInput label="Baseline Price (ALL)" value={form.baseline_price}
+                  readOnly type="number" hint="Derived from invoice — system set"/>
+                <_MprTextInput label="Price Tolerance %"
+                  value={form.category_id==='c94e71a8-62ec-47b8-b4bc-fa215c2e2f18' ? '10' : '3'}
+                  readOnly type="number"
+                  hint="Policy — 3% standard, 10% Vegetables (volatility). Deviation above triggers quarantine."/>
               </div>
 
               {sec('Storage & Shelf Life')}
@@ -10109,13 +10554,11 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
               </div>
 
               {sec('Vendor Reference (from invoice)')}
-              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12,marginBottom:4}}>
+              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginBottom:4}}>
                 <_MprTextInput label="Vendor Item Name" value={form.vendor_item_name} readOnly
                   hint="As it appeared on the eBills invoice"/>
                 <_MprTextInput label="Vendor Item Code" value={form.vendor_item_code}
                   onChange={e=>set('vendor_item_code',e.target.value)} mono hint="From eBills line"/>
-                <_MprSelectInput label="Vendor UOM" value={form.vendor_uom} onChange={e=>set('vendor_uom',e.target.value)}
-                  options={SC_UOMS} hint="UOM on vendor invoice"/>
               </div>
 
               {mprErr&&<div style={{padding:'8px 12px',background:'rgba(196,29,29,.07)',borderRadius:7,fontSize:12,
@@ -10146,7 +10589,7 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
 }
 
 /* ── PRICE_DEVIATION ticket detail — list lines, click → price detail card ── */
-function SCQuarPriceDetail({ticket,onClose,onResolved}) {
+function SCQuarPriceDetail({ticket,onClose,onResolved,roleCode}) {
   const lines = ticket.quarantine_lines || [];
   const [selLine,setSelLine] = useState(null);
 
@@ -10219,7 +10662,7 @@ function SCQuarPriceDetail({ticket,onClose,onResolved}) {
                       {/* Expanded price card */}
                       {isSelected&&(
                         <div style={{padding:'0 16px 16px'}}>
-                          <SCQuarPriceLineCard line={line} onClose={()=>setSelLine(null)} onResolved={handleResolved}/>
+                          <SCQuarPriceLineCard line={line} roleCode={roleCode} onClose={()=>setSelLine(null)} onResolved={handleResolved}/>
                         </div>
                       )}
                     </div>
@@ -10238,11 +10681,11 @@ function SCQuarPriceDetail({ticket,onClose,onResolved}) {
 }
 
 /* ── Generic quarantine detail router ──────────────────────────────────── */
-function SCQuarDetail({q,onClose}) {
+function SCQuarDetail({q,onClose,roleCode}) {
 /* Routes to type-specific detail modal */
   const reason = q.quarantine_reason;
   if(reason==='UNKNOWN_SKU')    return <SCQuarUnknownDetail ticket={q} onClose={onClose} onResolved={onClose}/>;
-  if(reason==='PRICE_DEVIATION') return <SCQuarPriceDetail  ticket={q} onClose={onClose} onResolved={onClose}/>;
+  if(reason==='PRICE_DEVIATION') return <SCQuarPriceDetail  ticket={q} onClose={onClose} onResolved={onClose} roleCode={roleCode}/>;
   // Fallback for UOM_MISMATCH / VENDOR_MISMATCH
   return (
     <div className="sc-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose();}}>
@@ -10269,7 +10712,7 @@ function SCQuarDetail({q,onClose}) {
   );
 }
 
-function SCQuarPage({quarantines=[],search,onReload}) {
+function SCQuarPage({quarantines=[],search,onReload,roleCode}) {
   const [typeF,setTypeF] = useState('ALL');
   const [sel,setSel]     = useState(null);
   const types = ['ALL','UNKNOWN_SKU','PRICE_DEVIATION','UOM_MISMATCH','VENDOR_MISMATCH'];
@@ -10345,7 +10788,7 @@ function SCQuarPage({quarantines=[],search,onReload}) {
               </tbody>
             </table>}
       </div>
-      {sel&&<SCQuarDetail q={sel} onClose={()=>{ setSel(null); if(onReload) onReload(); }}/>}
+      {sel&&<SCQuarDetail q={sel} roleCode={roleCode} onClose={()=>{ setSel(null); if(onReload) onReload(); }}/>}
     </div>
   );
 }
@@ -12154,6 +12597,901 @@ function SCReportsPage({activeReport,setActiveReport,data}) {
 }
 
 
+/* ── SC Master Products (MPR) ─────────────────────────────────────────────── */
+const MPR_STORAGE_TYPES = ['AMBIENT','CHILLED','FROZEN'];
+const MPR_SHELF_UNITS   = ['DAYS','WEEKS','MONTHS'];
+
+function SCMprEditDrawer({ product, categories, groups, isNew, onClose, onSaved }) {
+  const blank = {
+    product_name:'', product_type:'RI', category_id:'', group_id:'',
+    inventory_uom:'KG', storage_type:'', allergens:'',
+    shelf_life_value:'', shelf_life_unit:'', requires_lot_tracking:false,
+    status:'ACTIVE',
+  };
+  const [f,setF]   = useState(isNew ? blank : {
+    product_name: product.product_name||'',
+    product_type: product.product_type||'RI',
+    category_id:  product.category_id||'',
+    group_id:     product.group_id||'',
+    inventory_uom:product.inventory_uom||'KG',
+    storage_type: product.storage_type||'',
+    allergens:    product.allergens||'',
+    shelf_life_value: product.shelf_life_value??'',
+    shelf_life_unit:  product.shelf_life_unit||'',
+    requires_lot_tracking: !!product.requires_lot_tracking,
+    status:       product.status||'ACTIVE',
+  });
+  const [saving,setSaving] = useState(false);
+  const [err,setErr]       = useState('');
+  const [grpOpen,setGrpOpen] = useState(false);
+  const [grpQuery,setGrpQuery] = useState('');
+  const set = (k,v)=>setF(s=>({...s,[k]:v}));
+
+  // Groups filtered to the chosen category. Always include the currently-assigned
+  // group even if it sits in another category, so the selection is never hidden.
+  const catGroups = (() => {
+    const base = f.category_id ? groups.filter(g=>g.category_id===f.category_id) : groups;
+    if(f.group_id && !base.some(g=>g.id===f.group_id)){
+      const cur = groups.find(g=>g.id===f.group_id);
+      if(cur) return [cur, ...base];
+    }
+    return base;
+  })();
+
+  const valid = f.product_name.trim() && f.category_id;
+
+  const save = async () => {
+    if(!valid){ setErr('Product name and category are required.'); return; }
+    setSaving(true); setErr('');
+    // Only non-cost fields. purchase_uom defaulted to inventory_uom to satisfy
+    // NOT NULL without exposing any purchase/cost concept in this UI.
+    const payload = {
+      product_name: f.product_name.trim(),
+      product_type: f.product_type,
+      category_id:  f.category_id,
+      group_id:     f.group_id||null,
+      inventory_uom:f.inventory_uom,
+      purchase_uom: f.inventory_uom,
+      storage_type: f.storage_type||null,
+      allergens:    f.allergens.trim()||null,
+      shelf_life_value: f.shelf_life_value===''?null:Number(f.shelf_life_value),
+      shelf_life_unit:  f.shelf_life_unit||null,
+      requires_lot_tracking: f.requires_lot_tracking,
+      status: f.status,
+    };
+    try{
+      if(isNew){
+        const { error } = await SB.from('master_products').insert(payload);
+        if(error) throw error;
+      }else{
+        const { error } = await SB.from('master_products').update(payload).eq('id',product.id);
+        if(error) throw error;
+      }
+      onSaved();
+    }catch(e){ setErr(e.message||'Save failed.'); }
+    setSaving(false);
+  };
+
+  return (
+    <div className="sc-drawer-bg" onClick={onClose}>
+      <div className="sc-drawer" onClick={e=>e.stopPropagation()}>
+        <div className="sc-drawer-head">
+          <div>
+            <div style={{fontSize:16,fontWeight:700,color:'var(--sc-ink)'}}>{isNew?'New Master Product':'Edit Master Product'}</div>
+            {!isNew && <div style={{fontSize:12,color:'var(--sc-muted)',marginTop:2,fontFamily:'monospace'}}>{product.sku_code}</div>}
+            {isNew && <div style={{fontSize:12,color:'var(--sc-muted)',marginTop:2}}>SKU code is generated automatically on save</div>}
+          </div>
+          <button className="sc-icon-btn" onClick={onClose}><SI n="x" s={16} c="var(--sc-sub)"/></button>
+        </div>
+
+        <div className="sc-drawer-body">
+          {err && <div className="sc-form-err">{err}</div>}
+
+          <label className="sc-fl">Product name *</label>
+          <input className="sc-in" value={f.product_name} onChange={e=>set('product_name',e.target.value)} placeholder="e.g. Domate" autoFocus/>
+
+          <div className="sc-row2">
+            <div>
+              <label className="sc-fl">Type</label>
+              <select className="sc-in" value={f.product_type} onChange={e=>set('product_type',e.target.value)}>
+                <option value="RI">Raw Ingredient</option>
+                <option value="SF">Semi-finished</option>
+              </select>
+            </div>
+            <div>
+              <label className="sc-fl">Inventory unit</label>
+              <select className="sc-in" value={f.inventory_uom} onChange={e=>set('inventory_uom',e.target.value)}>
+                <option value="KG">KG</option>
+                <option value="LT">LT</option>
+                <option value="PCS">PCS</option>
+              </select>
+            </div>
+          </div>
+
+          <label className="sc-fl">Category *</label>
+          <select className="sc-in" value={f.category_id} onChange={e=>{set('category_id',e.target.value); set('group_id','');}}>
+            <option value="">Select category…</option>
+            {categories.map(c=><option key={c.id} value={c.id}>{c.category_name}</option>)}
+          </select>
+
+          <label className="sc-fl">Group Name <span style={{color:'var(--sc-muted)',fontWeight:400}}>(ingredient family — e.g. all tomatoes → “Domate”)</span></label>
+          <div style={{position:'relative', marginBottom:12}}>
+            <input className="sc-in"
+              value={grpOpen ? grpQuery : (f.group_id ? (()=>{const g=groups.find(x=>x.id===f.group_id); return g?`${g.group_name} (${g.group_code})`:'';})() : '')}
+              placeholder={f.category_id ? 'Search groups…' : 'Select a category first'}
+              onFocus={()=>{ setGrpOpen(true); setGrpQuery(''); }}
+              onChange={e=>{ setGrpQuery(e.target.value); if(!grpOpen) setGrpOpen(true); }}
+              onBlur={()=>setTimeout(()=>setGrpOpen(false),150)}
+            />
+            {grpOpen && (
+              <div style={{position:'absolute', top:'100%', left:0, right:0, marginTop:4, zIndex:50,
+                background:'#fff', border:'1px solid var(--sc-border)', borderRadius:10,
+                boxShadow:'0 12px 32px rgba(16,24,40,.14)', maxHeight:240, overflowY:'auto'}}>
+                {(() => {
+                  const q = grpQuery.trim().toLowerCase();
+                  const list = [{id:'',group_name:'No group',group_code:''},
+                    ...catGroups.filter(g=>!q || `${g.group_name} ${g.group_code}`.toLowerCase().includes(q))];
+                  if(list.length===0) return <div style={{padding:'10px 14px',fontSize:12.5,color:'var(--sc-muted)'}}>No groups in this category</div>;
+                  return list.map(g=>(
+                    <div key={g.id||'none'}
+                      onMouseDown={()=>{ set('group_id', g.id); setGrpOpen(false); setGrpQuery(''); }}
+                      style={{padding:'9px 14px', fontSize:13, cursor:'pointer', display:'flex', justifyContent:'space-between', gap:10,
+                        background: g.id===f.group_id ? 'var(--sc-blue-050,#eff6ff)' : 'transparent',
+                        color: g.id===f.group_id ? 'var(--wt-blue-600,#009DE0)' : 'var(--sc-ink)',
+                        fontWeight: g.id===f.group_id ? 600 : 500}}
+                      onMouseEnter={e=>e.currentTarget.style.background='#f4f7fb'}
+                      onMouseLeave={e=>e.currentTarget.style.background=g.id===f.group_id?'var(--sc-blue-050,#eff6ff)':'transparent'}>
+                      <span>{g.group_name}</span>
+                      {g.group_code && <span style={{fontSize:11,color:'var(--sc-muted)',fontFamily:'monospace'}}>{g.group_code}</span>}
+                    </div>
+                  ));
+                })()}
+              </div>
+            )}
+          </div>
+
+          <div className="sc-row2">
+            <div>
+              <label className="sc-fl">Storage</label>
+              <select className="sc-in" value={f.storage_type} onChange={e=>set('storage_type',e.target.value)}>
+                <option value="">—</option>
+                {MPR_STORAGE_TYPES.map(s=><option key={s} value={s}>{s.charAt(0)+s.slice(1).toLowerCase()}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="sc-fl">Status</label>
+              <select className="sc-in" value={f.status} onChange={e=>set('status',e.target.value)}>
+                <option value="ACTIVE">Active</option>
+                <option value="INACTIVE">Inactive</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="sc-row2">
+            <div>
+              <label className="sc-fl">Shelf life</label>
+              <input className="sc-in" type="number" min="0" value={f.shelf_life_value}
+                onChange={e=>set('shelf_life_value',e.target.value)} placeholder="e.g. 7"/>
+            </div>
+            <div>
+              <label className="sc-fl">Shelf unit</label>
+              <select className="sc-in" value={f.shelf_life_unit} onChange={e=>set('shelf_life_unit',e.target.value)}>
+                <option value="">—</option>
+                {MPR_SHELF_UNITS.map(u=><option key={u} value={u}>{u.charAt(0)+u.slice(1).toLowerCase()}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <label className="sc-fl">Allergens</label>
+          <input className="sc-in" value={f.allergens} onChange={e=>set('allergens',e.target.value)} placeholder="e.g. nuts, soy (optional)"/>
+
+          <label className="sc-check">
+            <input type="checkbox" checked={f.requires_lot_tracking} onChange={e=>set('requires_lot_tracking',e.target.checked)}/>
+            Requires lot / batch tracking
+          </label>
+        </div>
+
+        <div className="sc-drawer-foot">
+          <button className="sc-btn-ghost" onClick={onClose}>Cancel</button>
+          <button className="sc-btn-primary" disabled={!valid||saving} style={{opacity:(!valid||saving)?0.5:1}} onClick={save}>
+            {saving ? 'Saving…' : isNew ? 'Create Product' : 'Save Changes'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SCMasterProductsPage({ session, search }) {
+  const [rows,setRows]       = useState([]);
+  const [cats,setCats]       = useState([]);
+  const [groups,setGroups]   = useState([]);
+  const [loading,setLoading] = useState(true);
+  const [typeF,setTypeF]     = useState('ALL');   // ALL | RI | SF
+  const [catF,setCatF]       = useState('ALL');
+  const [edit,setEdit]       = useState(null);     // product being edited
+  const [creating,setCreating] = useState(false);
+  const [localSearch,setLocalSearch] = useState('');
+
+  const load = async () => {
+    setLoading(true);
+    const [pRes,cRes,gRes] = await Promise.all([
+      // NOTE: no cost/vendor columns selected — MPR governance fields only.
+      SB.from('master_products')
+        .select('id,sku_code,product_name,product_type,category_id,group_id,inventory_uom,storage_type,allergens,shelf_life_value,shelf_life_unit,requires_lot_tracking,status,updated_at')
+        .order('product_name'),
+      SB.from('categories').select('id,category_code,category_name').order('category_name'),
+      SB.from('product_groups').select('id,group_code,group_name,category_id').order('group_name'),
+    ]);
+    setRows(pRes.data||[]);
+    setCats(cRes.data||[]);
+    setGroups(gRes.data||[]);
+    setLoading(false);
+  };
+  useEffect(()=>{ load(); },[]);
+
+  const catName = id => cats.find(c=>c.id===id)?.category_name || '—';
+  const grpName = id => { const g=groups.find(x=>x.id===id); return g?`${g.group_name}`:'—'; };
+
+  const q = (localSearch||search||'').trim().toLowerCase();
+  const filtered = rows.filter(r=>{
+    if(typeF!=='ALL' && r.product_type!==typeF) return false;
+    if(catF!=='ALL' && r.category_id!==catF) return false;
+    if(q){
+      const hay = `${r.product_name} ${r.sku_code} ${grpName(r.group_id)} ${catName(r.category_id)}`.toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  const counts = {
+    all: rows.length,
+    ri:  rows.filter(r=>r.product_type==='RI').length,
+    sf:  rows.filter(r=>r.product_type==='SF').length,
+  };
+
+  return (
+    <div className="sc-fu">
+      <div className="sc-page-head">
+        <div>
+          <div className="sc-page-title">Master Product Registry</div>
+          <div className="sc-page-sub">{counts.all} products · {counts.ri} ingredients · {counts.sf} semi-finished</div>
+        </div>
+        <button className="sc-btn-primary" onClick={()=>setCreating(true)}>
+          <SI n="plus" s={15} c="#fff"/> New Product
+        </button>
+      </div>
+
+      {/* Controls */}
+      <div className="sc-mpr-controls">
+        <div className="sc-mpr-search">
+          <SI n="srch" s={14} c="var(--sc-muted)"/>
+          <input value={localSearch} onChange={e=>setLocalSearch(e.target.value)}
+            placeholder="Search by name, SKU, or group…"/>
+        </div>
+        <div className="sc-seg">
+          {[['ALL',`All (${counts.all})`],['RI',`Ingredients (${counts.ri})`],['SF',`Semi-finished (${counts.sf})`]].map(([v,l])=>(
+            <button key={v} className={`sc-seg-btn ${typeF===v?'on':''}`} onClick={()=>setTypeF(v)}>{l}</button>
+          ))}
+        </div>
+        <select className="sc-in" style={{maxWidth:200}} value={catF} onChange={e=>setCatF(e.target.value)}>
+          <option value="ALL">All categories</option>
+          {cats.map(c=><option key={c.id} value={c.id}>{c.category_name}</option>)}
+        </select>
+      </div>
+
+      <div className="sc-panel" style={{padding:0,overflow:'hidden'}}>
+        {loading ? (
+          <div className="sc-empty" style={{padding:'48px 0'}}><div className="sc-spinner"/></div>
+        ) : filtered.length===0 ? (
+          <div className="sc-empty" style={{padding:'48px 0'}}>
+            <SI n="pkg" s={26} c="var(--sc-muted)"/>
+            <div style={{marginTop:10,fontSize:13,color:'var(--sc-sub)'}}>No products match your filters.</div>
+          </div>
+        ) : (
+          <table className="sc-table">
+            <thead>
+              <tr>
+                {['Product','SKU','Type','Category','Group','Unit','Status',''].map(h=>(
+                  <th key={h}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map(r=>(
+                <tr key={r.id} className="sc-tr-click" onClick={()=>{
+                    setEdit(r);
+                    SB.from('product_groups').select('id,group_code,group_name,category_id').order('group_name')
+                      .then(({data})=>{ if(data) setGroups(data); });
+                  }}>
+                  <td style={{fontWeight:600,color:'var(--sc-ink)'}}>{r.product_name}</td>
+                  <td style={{fontFamily:'monospace',fontSize:12,color:'var(--sc-sub)'}}>{r.sku_code}</td>
+                  <td><span className={`sc-type-pill ${r.product_type==='SF'?'sf':'ri'}`}>{r.product_type}</span></td>
+                  <td style={{color:'var(--sc-sub)'}}>{catName(r.category_id)}</td>
+                  <td style={{color:'var(--sc-sub)'}}>{grpName(r.group_id)}</td>
+                  <td style={{color:'var(--sc-sub)'}}>{r.inventory_uom}</td>
+                  <td>
+                    <span style={{fontSize:11.5,fontWeight:600,color:r.status==='ACTIVE'?'var(--sc-pos)':'var(--sc-muted)'}}>
+                      {r.status==='ACTIVE'?'Active':'Inactive'}
+                    </span>
+                  </td>
+                  <td style={{textAlign:'right'}}><SI n="eye" s={15} c="var(--sc-muted)"/></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+
+      {edit && (
+        <SCMprEditDrawer product={edit} categories={cats} groups={groups} isNew={false}
+          onClose={()=>setEdit(null)} onSaved={()=>{setEdit(null);load();}}/>
+      )}
+      {creating && (
+        <SCMprEditDrawer product={null} categories={cats} groups={groups} isNew={true}
+          onClose={()=>setCreating(false)} onSaved={()=>{setCreating(false);load();}}/>
+      )}
+    </div>
+  );
+}
+
+/* ── SCDirectoryPage — Groups & Categories governance (Requests/Groups/Categories) ── */
+function SCDirectoryPage({session, pendingCount=0, onReload}) {
+  // Auto-open Requests when there's pending work, else Groups
+  const [tab,setTab] = useState(pendingCount>0?'requests':'groups');
+  const [toast,setToast] = useState(null);
+  const showToast = (m,kind)=>{ setToast({m,kind}); setTimeout(()=>setToast(null),2600); };
+
+  const TABS = [
+    {id:'requests', l:'Requests', badge:pendingCount},
+    {id:'groups',   l:'Groups'},
+    {id:'categories', l:'Categories'},
+  ];
+
+  return (
+    <div className="sc-fu">
+      {toast && (
+        <div style={{position:'fixed',bottom:24,left:'50%',transform:'translateX(-50%)',zIndex:3000,
+          background:toast.kind==='error'?'var(--sc-neg)':'var(--sc-ink)',color:'#fff',padding:'10px 18px',
+          borderRadius:10,fontSize:13,fontWeight:600,boxShadow:'0 8px 30px rgba(16,24,40,.22)'}}>{toast.m}</div>
+      )}
+      <div style={{marginBottom:18}}>
+        <div style={{fontSize:20,fontWeight:800,color:WT.textStrong}}>Groups &amp; Categories</div>
+        <div style={{fontSize:13,color:WT.textTertiary,marginTop:2}}>
+          Master-data governance — review group requests, manage operational groups and the category taxonomy.
+        </div>
+      </div>
+      <div className="sc-filter-bar" style={{marginBottom:18}}>
+        {TABS.map(t=>(
+          <button key={t.id} className={`sc-fc ${tab===t.id?'on':''}`} onClick={()=>setTab(t.id)}
+            style={{display:'inline-flex',alignItems:'center',gap:7}}>
+            {t.l}
+            {t.badge>0 && <span style={{background:'var(--sc-warn)',color:'#fff',fontSize:10,fontWeight:700,
+              padding:'1px 7px',borderRadius:99,minWidth:18,textAlign:'center'}}>{t.badge}</span>}
+          </button>
+        ))}
+      </div>
+
+      {tab==='requests'   && <SCGroupRequestsPage session={session} showToast={showToast} onReload={onReload} embedded/>}
+      {tab==='groups'     && <SCGroupsTab showToast={showToast}/>}
+      {tab==='categories' && <SCCategoriesTab showToast={showToast}/>}
+    </div>
+  );
+}
+
+/* ── Groups tab: live group directory + direct create ── */
+function SCGroupsTab({showToast}) {
+  const [groups,setGroups]   = useState([]);
+  const [cats,setCats]       = useState([]);
+  const [loading,setLoading] = useState(true);
+  const [search,setSearch]   = useState('');
+  const [creating,setCreating] = useState(false);
+
+  const ALLERGENS = [
+    {key:'allergen_gluten',label:'Gluten'},{key:'allergen_dairy',label:'Dairy'},
+    {key:'allergen_eggs',label:'Eggs'},{key:'allergen_soy',label:'Soy'},
+    {key:'allergen_peanuts',label:'Peanuts'},{key:'allergen_tree_nuts',label:'Tree Nuts'},
+    {key:'allergen_sesame',label:'Sesame'},{key:'allergen_fish',label:'Fish'},
+    {key:'allergen_crustaceans',label:'Crustaceans'},{key:'allergen_molluscs',label:'Molluscs'},
+    {key:'allergen_celery',label:'Celery'},{key:'allergen_mustard',label:'Mustard'},
+    {key:'allergen_sulphites',label:'Sulphites'},{key:'allergen_lupin',label:'Lupin'},
+  ];
+  const EMPTY = {name:'',category_id:'',uom:'KG',waste_factor:'1.0',safety_notes:'',allergen_reviewed:false,
+    ...Object.fromEntries(ALLERGENS.map(a=>[a.key,false]))};
+  const [form,setForm] = useState(EMPTY);
+  const [saving,setSaving] = useState(false);
+  const set = (k,v)=>setForm(f=>({...f,[k]:v}));
+
+  const load = async()=>{
+    setLoading(true);
+    const [{data:g},{data:c}] = await Promise.all([
+      SB.rpc('sc_list_groups'), SB.rpc('sc_list_categories'),
+    ]);
+    if(Array.isArray(g)) setGroups(g);
+    if(Array.isArray(c)) setCats(c);
+    setLoading(false);
+  };
+  useEffect(()=>{load();},[]);
+
+  const submit = async()=>{
+    if(!form.name.trim()){ showToast('Group name required','error'); return; }
+    if(!form.category_id){ showToast('Pick a category','error'); return; }
+    setSaving(true);
+    try {
+      const params = {p_name:form.name.trim(),p_category_id:form.category_id,p_uom:form.uom,
+        p_waste_factor:Number(form.waste_factor)||1.0,p_safety_notes:form.safety_notes||null,
+        p_allergen_reviewed:!!form.allergen_reviewed};
+      ALLERGENS.forEach(a=>{params['p_'+a.key]=!!form[a.key];});
+      const {data,error} = await SB.rpc('sc_create_group',params);
+      setSaving(false);
+      if(error){ showToast(error.message||'Create failed','error'); return; }
+      if(!data || data.ok===false){ showToast(data?.message||'Create failed','error'); return; }
+      showToast(`Group created — ${data.group_code}`);
+      setForm(EMPTY); setCreating(false); load();
+    } catch(e){
+      setSaving(false);
+      showToast(e?.message||'Unexpected error','error');
+    }
+  };
+
+  const filtered = groups.filter(g=>!search||
+    `${g.group_name} ${g.group_code} ${g.category_name||''}`.toLowerCase().includes(search.toLowerCase()));
+
+  return (
+    <div>
+      <div style={{display:'flex',gap:12,marginBottom:14,alignItems:'center'}}>
+        <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search groups…"
+          style={{flex:1,background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:8,
+            padding:'8px 12px',fontSize:13,color:'var(--sc-ink)',outline:'none'}}/>
+        <button className="sc-btn sc-btn-p" onClick={()=>setCreating(v=>!v)}>{creating?'Close':'+ Create Group'}</button>
+      </div>
+
+      {creating && (
+        <div style={{background:'var(--sc-card)',border:'1px solid var(--sc-border)',borderRadius:12,padding:'18px 20px',marginBottom:16}}>
+          <div style={{fontSize:13,fontWeight:800,color:'var(--sc-ink)',marginBottom:12}}>New Group</div>
+          <div style={{display:'grid',gridTemplateColumns:'2fr 2fr 1fr 1fr',gap:12,marginBottom:12}}>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Group Name *</div>
+              <input value={form.name} onChange={e=>set('name',e.target.value)}
+                style={{width:'100%',background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box'}}/>
+            </div>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Category *</div>
+              <select value={form.category_id} onChange={e=>set('category_id',e.target.value)}
+                style={{width:'100%',background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box'}}>
+                <option value="">— select —</option>
+                {cats.map(c=><option key={c.id} value={c.id}>{c.category_name}{c.group_count===0?' (empty)':''}</option>)}
+              </select>
+            </div>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Inventory UOM</div>
+              <div style={{background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-muted)',boxSizing:'border-box'}}>KG</div>
+            </div>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Waste Factor</div>
+              <input type="number" value={form.waste_factor} onChange={e=>set('waste_factor',e.target.value)}
+                style={{width:'100%',background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box'}}/>
+            </div>
+          </div>
+          <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:6}}>Allergens</div>
+          <div style={{display:'flex',flexWrap:'wrap',gap:'6px 14px',marginBottom:12}}>
+            {ALLERGENS.map(a=>(
+              <label key={a.key} style={{display:'flex',alignItems:'center',gap:5,fontSize:12,color:'var(--sc-sub)',cursor:'pointer'}}>
+                <input type="checkbox" checked={form[a.key]} onChange={e=>set(a.key,e.target.checked)} style={{accentColor:WT.blue600}}/>
+                {a.label}
+              </label>
+            ))}
+          </div>
+          <div style={{display:'flex',gap:12,alignItems:'center'}}>
+            <label style={{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'var(--sc-sub)',cursor:'pointer'}}>
+              <input type="checkbox" checked={form.allergen_reviewed} onChange={e=>set('allergen_reviewed',e.target.checked)} style={{accentColor:WT.blue600}}/>
+              Allergen review complete
+            </label>
+            <input value={form.safety_notes} onChange={e=>set('safety_notes',e.target.value)} placeholder="Safety notes (optional)"
+              style={{flex:1,background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none'}}/>
+            <button className="sc-btn sc-btn-p" disabled={saving} onClick={submit}>{saving?'Creating…':'Create Group'}</button>
+          </div>
+        </div>
+      )}
+
+      <div className="sc-panel">
+        {loading ? <SCEmpty msg="Loading…" color="var(--sc-muted)"/>
+          : filtered.length===0 ? <SCEmpty icon="pkg" msg="No groups" color="var(--sc-muted)"/>
+          : <table className="sc-tbl">
+              <thead><tr><th>Group</th><th>Code</th><th>Category</th><th>UOM</th><th>Allergens</th><th>SKUs</th></tr></thead>
+              <tbody>{filtered.map(g=>(
+                <tr key={g.id}>
+                  <td style={{fontWeight:600,color:'var(--sc-ink)'}}>{g.group_name}</td>
+                  <td style={{fontFamily:'monospace',fontSize:11.5,color:'var(--sc-muted)'}}>{g.group_code}</td>
+                  <td style={{fontSize:12.5}}>{g.category_name||'—'}</td>
+                  <td style={{fontSize:12.5}}>{g.inventory_uom||'—'}</td>
+                  <td><span className={`sp ${g.allergen_reviewed?'sp-g':'sp-o'}`}>{g.allergen_reviewed?'Reviewed':'Pending'}</span></td>
+                  <td style={{fontSize:12.5}}>{g.sku_count}</td>
+                </tr>
+              ))}</tbody>
+            </table>}
+      </div>
+    </div>
+  );
+}
+
+/* ── Categories tab: live taxonomy + controlled create ── */
+function SCCategoriesTab({showToast}) {
+  const [cats,setCats]       = useState([]);
+  const [loading,setLoading] = useState(true);
+  const [creating,setCreating] = useState(false);
+  const [name,setName]       = useState('');
+  const [code,setCode]       = useState('');
+  const [saving,setSaving]   = useState(false);
+
+  const load = async()=>{
+    setLoading(true);
+    const {data} = await SB.rpc('sc_list_categories');
+    if(Array.isArray(data)) setCats(data);
+    setLoading(false);
+  };
+  useEffect(()=>{load();},[]);
+
+  const submit = async()=>{
+    if(!name.trim()){ showToast('Category name required','error'); return; }
+    setSaving(true);
+    const {data,error} = await SB.rpc('sc_create_category',{p_name:name.trim(),p_code:code.trim()||null});
+    setSaving(false);
+    if(error){ showToast(error.message,'error'); return; }
+    if(data?.duplicate){ showToast(data.message||'Already exists','error'); return; }
+    showToast(`Category created — ${data.category_name} (${data.category_code})`);
+    setName(''); setCode(''); setCreating(false); load();
+  };
+
+  return (
+    <div>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:14}}>
+        <div style={{fontSize:12.5,color:'var(--sc-sub)'}}>Top-level procurement taxonomy. New categories should be rare.</div>
+        <button className="sc-btn sc-btn-p" onClick={()=>setCreating(v=>!v)}>{creating?'Close':'+ Create Category'}</button>
+      </div>
+
+      {creating && (
+        <div style={{background:'var(--sc-card)',border:'1px solid var(--sc-border)',borderRadius:12,padding:'18px 20px',marginBottom:16}}>
+          <div style={{fontSize:13,fontWeight:800,color:'var(--sc-ink)',marginBottom:4}}>New Category</div>
+          <div style={{fontSize:11,color:'var(--sc-muted)',marginBottom:12}}>Confirm no existing category fits before creating one.</div>
+          <div style={{display:'grid',gridTemplateColumns:'2fr 1fr auto',gap:12,alignItems:'end'}}>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Category Name *</div>
+              <input value={name} onChange={e=>setName(e.target.value)} placeholder="e.g. Beverages"
+                style={{width:'100%',background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box'}}/>
+            </div>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:'var(--sc-sub)',marginBottom:4}}>Code (optional)</div>
+              <input value={code} onChange={e=>setCode(e.target.value.toUpperCase())} placeholder="auto"
+                style={{width:'100%',background:'var(--sc-bg)',border:'1px solid var(--sc-border)',borderRadius:7,padding:'7px 10px',fontSize:13,color:'var(--sc-ink)',outline:'none',boxSizing:'border-box',fontFamily:'monospace'}}/>
+            </div>
+            <button className="sc-btn sc-btn-p" disabled={saving} onClick={submit}>{saving?'Creating…':'Create'}</button>
+          </div>
+        </div>
+      )}
+
+      <div className="sc-panel">
+        {loading ? <SCEmpty msg="Loading…" color="var(--sc-muted)"/>
+          : <table className="sc-tbl">
+              <thead><tr><th>Category</th><th>Code</th><th>Groups</th></tr></thead>
+              <tbody>{cats.map(c=>(
+                <tr key={c.id} style={{opacity:c.group_count===0?0.6:1}}>
+                  <td style={{fontWeight:600,color:'var(--sc-ink)'}}>{c.category_name}</td>
+                  <td style={{fontFamily:'monospace',fontSize:11.5,color:'var(--sc-muted)'}}>{c.category_code}</td>
+                  <td style={{fontSize:12.5}}>{c.group_count}</td>
+                </tr>
+              ))}</tbody>
+            </table>}
+      </div>
+    </div>
+  );
+}
+
+/* ── SCGroupRequestsPage ─────────────────────────────────────────────────── */
+function SCGroupRequestsPage({session, showToast, onReload, embedded}) {
+  const [requests, setRequests] = useState([]);
+  const [loading,  setLoading]  = useState(true);
+  const [activeId, setActiveId] = useState(null);
+  const [approveForm, setApproveForm] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [saving, setSaving] = useState(false);
+  const [rejectReason, setRejectReason] = useState('');
+  const [mergeGroupId, setMergeGroupId] = useState('');
+  const [action, setAction] = useState(null); // 'approve'|'reject'|'merge'
+
+  const ALLERGEN_KEYS = [
+    {key:'allergen_gluten',label:'Gluten'},{key:'allergen_eggs',label:'Eggs'},
+    {key:'allergen_dairy',label:'Dairy'},{key:'allergen_sesame',label:'Sesame'},
+    {key:'allergen_peanuts',label:'Peanuts'},{key:'allergen_tree_nuts',label:'Tree Nuts'},
+    {key:'allergen_soy',label:'Soy'},{key:'allergen_fish',label:'Fish'},
+    {key:'allergen_celery',label:'Celery'},{key:'allergen_mustard',label:'Mustard'},
+    {key:'allergen_sulphites',label:'Sulphites'},{key:'allergen_crustaceans',label:'Crustaceans'},
+    {key:'allergen_lupin',label:'Lupin'},{key:'allergen_molluscs',label:'Molluscs'},
+  ];
+
+  const load = async () => {
+    setLoading(true);
+    const {data,error} = await SB.rpc('sc_get_group_requests');
+    if(!error) setRequests(data||[]);
+    const {data:cats} = await SB.from('categories').select('id,category_code,category_name').order('category_name');
+    if(cats) setCategories(cats);
+    setLoading(false);
+  };
+  useEffect(()=>{load();},[]);
+
+  const initApprove = (req) => {
+    setActiveId(req.id);
+    setAction('approve');
+    setApproveForm({
+      group_name: req.proposed_name,
+      category_id: '',
+      uom: 'KG',
+      waste_factor: '1.0',
+      safety_notes: '',
+      ...Object.fromEntries(ALLERGEN_KEYS.map(a=>[a.key,false])),
+    });
+  };
+
+  const submitApprove = async () => {
+    if(!approveForm.category_id){ alert('Category required'); return; }
+    setSaving(true);
+    const params = {
+      p_request_id: activeId,
+      p_group_name: approveForm.group_name,
+      p_category_id: approveForm.category_id,
+      p_uom: approveForm.uom||'KG',
+      p_waste_factor: Number(approveForm.waste_factor)||1.0,
+      p_safety_notes: approveForm.safety_notes||null,
+    };
+    ALLERGEN_KEYS.forEach(a=>{ params['p_'+a.key] = !!approveForm[a.key]; });
+    const {data,error} = await SB.rpc('sc_approve_group_request', params);
+    setSaving(false);
+    if(error){ alert(error.message); return; }
+    await load(); setAction(null); setActiveId(null); setApproveForm(null);
+  };
+
+  const submitReject = async () => {
+    if(!rejectReason.trim()){ alert('Reason required'); return; }
+    setSaving(true);
+    const {error} = await SB.rpc('sc_reject_group_request',{p_request_id:activeId,p_reason:rejectReason});
+    setSaving(false);
+    if(error){ alert(error.message); return; }
+    setRejectReason(''); setAction(null); setActiveId(null); await load();
+  };
+
+  const submitMerge = async () => {
+    if(!mergeGroupId){ alert('Select a group to merge into'); return; }
+    setSaving(true);
+    const {error} = await SB.rpc('sc_merge_group_request',{p_request_id:activeId,p_existing_group_id:mergeGroupId});
+    setSaving(false);
+    if(error){ alert(error.message); return; }
+    setMergeGroupId(''); setAction(null); setActiveId(null); await load();
+  };
+
+  const STATUS_COLORS = {
+    PENDING:'#D97706',APPROVED:'#059669',REJECTED:'#DC2626',MERGED:'#6366F1',CANCELLED:'#6B7280'
+  };
+
+  const pending   = requests.filter(r=>r.status==='PENDING');
+  const resolved  = requests.filter(r=>r.status!=='PENDING');
+
+  return (
+    <div style={embedded?{fontFamily:WT.font,maxWidth:860}:{padding:'28px 32px',fontFamily:WT.font,maxWidth:860}}>
+      <div style={{display:'flex',alignItems:'center',justifyContent:embedded?'flex-end':'space-between',marginBottom:embedded?12:20}}>
+        {!embedded && (
+          <div>
+            <div style={{fontSize:20,fontWeight:800,color:WT.textStrong}}>Group Requests</div>
+            <div style={{fontSize:13,color:WT.textTertiary,marginTop:2}}>
+              Review and approve new ingredient group requests from Recipe Studio
+            </div>
+          </div>
+        )}
+        <WtBtn variant="secondary" size="sm" onClick={load}>Refresh</WtBtn>
+      </div>
+
+      {loading && <WtEmpty icon="pkg" title="Loading…"/>}
+
+      {!loading && pending.length===0 && resolved.length===0 && (
+        <WtEmpty icon="pkg" title="No requests" subtitle="New group requests from TD appear here."/>
+      )}
+
+      {!loading && pending.length>0 && (
+        <div style={{marginBottom:28}}>
+          <div style={{fontSize:11,fontWeight:700,color:'#D97706',textTransform:'uppercase',
+            letterSpacing:'0.08em',marginBottom:10,display:'flex',alignItems:'center',gap:8}}>
+            Pending Review
+            <span style={{background:'#FEF3C7',color:'#D97706',border:'1px solid #FDE68A',
+              fontSize:10,padding:'1px 8px',borderRadius:99}}>{pending.length}</span>
+          </div>
+          {pending.map(req=>(
+            <WtCard key={req.id} style={{marginBottom:12}}>
+              <div style={{display:'flex',alignItems:'flex-start',gap:16}}>
+                <div style={{flex:1}}>
+                  <div style={{fontSize:14,fontWeight:700,color:WT.textStrong,marginBottom:2}}>
+                    {req.proposed_name}
+                  </div>
+                  <div style={{fontSize:12,color:WT.textTertiary,marginBottom:6}}>
+                    Requested by {req.requested_by} · {new Date(req.created_at).toLocaleDateString()}
+                  </div>
+                  {req.notes && <div style={{fontSize:12,color:WT.textSecondary,marginBottom:8,
+                    padding:'6px 10px',background:WT.bgSoft,borderRadius:WT.rSm}}>
+                    {req.notes}
+                  </div>}
+                  {(req.similar_matches||[]).length>0 && (
+                    <div style={{marginBottom:8}}>
+                      <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,marginBottom:4}}>
+                        Similar existing groups (for reference):
+                      </div>
+                      {(req.similar_matches||[]).slice(0,3).map((m,i)=>(
+                        <span key={i} style={{display:'inline-block',fontSize:11,padding:'2px 8px',
+                          background:WT.blue050,color:WT.blue600,borderRadius:99,
+                          border:`1px solid ${WT.blue200}`,marginRight:6,marginBottom:4}}>
+                          {m.group_name} ({m.group_code})
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div style={{display:'flex',gap:6,flexShrink:0,flexWrap:'wrap',justifyContent:'flex-end'}}>
+                  <WtBtn variant="primary" size="sm" onClick={()=>initApprove(req)}>Approve</WtBtn>
+                  <WtBtn variant="secondary" size="sm" onClick={()=>{setActiveId(req.id);setAction('merge');}}>Merge</WtBtn>
+                  <WtBtn variant="ghost" size="sm"
+                    style={{color:WT.error600}} onClick={()=>{setActiveId(req.id);setAction('reject');}}>Reject</WtBtn>
+                </div>
+              </div>
+
+              {/* Approve form */}
+              {activeId===req.id && action==='approve' && approveForm && (
+                <div style={{marginTop:16,padding:'14px 16px',background:WT.bgSoft,
+                  borderRadius:WT.rMd,border:`1px solid ${WT.divider}`}}>
+                  <div style={{fontSize:12,fontWeight:700,color:WT.textStrong,marginBottom:12}}>
+                    Approve — fill required master data fields
+                  </div>
+                  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginBottom:12}}>
+                    <WtInput label="Group name *" value={approveForm.group_name}
+                      onChange={e=>setApproveForm(f=>({...f,group_name:e.target.value}))}/>
+                    <div>
+                      <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,display:'block',marginBottom:4}}>Category *</label>
+                      <select value={approveForm.category_id}
+                        onChange={e=>setApproveForm(f=>({...f,category_id:e.target.value}))}
+                        style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                          border:`1px solid ${WT.border}`,fontSize:12.5,fontFamily:WT.font,
+                          background:WT.bgPanel,color:WT.textPrimary}}>
+                        <option value="">— Select category —</option>
+                        {categories.map(c=><option key={c.id} value={c.id}>{c.category_name} ({c.category_code})</option>)}
+                      </select>
+                    </div>
+                    <WtInput label="UOM" value={approveForm.uom}
+                      onChange={e=>setApproveForm(f=>({...f,uom:e.target.value}))}/>
+                    <WtInput label="Default waste factor" type="number" value={approveForm.waste_factor}
+                      onChange={e=>setApproveForm(f=>({...f,waste_factor:e.target.value}))}/>
+                  </div>
+                  <WtInput label="Safety notes (optional)" value={approveForm.safety_notes}
+                    onChange={e=>setApproveForm(f=>({...f,safety_notes:e.target.value}))}
+                    placeholder="e.g. Minimum cooking temp 75°C"/>
+                  <div style={{marginTop:12,marginBottom:8}}>
+                    <div style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,marginBottom:8}}>
+                      Allergen flags
+                    </div>
+                    <div style={{display:'flex',flexWrap:'wrap',gap:8}}>
+                      {ALLERGEN_KEYS.map(a=>(
+                        <label key={a.key} style={{display:'flex',alignItems:'center',gap:5,
+                          cursor:'pointer',fontSize:12,color:WT.textSecondary}}>
+                          <input type="checkbox" checked={!!approveForm[a.key]}
+                            onChange={e=>setApproveForm(f=>({...f,[a.key]:e.target.checked}))}
+                            style={{accentColor:WT.blue600}}/>
+                          {a.label}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{display:'flex',gap:8,marginTop:12,justifyContent:'flex-end'}}>
+                    <WtBtn variant="ghost" size="sm" onClick={()=>{setAction(null);setActiveId(null);}}>Cancel</WtBtn>
+                    <WtBtn variant="primary" size="sm" onClick={submitApprove} disabled={saving}>
+                      {saving?'Creating…':'Create Group & Approve →'}
+                    </WtBtn>
+                  </div>
+                </div>
+              )}
+
+              {/* Reject form */}
+              {activeId===req.id && action==='reject' && (
+                <div style={{marginTop:12,padding:'12px 14px',background:'#FFF5F5',
+                  borderRadius:WT.rMd,border:'1px solid #FECACA'}}>
+                  <WtInput label="Rejection reason *" value={rejectReason}
+                    onChange={e=>setRejectReason(e.target.value)}
+                    placeholder="e.g. Already exists as G-042 Avokado"/>
+                  <div style={{display:'flex',gap:8,marginTop:8,justifyContent:'flex-end'}}>
+                    <WtBtn variant="ghost" size="sm" onClick={()=>{setAction(null);setActiveId(null);}}>Cancel</WtBtn>
+                    <WtBtn variant="ghost" size="sm" style={{color:WT.error600}}
+                      onClick={submitReject} disabled={saving}>
+                      {saving?'Rejecting…':'Reject Request'}
+                    </WtBtn>
+                  </div>
+                </div>
+              )}
+
+              {/* Merge form */}
+              {activeId===req.id && action==='merge' && (
+                <div style={{marginTop:12,padding:'12px 14px',background:WT.bgSoft,
+                  borderRadius:WT.rMd,border:`1px solid ${WT.divider}`}}>
+                  <div style={{fontSize:12,marginBottom:8,color:WT.textSecondary}}>
+                    Select the existing group this request maps to:
+                  </div>
+                  <GroupSearchPicker onSelect={id=>setMergeGroupId(id)}/>
+                  <div style={{display:'flex',gap:8,marginTop:10,justifyContent:'flex-end'}}>
+                    <WtBtn variant="ghost" size="sm" onClick={()=>{setAction(null);setActiveId(null);}}>Cancel</WtBtn>
+                    <WtBtn variant="secondary" size="sm" onClick={submitMerge} disabled={saving||!mergeGroupId}>
+                      {saving?'Merging…':'Merge into existing group'}
+                    </WtBtn>
+                  </div>
+                </div>
+              )}
+            </WtCard>
+          ))}
+        </div>
+      )}
+
+      {!loading && resolved.length>0 && (
+        <div>
+          <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,textTransform:'uppercase',
+            letterSpacing:'0.08em',marginBottom:10}}>Resolved</div>
+          {resolved.map(req=>(
+            <div key={req.id} style={{display:'flex',alignItems:'center',gap:12,
+              padding:'10px 14px',marginBottom:6,background:WT.bgSoft,
+              borderRadius:WT.rMd,border:`1px solid ${WT.divider}`}}>
+              <span style={{fontSize:10,fontWeight:700,padding:'2px 8px',borderRadius:99,
+                background:STATUS_COLORS[req.status]+'22',color:STATUS_COLORS[req.status],
+                border:`1px solid ${STATUS_COLORS[req.status]}44`}}>{req.status}</span>
+              <div style={{flex:1}}>
+                <div style={{fontSize:13,fontWeight:600,color:WT.textStrong}}>{req.proposed_name}</div>
+                {req.resolved_to && <div style={{fontSize:11.5,color:WT.textTertiary}}>
+                  → {req.resolved_to} ({req.resolved_code})
+                </div>}
+              </div>
+              <div style={{fontSize:11,color:WT.textTertiary}}>
+                {new Date(req.created_at).toLocaleDateString()}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── GroupSearchPicker — for merge flow ── */
+function GroupSearchPicker({onSelect}) {
+  const [q,setQ]         = useState('');
+  const [results,setRes] = useState([]);
+  const search = async () => {
+    if(!q.trim()) return;
+    const {data} = await SB.rpc('search_product_groups_for_request',{p_query:q});
+    setRes(data?.matches||[]);
+  };
+  return (
+    <div>
+      <div style={{display:'flex',gap:8,marginBottom:8}}>
+        <input value={q} onChange={e=>setQ(e.target.value)}
+          placeholder="Search existing groups…"
+          style={{flex:1,padding:'7px 10px',borderRadius:WT.rSm,border:`1px solid ${WT.border}`,
+            fontSize:12.5,fontFamily:WT.font,outline:'none'}}/>
+        <WtBtn variant="secondary" size="sm" onClick={search}>Search</WtBtn>
+      </div>
+      {results.map((r,i)=>(
+        <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'7px 10px',
+          marginBottom:4,background:WT.bgPanel,borderRadius:WT.rSm,border:`1px solid ${WT.divider}`}}>
+          <div style={{flex:1}}>
+            <span style={{fontSize:12.5,fontWeight:600,color:WT.textStrong}}>{r.group_name}</span>
+            <span style={{fontSize:11,color:WT.textTertiary,marginLeft:8}}>{r.group_code}</span>
+          </div>
+          <WtBtn variant="ghost" size="sm" onClick={()=>onSelect(r.group_id)}>Select</WtBtn>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function SupplyChainCommandCentre({session, onSignOut}) {
   const [page,setPage]         = useState('sc-home');
   const [exp,setExp]           = useState(true);
@@ -12221,6 +13559,16 @@ function SupplyChainCommandCentre({session, onSignOut}) {
       const fiId = t.payload?.fiscal_invoice_id || t.entity_id;
       return fiVendorMap[fiId] ? {...t, vendor_name: fiVendorMap[fiId]} : t;
     });
+
+    // Some alloc-task invoices are older than the date window — backfill their vendor names
+    const allocMain = (tRes.data||[]).filter(t=>t.task_type_code==='SC_ALLOCATE_DELIVERY');
+    const missingMainIds = allocMain
+      .map(t=>t.payload?.fiscal_invoice_id||t.entity_id)
+      .filter(id=>id&&!fiVendorMap[id]);
+    if(missingMainIds.length>0){
+      const {data:extraMain} = await SB.from('fiscal_invoices').select('id,vendor_name_raw').in('id',[...new Set(missingMainIds)]);
+      (extraMain||[]).forEach(fi=>{ fiVendorMap[fi.id]=fi.vendor_name_raw; });
+    }
 
     if(tRes.data)    setTasks(enrichTasks(tRes.data));
     if(qRes.data)    setQuar(qRes.data.map(qt=>({...qt, vendor_name_raw: qt.fiscal_invoices?.vendor_name_raw || qt.vendor_name_raw || null})));
@@ -12311,6 +13659,7 @@ function SupplyChainCommandCentre({session, onSignOut}) {
       <SCSidebar page={page} setPage={handleSetPage} exp={exp} setExp={setExp}
         session={session} openAlloc={allocBadge} openQuar={openQuar} overdueSLA={overdueSLA} onSignOut={onSignOut}
         taskBadge={taskBadge}
+        grpReqBadge={tasks.filter(t=>t.task_type_code==='PRODUCT_GROUP_REVIEW_REQUIRED'&&t.status==='OPEN').length}
         activeReport={activeReport} setActiveReport={setAR}/>
       <div style={{marginLeft:sbW,flex:1,display:'flex',flexDirection:'column',transition:'margin-left .2s cubic-bezier(.4,0,.2,1)'}}>
         <SCHeader page={page} session={session} datePreset={datePreset} onDateChange={setDP} search={search} setSearch={setSearch}
@@ -12327,10 +13676,12 @@ function SupplyChainCommandCentre({session, onSignOut}) {
                 </div>
               : <>
                   {page==='sc-home'    && <SCHome d={homeData} setPage={setPage}/>}
-                  {page==='sc-tasks'   && <SCTasksPage tasks={tasks} search={search} exp={exp} onReload={load}/>}
-                  {page==='sc-quar'    && <SCQuarPage quarantines={quarantines} search={search} onReload={load}/>}
+                  {page==='sc-tasks'   && <SCTasksPage tasks={tasks} search={search} exp={exp} onReload={load} setPage={setPage}/>}
+                  {page==='sc-quar'    && <SCQuarPage quarantines={quarantines} search={search} onReload={load} roleCode={session.role_code||''}/>}
                   {page==='sc-alloc'   && <SCAllocPage tasks={tasks} search={search} onReload={load}/>}
                   {page==='sc-recv'    && <SCRecvPage tickets={tickets} recvTasks={recvTasks} reviewTasks={reviewTasks} onReload={load} search={search} onOpenReview={setSelReview}/>}
+                  {page==='sc-mpr'     && <SCMasterProductsPage session={session} search={search}/>}
+                  {page==='sc-dir'     && <SCDirectoryPage session={session} pendingCount={tasks.filter(t=>t.task_type_code==='PRODUCT_GROUP_REVIEW_REQUIRED'&&t.status==='OPEN').length} onReload={load}/>}
                   {page==='sc-reports' && <SCReportsPage activeReport={activeReport} setActiveReport={setAR} data={{quarantines,waste,procTasks,invoices,tickets,session}}/>}
                   {page==='sc-notif'   && <div className="sc-fu" style={{maxWidth:640}}><div className="sc-panel sc-empty"><SI n="bell" s={28} c="var(--sc-muted)"/><div style={{marginTop:12,fontSize:13}}>No SC notifications</div></div></div>}
                 </>}
@@ -14892,49 +16243,2914 @@ function MarketingCommandCentre({session, onSignOut}) {
 // ═══════════════════════════════════════════════════════════════════════════
 
 
+/* ── RECIPE STUDIO (TD) ───────────────────────────────────────────────────── */
+/* Real BOM editor on the live menu_bom / sf_bom tables (replaces the empty
+   formula_* Formula Studio). Cost-free: stores only group/SF ref + KG qty +
+   waste %. All writes go through SECURITY DEFINER td_* RPCs which log an
+   immutable before/after row to audit_trail. */
+
+/* Searchable typeahead picker. options: [{id, label, sub}]. Keyboard: ↑/↓ move,
+   Enter/Tab select highlighted, Esc close. Filters as you type. */
+/* ── EmpSearchFilter extracted from IIFE ── */
+function EmpSearchFilter({employees, localEmps, locFilter, empSearch, setEmpSearch, empFilter, setEmpFilter, empSugOpen, setEmpSugOpen, empSearchRef}) {
+  const _allEmps=[...(employees||[]),...localEmps];
+  // Cascade: if locFilter active, only employees at that location
+  const poolEmps=locFilter
+    ? _allEmps.filter(e=>e.location_id===locFilter||e.home_location_id===locFilter)
+    : _allEmps;
+  const dedupEmps=Object.values(Object.fromEntries(poolEmps.map(e=>[e.employee_id||e.id,e])));
+  const suggestions=empSearch.trim().length>0
+    ? dedupEmps.filter(e=>(e.full_name||'').toLowerCase().includes(empSearch.toLowerCase())).slice(0,8)
+    : [];
+  const selectedEmp=empFilter?dedupEmps.find(e=>(e.employee_id||e.id)===empFilter):null;
+  const handleEmpKeyDown=(ev)=>{
+    if(ev.key==='Tab'&&suggestions.length>0){
+      ev.preventDefault();
+      const match=suggestions[0];
+      const eid=match.employee_id||match.id;
+      setEmpFilter(eid);
+      setEmpSearch(match.full_name||'');
+      setEmpSugOpen(false);
+    }
+    if(ev.key==='Escape'){setEmpSugOpen(false);}
+  };
+  return (
+  <div style={{position:'relative',flexShrink:0}}>
+    <div style={{display:'flex',alignItems:'center',gap:6,padding:'5px 10px',borderRadius:9,border:`1px solid ${empFilter?'var(--acc)':'var(--border)'}`,background:empFilter?'var(--acc-bg)':'var(--bg2)',minWidth:160,maxWidth:200,transition:'border-color .13s'}}>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0,color:'var(--muted)'}}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input
+        ref={empSearchRef}
+        value={empSearch}
+        onChange={e=>{setEmpSearch(e.target.value);setEmpSugOpen(true);if(!e.target.value){setEmpFilter('');}}}
+        onFocus={()=>setEmpSugOpen(true)}
+        onBlur={()=>setTimeout(()=>setEmpSugOpen(false),150)}
+        onKeyDown={handleEmpKeyDown}
+        placeholder={selectedEmp?selectedEmp.full_name:'Partner…'}
+        style={{background:'transparent',border:'none',outline:'none',fontSize:12.5,fontWeight:empFilter?600:400,color:empFilter?'var(--acc)':'var(--ink)',width:'100%',minWidth:0}}
+      />
+      {empFilter&&(
+        <button onClick={()=>{setEmpFilter('');setEmpSearch('');}} style={{background:'none',border:'none',cursor:'pointer',padding:0,display:'flex',color:'var(--muted)',flexShrink:0}}>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      )}
+    </div>
+    {empSugOpen&&suggestions.length>0&&(
+      <div style={{position:'absolute',top:'calc(100% + 4px)',left:0,minWidth:220,background:'var(--card)',border:'1px solid var(--border)',borderRadius:10,boxShadow:'0 8px 24px rgba(0,0,0,.10)',zIndex:400,overflow:'hidden'}}>
+        {suggestions.map((e,i)=>{
+          const eid=e.employee_id||e.id;
+          return (
+            <div key={eid}
+    onMouseDown={()=>{setEmpFilter(eid);setEmpSearch(e.full_name||'');setEmpSugOpen(false);}}
+    style={{padding:'8px 14px',cursor:'pointer',fontSize:13,color:'var(--ink)',background:i===0?'var(--acc-bg)':'transparent',display:'flex',alignItems:'center',gap:9,transition:'background .1s'}}
+    onMouseEnter={ev=>ev.currentTarget.style.background='var(--bg2)'}
+    onMouseLeave={ev=>ev.currentTarget.style.background=i===0?'var(--acc-bg)':'transparent'}>
+    <div style={{width:22,height:22,borderRadius:'50%',background:'var(--acc-bg)',color:'var(--acc)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:9,fontWeight:700,flexShrink:0}}>{(e.full_name||'?').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase()}</div>
+    <span style={{flex:1,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{e.full_name}</span>
+    {i===0&&<span style={{fontSize:10,color:'var(--muted)',fontWeight:500,flexShrink:0}}>Tab ↹</span>}
+            </div>
+          );
+        })}
+      </div>
+    )}
+  </div>
+  );
+}
+
+/* ── Recipe Studio helpers (module-level — avoids IIFE-in-JSX blank page) ── */
+function WasteBadge({ line, groups }) {
+  const grp = groups.find(g => g.group_id === line.raw_material_group_id);
+  const isAuto = grp && Number(line.waste_factor) === Number(grp.default_waste_factor);
+  if (isAuto) return (
+    <span style={{fontSize:9.5, fontWeight:700, color:WT.success600,
+      background:WT.success050, borderRadius:99, padding:'1px 6px'}}>MPR</span>
+  );
+  if (line.raw_material_group_id) return (
+    <span style={{fontSize:9.5, fontWeight:700, color:WT.warning600,
+      background:WT.warning050, borderRadius:99, padding:'1px 6px'}}>custom</span>
+  );
+  return null;
+}
+
+function LineCostCell({ line, groups, allSFs }) {
+  const grp = groups.find(g => g.group_id === line.raw_material_group_id);
+  const sfProd = allSFs.find(s => s.sf_id === line.semi_finished_id);
+  const price = grp?.last_purchase_price || sfProd?.last_purchase_price || null;
+  const cost = price ? (Number(line.quantity)||0) * (Number(line.waste_factor)||1) * price : null;
+  return (
+    <div style={{fontSize:11.5, color: cost ? WT.textTertiary : WT.divider,
+      fontVariantNumeric:'tabular-nums', textAlign:'right', paddingTop:10}}>
+      {cost ? `${cost.toFixed(0)} L` : '—'}
+    </div>
+  );
+}
+
+function CogsSummary({ lines, groups, allSFs, brief }) {
+  if(!lines || lines.length === 0) return null;
+  const hasPending = lines.some(l=>l.component_type==='PENDING');
+  if(hasPending) return (
+    <div style={{marginTop:10,padding:'10px 14px',borderRadius:WT.rMd,
+      background:'#FFFBEB',border:'1px solid #FDE68A',borderLeft:'3px solid #F59E0B'}}>
+      <div style={{fontSize:12,fontWeight:700,color:'#B45309',marginBottom:2}}>
+        Estimated COGS incomplete
+      </div>
+      <div style={{fontSize:11.5,color:'#78350F'}}>
+        Unresolved group request present — cost cannot be calculated until SC approves all ingredient groups.
+      </div>
+    </div>
+  );
+  const totalCost = lines.reduce((sum, l) => {
+    const grp = groups.find(g => g.group_id === l.raw_material_group_id);
+    const sfProd = allSFs.find(s => s.sf_id === l.semi_finished_id);
+    const price = grp?.last_purchase_price || sfProd?.last_purchase_price || null;
+    if(!price) return sum;
+    return sum + (Number(l.quantity)||0) * (Number(l.waste_factor)||1) * price;
+  }, 0);
+  const targetPrice = brief?.target_selling_price ? Number(brief.target_selling_price) : null;
+  const floor = brief?.target_margin_floor_pct ? Number(brief.target_margin_floor_pct) : null;
+  const margin = targetPrice && totalCost > 0
+    ? Math.round(((targetPrice - totalCost) / targetPrice) * 1000) / 10
+    : null;
+  const marginOk = margin !== null && floor !== null && margin >= floor;
+  return (
+    <div style={{marginTop:10, padding:'10px 14px',
+      background: margin !== null ? (marginOk ? WT.success050 : WT.error050) : WT.bgMuted,
+      borderRadius:WT.rMd,
+      border:`1px solid ${margin !== null ? (marginOk ? '#BBF7D0' : '#FECACA') : WT.divider}`}}>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:12}}>
+        <span style={{fontSize:11.5, color:WT.textTertiary}}>
+          Estimated using latest purchase price
+        </span>
+        <div style={{display:'flex', alignItems:'center', gap:20}}>
+          <div style={{display:'flex', alignItems:'center', gap:6}}>
+            <span style={{fontSize:12, color:WT.textSecondary, fontWeight:600}}>Est. COGS</span>
+            <span style={{fontSize:15, fontWeight:800, color:WT.textStrong}}>
+              {totalCost > 0 ? `${totalCost.toFixed(0)} L` : '—'}
+            </span>
+          </div>
+          {targetPrice && (
+            <div style={{display:'flex', alignItems:'center', gap:6}}>
+              <span style={{fontSize:12, color:WT.textSecondary, fontWeight:600}}>Target</span>
+              <span style={{fontSize:15, fontWeight:800, color:WT.textStrong}}>{targetPrice} L</span>
+            </div>
+          )}
+          {margin !== null && (
+            <div style={{display:'flex', alignItems:'center', gap:6}}>
+              <span style={{fontSize:12, color:WT.textSecondary, fontWeight:600}}>Margin</span>
+              <span style={{fontSize:15, fontWeight:800,
+                color: marginOk ? WT.success600 : WT.error600}}>
+                {margin}%
+                {floor && (
+                  <span style={{fontSize:10, fontWeight:500, marginLeft:4}}>
+                    {marginOk ? `↑ above ${floor}% floor ✓` : `↓ below ${floor}% floor`}
+                  </span>
+                )}
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── TD development gate — centralised allowed-action check ── */
+function tdCanDevelop(lifecycle_stage) {
+  return ['RECIPE_DRAFT','RECIPE_REVISION'].includes(lifecycle_stage);
+}
+
+/* ── RecipeList — grouped, filtered, lifecycle-aware ── */
+const WORKFLOW_FILTERS = [
+  { id:'ALL',        label:'All' },
+  { id:'DEV',        label:'In Development' },
+  { id:'LIVE',       label:'Live / Approved' },
+  { id:'RETURNED',   label:'Finance Returned' },
+  { id:'RETIRED',    label:'Retired' },
+];
+
+function recipeMatchesFilter(r, filter) {
+  const stage = r.lifecycle_stage;
+  const status = r.status;
+  if(filter==='ALL') return status !== 'RETIRED';
+  if(filter==='DEV') return tdCanDevelop(stage);
+  if(filter==='LIVE') return ['FINANCE_APPROVED','ACTIVE'].includes(stage) || status==='ACTIVE';
+  if(filter==='RETURNED') return stage==='RECIPE_DRAFT' && r.cfo_return_reason;
+  if(filter==='RETIRED') return status==='RETIRED';
+  return true;
+}
+
+function LifecyclePill({stage, status}) {
+  if(!stage && status==='ACTIVE') return (
+    <span style={{fontSize:10.5,fontWeight:700,padding:'2px 8px',borderRadius:99,
+      background:'#F0FFF4',color:'#276749',border:'1px solid #C6F6D5'}}>ACTIVE</span>
+  );
+  if(status==='RETIRED') return (
+    <span style={{fontSize:10.5,fontWeight:700,padding:'2px 8px',borderRadius:99,
+      background:'#F7FAFC',color:'#718096',border:'1px solid #E2E8F0'}}>RETIRED</span>
+  );
+  const map = {
+    BRIEF_DRAFT:      {bg:'#F7FAFC',color:'#718096',label:'DRAFT'},
+    BRIEF_SUBMITTED:  {bg:'#EBF8FF',color:'#2B6CB0',label:'BRIEF SUBMITTED'},
+    BRIEF_RETURNED:   {bg:'#FFFAF0',color:'#C05621',label:'BRIEF RETURNED'},
+    RECIPE_DRAFT:     {bg:'#F0FFF4',color:'#276749',label:'IN DEVELOPMENT'},
+    RECIPE_REVISION:  {bg:'#FFFBEB',color:'#B45309',label:'IN REVISION'},
+    CFO_FINANCE_REVIEW:{bg:'#EBF8FF',color:'#2B6CB0',label:'FINANCE REVIEW'},
+    FINANCE_APPROVED: {bg:'#F0FFF4',color:'#276749',label:'APPROVED'},
+    CFO_DEFERRED:     {bg:'#FFFBEB',color:'#B45309',label:'DEFERRED'},
+    REJECTED:         {bg:'#FFF5F5',color:'#C53030',label:'REJECTED'},
+    ACTIVE:           {bg:'#F0FFF4',color:'#276749',label:'LIVE'},
+  };
+  const s = map[stage] || {bg:'#F7FAFC',color:'#718096',label:stage||'—'};
+  return (
+    <span style={{fontSize:10.5,fontWeight:700,padding:'2px 8px',borderRadius:99,
+      background:s.bg,color:s.color,border:`1px solid ${s.color}22`}}>{s.label}</span>
+  );
+}
+
+function RecipeList({recipes, loading, kind, query, setQuery, onEdit, onHistory, onRetire}) {
+  const [filter, setFilter] = useState('ALL');
+
+  if(loading) return <WtEmpty icon="flask" title="Loading recipes…"/>;
+  if(recipes.length===0) return (
+    <WtEmpty icon="flask" title="No recipes yet"
+      subtitle={`No ${kind==='SF'?'semi-finished':'menu'} recipes found.`}/>
+  );
+
+  const ql = query.trim().toLowerCase();
+
+  // Apply workflow filter then search
+  const filtered = recipes
+    .filter(r => recipeMatchesFilter(r, filter))
+    .filter(r => !ql || `${r.product_name||''} ${r.sku_code||''}`.toLowerCase().includes(ql));
+
+  // Group by category
+  const groups = {};
+  filtered.forEach(r => {
+    const cat = r.category_code || (kind==='SF' ? 'SF' : 'OTHER');
+    if(!groups[cat]) groups[cat] = [];
+    groups[cat].push(r);
+  });
+  const sortedCats = Object.keys(groups).sort();
+
+  return (
+    <div>
+      {/* Search + filter bar */}
+      <div style={{display:'flex', gap:10, marginBottom:16, flexWrap:'wrap', alignItems:'center'}}>
+        <div style={{display:'flex', alignItems:'center', gap:8, background:WT.bgPanel,
+          border:`1px solid ${WT.border}`, borderRadius:WT.rMd, padding:'8px 12px', flex:'1', minWidth:200, maxWidth:360}}>
+          <Icon name="search" size={14} color={WT.textTertiary}/>
+          <input value={query} onChange={e=>setQuery(e.target.value)}
+            placeholder={`Search ${recipes.length} recipes…`}
+            style={{flex:1,border:'none',outline:'none',background:'none',
+              fontSize:13,color:WT.textPrimary,fontFamily:WT.font}}/>
+          {query && <button onClick={()=>setQuery('')} style={{border:'none',background:'none',
+            cursor:'pointer',color:WT.textTertiary,padding:0,fontSize:12}}>✕</button>}
+        </div>
+        <div style={{display:'flex', gap:6}}>
+          {WORKFLOW_FILTERS.map(f=>(
+            <button key={f.id} onClick={()=>setFilter(f.id)} style={{
+              padding:'7px 12px', borderRadius:WT.rMd, fontSize:12, fontWeight:600,
+              fontFamily:WT.font, cursor:'pointer', border:`1px solid ${filter===f.id?WT.blue600:WT.border}`,
+              background:filter===f.id?WT.blue050:WT.bgPanel,
+              color:filter===f.id?WT.blue600:WT.textSecondary}}>
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {filtered.length===0 ? (
+        <WtEmpty icon="search" title="No matches" subtitle={`Nothing matches the current filter.`}/>
+      ) : (
+        <div>
+          {sortedCats.map(cat=>(
+            <div key={cat} style={{marginBottom:20}}>
+              {/* Sticky category header */}
+              <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:8}}>
+                <span style={{fontSize:10.5,fontWeight:700,color:WT.textTertiary,
+                  letterSpacing:'0.08em',textTransform:'uppercase'}}>{cat.replace(/_/g,' ')}</span>
+                <span style={{fontSize:10,color:WT.textTertiary,background:WT.bgSoft,
+                  borderRadius:99,padding:'1px 7px',border:`1px solid ${WT.divider}`}}>
+                  {groups[cat].length}
+                </span>
+                <div style={{flex:1,height:1,background:WT.divider}}/>
+              </div>
+              {/* Recipe rows */}
+              <WtCard style={{padding:0,overflow:'hidden'}}>
+                <table style={{width:'100%',borderCollapse:'collapse',fontSize:13}}>
+                  <tbody>
+                    {groups[cat].map(r=>(
+                      <tr key={r.header_id} style={{borderTop:`1px solid ${WT.divider}`}}>
+                        <td style={{padding:'11px 16px',fontWeight:600,color:WT.textStrong,minWidth:200}}>
+                          {r.product_name}
+                        </td>
+                        <td style={{padding:'11px 16px',color:WT.textSecondary,
+                          fontFamily:'monospace',fontSize:11.5}}>{r.sku_code||'—'}</td>
+                        <td style={{padding:'11px 16px',color:WT.textTertiary,fontSize:12}}>
+                          {r.line_count} lines
+                        </td>
+                        <td style={{padding:'11px 16px',color:WT.textTertiary,fontSize:12}}>
+                          v{r.version_no}
+                        </td>
+                        <td style={{padding:'11px 16px'}}>
+                          <LifecyclePill stage={r.lifecycle_stage} status={r.status}/>
+                        </td>
+                        <td style={{padding:'11px 16px',textAlign:'right',whiteSpace:'nowrap'}}>
+                          <WtBtn variant="ghost" size="sm" onClick={()=>onHistory(r)}>History</WtBtn>
+                          {r.status!=='RETIRED' && (
+                            <WtBtn variant="blue_ghost" size="sm" onClick={()=>onEdit(r)}>Edit</WtBtn>
+                          )}
+                          {r.status!=='RETIRED' && (
+                            <WtBtn variant="ghost" size="sm"
+                              style={{color:WT.error600,borderColor:WT.error600+'44'}}
+                              onClick={()=>onRetire(r)}>Retire</WtBtn>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </WtCard>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── AuditHistoryContent — extracted from IIFE ── */
+function AuditHistoryContent({rows, groups, allSFs}) {
+  const nameOf = (ln) => {
+    if(ln.semi_finished_id) return (allSFs.find(s=>s.sf_id===ln.semi_finished_id)?.product_name)||'Semi-finished';
+    if(ln.raw_material_group_id) return (groups.find(g=>g.group_id===ln.raw_material_group_id)?.group_name)||'Group';
+    return 'Component';
+  };
+  const qtyOf = (ln) => ln.quantity_per_kg ?? ln.quantity_per_serving ?? ln.quantity;
+  const keyOf = (ln) => ln.semi_finished_id || ln.raw_material_group_id || JSON.stringify(ln);
+  const diffLines = (prev, next) => {
+    const P=(prev?.lines)||[], N=(next?.lines)||[];
+    const pMap=new Map(P.map(l=>[keyOf(l),l])), nMap=new Map(N.map(l=>[keyOf(l),l]));
+    const out=[];
+    for(const [k,nl] of nMap){
+      const pl=pMap.get(k);
+      if(!pl){out.push({type:'added',name:nameOf(nl),qty:qtyOf(nl),waste:nl.waste_factor});continue;}
+      const q1=qtyOf(pl),q2=qtyOf(nl),w1=pl.waste_factor,w2=nl.waste_factor;
+      if(q1!==q2||w1!==w2) out.push({type:'changed',name:nameOf(nl),
+        qtyFrom:q1,qtyTo:q2,wFrom:w1,wTo:w2,qtyChanged:q1!==q2,wChanged:w1!==w2});
+    }
+    for(const [k,pl] of pMap) if(!nMap.has(k)) out.push({type:'removed',name:nameOf(pl),qty:qtyOf(pl),waste:pl.waste_factor});
+    return out;
+  };
+  if(!rows||rows.length===0) return <WtEmpty icon="clock" title="No history yet" subtitle="Changes appear once the recipe is edited."/>;
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:12,maxHeight:'60vh',overflowY:'auto'}}>
+      {rows.map((h,i)=>{
+        const created=!h.previous_state;
+        const changes=created?[]:diffLines(h.previous_state,h.new_state);
+        return (
+          <div key={i} style={{padding:'12px 14px',background:WT.bgSoft,borderRadius:WT.rMd,border:`1px solid ${WT.divider}`}}>
+            <div style={{display:'flex',justifyContent:'space-between',marginBottom:4}}>
+              <span style={{fontSize:12.5,fontWeight:700,color:WT.textStrong}}>{h.action_type}</span>
+              <span style={{fontSize:11.5,color:WT.textTertiary}}>{new Date(h.performed_at).toLocaleString()}</span>
+            </div>
+            <div style={{fontSize:12,color:WT.textSecondary,marginBottom:created?0:6}}>by {h.performed_by}</div>
+            {created ? (
+              <div style={{fontSize:11.5,color:WT.textTertiary}}>Created with {(h.new_state?.lines||[]).length} ingredient lines.</div>
+            ) : changes.length===0 ? (
+              <div style={{fontSize:11.5,color:WT.textTertiary}}>Saved with no ingredient changes.</div>
+            ) : (
+              <div style={{display:'flex',flexDirection:'column',gap:5,marginTop:2}}>
+                {changes.map((c,ci)=>(
+                  <div key={ci} style={{fontSize:11.5,lineHeight:1.4,display:'flex',gap:7,alignItems:'baseline'}}>
+                    <span style={{flexShrink:0,fontSize:9.5,fontWeight:700,padding:'1px 6px',borderRadius:6,
+                      textTransform:'uppercase',letterSpacing:'0.04em',
+                      background:c.type==='added'?WT.success050:c.type==='removed'?WT.error050:WT.info050,
+                      color:c.type==='added'?WT.success600:c.type==='removed'?WT.error600:WT.info600}}>
+                      {c.type==='added'?'Added':c.type==='removed'?'Removed':'Changed'}
+                    </span>
+                    <span style={{color:WT.textStrong,fontWeight:600}}>{c.name}</span>
+                    <span style={{color:WT.textSecondary}}>
+                      {c.type==='added'&&`${c.qty} kg · waste ${c.waste}`}
+                      {c.type==='removed'&&`was ${c.qty} kg · waste ${c.waste}`}
+                      {c.type==='changed'&&[
+                        c.qtyChanged?`qty ${c.qtyFrom} → ${c.qtyTo} kg`:null,
+                        c.wChanged?`waste ${c.wFrom} → ${c.wTo}`:null,
+                      ].filter(Boolean).join(' · ')}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ── CreateSFModal ── */
+function CreateSFModal({onClose, onCreated, showToast}) {
+  const [name, setName] = useState('');
+  const [notes, setNotes] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  const submit = async () => {
+    if(!name.trim()){ showToast('Product name required','error'); return; }
+    setBusy(true);
+    const {data, error} = await SB.rpc('td_create_sf_product',{
+      p_product_name: name.trim(),
+      p_notes: notes.trim()||null,
+    });
+    setBusy(false);
+    if(error){ showToast(error.message,'error'); return; }
+    showToast(`SF recipe created — ${name.trim()}`);
+    onCreated(data);
+  };
+
+  return (
+    <WtModal open title="New Semi-Finished Recipe" onClose={onClose} width={480}>
+      <div style={{display:'flex', flexDirection:'column', gap:14}}>
+        <WtInput label="Product name *" value={name}
+          onChange={e=>setName(e.target.value)}
+          placeholder="e.g. Smokey Chipotle Sauce"/>
+        <WtInput label="Notes (optional)" value={notes}
+          onChange={e=>setNotes(e.target.value)}
+          placeholder="e.g. Used in burgers and wraps"/>
+        <div style={{fontSize:12, color:WT.textTertiary, padding:'8px 12px',
+          background:WT.bgSoft, borderRadius:WT.rSm, border:`1px solid ${WT.divider}`}}>
+          SKU code will be auto-generated. The BOM editor opens immediately after creation.
+        </div>
+        <div style={{display:'flex', justifyContent:'flex-end', gap:8, marginTop:4}}>
+          <WtBtn variant="ghost" onClick={onClose}>Cancel</WtBtn>
+          <WtBtn variant="primary" onClick={submit} disabled={busy}>
+            {busy ? 'Creating…' : 'Create & Open Editor →'}
+          </WtBtn>
+        </div>
+      </div>
+    </WtModal>
+  );
+}
+
+/* ── CreateMenuDraftModal ── */
+function CreateMenuDraftModal({onClose, onCreated, showToast}) {
+  const [name, setName]     = useState('');
+  const [cat, setCat]       = useState('');
+  const [reason, setReason] = useState('');
+  const [confirmed, setConfirmed] = useState(false);
+  const [busy, setBusy]     = useState(false);
+
+  const MENU_CATS = [
+    'BOWL','SALAD','BURGER','WRAP','FRESH_JUICE','SMOOTHIE',
+    'CHIA_PUDDING','VEGAN_OATMEAL','PARFAIT','DESSERT','SNACK',
+  ];
+
+  const submit = async () => {
+    if(!name.trim()){ showToast('Product name required','error'); return; }
+    if(!confirmed){ showToast('Please confirm the disclaimer','error'); return; }
+    setBusy(true);
+    const {data, error} = await SB.rpc('td_create_menu_draft',{
+      p_product_name:  name.trim(),
+      p_category_code: cat||null,
+      p_reason:        reason.trim()||null,
+    });
+    setBusy(false);
+    if(error){ showToast(error.message,'error'); return; }
+    showToast(`Menu draft created — ${name.trim()}`);
+    onCreated(data);
+  };
+
+  return (
+    <WtModal open title="New Menu Product Draft" onClose={onClose} width={500}>
+      <div style={{display:'flex', flexDirection:'column', gap:14}}>
+        {/* Warning banner */}
+        <div style={{display:'flex', gap:10, padding:'10px 14px',
+          background:'#FFFBEB', border:'1px solid #FDE68A',
+          borderLeft:`3px solid #F59E0B`, borderRadius:WT.rMd}}>
+          <div>
+            <div style={{fontSize:12, fontWeight:700, color:'#92400E', marginBottom:3}}>
+              No Marketing brief attached
+            </div>
+            <div style={{fontSize:11.5, color:'#78350F', lineHeight:1.5}}>
+              This creates a technical draft only. It enters the lifecycle at Recipe Draft
+              with no commercial brief. CFO review is still required before activation.
+              Marketing-briefed products are the primary path.
+            </div>
+          </div>
+        </div>
+        <WtInput label="Product name *" value={name}
+          onChange={e=>setName(e.target.value)}
+          placeholder="e.g. Warm Earth Bowl"/>
+        <div>
+          <label style={{fontSize:11.5, fontWeight:600, color:WT.textSecondary,
+            display:'block', marginBottom:4}}>Category</label>
+          <select value={cat} onChange={e=>setCat(e.target.value)}
+            style={{width:'100%', padding:'8px 10px', borderRadius:WT.rSm,
+              border:`1px solid ${WT.border}`, fontSize:13, fontFamily:WT.font,
+              background:WT.bgPanel, color:WT.textPrimary}}>
+            <option value="">— Select category —</option>
+            {MENU_CATS.map(c=><option key={c} value={c}>{c.replace(/_/g,' ')}</option>)}
+          </select>
+        </div>
+        <WtInput label="Reason for skipping brief (optional)" value={reason}
+          onChange={e=>setReason(e.target.value)}
+          placeholder="e.g. B2B special, limited test run"/>
+        <label style={{display:'flex', alignItems:'flex-start', gap:10,
+          cursor:'pointer', padding:'10px 12px', borderRadius:WT.rSm,
+          background:WT.bgSoft, border:`1px solid ${WT.divider}`}}>
+          <input type="checkbox" checked={confirmed} onChange={e=>setConfirmed(e.target.checked)}
+            style={{marginTop:2, accentColor:WT.blue600}}/>
+          <span style={{fontSize:12, color:WT.textSecondary, lineHeight:1.5}}>
+            I understand this is a technical draft only. No pricing or commercial
+            decision has been made. CFO approval is required before this product
+            can go live.
+          </span>
+        </label>
+        <div style={{display:'flex', justifyContent:'flex-end', gap:8, marginTop:4}}>
+          <WtBtn variant="ghost" onClick={onClose}>Cancel</WtBtn>
+          <WtBtn variant="secondary" onClick={submit} disabled={busy||!confirmed}>
+            {busy ? 'Creating…' : 'Create Draft & Open Editor →'}
+          </WtBtn>
+        </div>
+      </div>
+    </WtModal>
+  );
+}
+
+/* ── ProductRegister — governance map ── */
+function ProductRegister({products, recipes, regFilter, setRegFilter, regQuery, setRegQuery, setActiveProductId, setPage, acceptBrief}) {
+const REG_FILTERS = [
+  {id:'ALL',         label:'All'},
+  {id:'DEV',         label:'In Development'},
+  {id:'FINANCE',     label:'Awaiting Finance'},
+  {id:'LIVE',        label:'Live'},
+  {id:'DEFERRED',    label:'Deferred'},
+  {id:'NO_BOM',      label:'No Recipe Yet'},
+  {id:'REJECTED',    label:'Rejected'},
+];
+
+const regStageAction = (p, lc) => {
+  const stage = lc?.lifecycle_stage;
+  if(['RECIPE_DRAFT','RECIPE_REVISION'].includes(stage))
+    return <WtBtn size="sm" variant="secondary" onClick={()=>{setActiveProductId(p.id);setPage('recipes');}}>Open Studio</WtBtn>;
+  if(stage==='BRIEF_SUBMITTED')
+    return <WtBtn size="sm" variant="primary" onClick={()=>acceptBrief(p.id)}>Accept Brief</WtBtn>;
+  if(stage==='CFO_FINANCE_REVIEW')
+    return <span style={{fontSize:11,color:WT.textTertiary}}>Awaiting CFO</span>;
+  if(['FINANCE_APPROVED','ACTIVE'].includes(stage))
+    return <WtBtn size="sm" variant="ghost" onClick={()=>{setActiveProductId(p.id);setPage('recipes');}}>View Recipe</WtBtn>;
+  if(stage==='CFO_DEFERRED')
+    return <span style={{fontSize:11,color:WT.textTertiary}}>Deferred</span>;
+  if(stage==='REJECTED')
+    return <span style={{fontSize:11,color:WT.error600}}>Rejected</span>;
+  return null;
+};
+
+const regMatchesFilter = (p, hasBOM) => {
+  const stage = p.menu_product_lifecycle?.lifecycle_stage;
+  if(regFilter==='ALL') return true;
+  if(regFilter==='DEV') return ['RECIPE_DRAFT','RECIPE_REVISION'].includes(stage);
+  if(regFilter==='FINANCE') return stage==='CFO_FINANCE_REVIEW';
+  if(regFilter==='LIVE') return ['FINANCE_APPROVED','ACTIVE'].includes(stage);
+  if(regFilter==='DEFERRED') return stage==='CFO_DEFERRED';
+  if(regFilter==='NO_BOM') return !hasBOM;
+  if(regFilter==='REJECTED') return stage==='REJECTED';
+  return true;
+};
+
+// Group products by lifecycle stage priority
+const REG_GROUPS = [
+  {id:'DEV',      label:'In Development',    stages:['RECIPE_DRAFT','RECIPE_REVISION']},
+  {id:'FINANCE',  label:'Awaiting Finance',   stages:['CFO_FINANCE_REVIEW']},
+  {id:'LIVE',     label:'Live / Approved',    stages:['FINANCE_APPROVED','ACTIVE']},
+  {id:'DEFERRED', label:'Deferred',           stages:['CFO_DEFERRED']},
+  {id:'BRIEF',    label:'Brief Stage',        stages:['BRIEF_DRAFT','BRIEF_SUBMITTED','BRIEF_RETURNED']},
+  {id:'REJECTED', label:'Rejected / Archived',stages:['REJECTED','ARCHIVED_UNVIABLE']},
+  {id:'NO_BOM',   label:'No Recipe Yet',      stages:[]},
+];
+
+  const bomProductIds = new Set(recipes.map(r=>r.product_id));
+  const allProds = products.filter(p =>
+    !['ARCHIVED_UNVIABLE','RETIRED'].includes(p.menu_product_lifecycle?.lifecycle_stage)
+  );
+  const ql = regQuery.trim().toLowerCase();
+  const filtered = allProds
+    .filter(p => regMatchesFilter(p, bomProductIds.has(p.id)))
+    .filter(p => !ql || `${p.name||''} ${p.internal_code||''}`.toLowerCase().includes(ql));
+  const grouped = {};
+  const assigned = new Set();
+  REG_GROUPS.forEach(g => {
+    if(g.id==='NO_BOM'){
+      grouped[g.id] = filtered.filter(p => !bomProductIds.has(p.id) && !assigned.has(p.id));
+    } else {
+      grouped[g.id] = filtered.filter(p => {
+        const stage = p.menu_product_lifecycle?.lifecycle_stage;
+        return g.stages.includes(stage) && !assigned.has(p.id);
+      });
+    }
+    grouped[g.id].forEach(p=>assigned.add(p.id));
+  });
+return (
+    <div style={{padding:'28px 32px', fontFamily:WT.font}}>
+      <WtPageHeader title="Product Register"
+        subtitle={`${allProds.length} governed products — governance map`}/>
+
+      {/* Search + filters */}
+      <div style={{display:'flex', gap:10, marginBottom:20, flexWrap:'wrap', alignItems:'center'}}>
+        <div style={{display:'flex', alignItems:'center', gap:8, background:WT.bgPanel,
+          border:`1px solid ${WT.border}`, borderRadius:WT.rMd, padding:'8px 12px',
+          minWidth:200, maxWidth:320}}>
+          <Icon name="search" size={14} color={WT.textTertiary}/>
+          <input value={regQuery} onChange={e=>setRegQuery(e.target.value)}
+            placeholder="Search products…"
+            style={{flex:1,border:'none',outline:'none',background:'none',
+              fontSize:13,color:WT.textPrimary,fontFamily:WT.font}}/>
+          {regQuery && <button onClick={()=>setRegQuery('')} style={{border:'none',
+            background:'none',cursor:'pointer',color:WT.textTertiary,padding:0,fontSize:12}}>✕</button>}
+        </div>
+        <div style={{display:'flex', gap:6, flexWrap:'wrap'}}>
+          {REG_FILTERS.map(f=>(
+            <button key={f.id} onClick={()=>setRegFilter(f.id)} style={{
+              padding:'6px 12px', borderRadius:WT.rMd, fontSize:12, fontWeight:600,
+              fontFamily:WT.font, cursor:'pointer',
+              border:`1px solid ${regFilter===f.id?WT.blue600:WT.border}`,
+              background:regFilter===f.id?WT.blue050:WT.bgPanel,
+              color:regFilter===f.id?WT.blue600:WT.textSecondary}}>
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {filtered.length===0
+        ? <WtEmpty icon="book" title="No products match" subtitle="Try a different filter or search."/>
+        : REG_GROUPS.map(g => {
+            const items = grouped[g.id];
+            if(!items || items.length===0) return null;
+            return (
+              <div key={g.id} style={{marginBottom:24}}>
+                {/* Group header */}
+                <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:8}}>
+                  <span style={{fontSize:10.5, fontWeight:700, color:WT.textTertiary,
+                    letterSpacing:'0.08em', textTransform:'uppercase'}}>{g.label}</span>
+                  <span style={{fontSize:10, color:WT.textTertiary, background:WT.bgSoft,
+                    borderRadius:99, padding:'1px 7px', border:`1px solid ${WT.divider}`}}>
+                    {items.length}
+                  </span>
+                  <div style={{flex:1, height:1, background:WT.divider}}/>
+                </div>
+                <WtCard style={{padding:0, overflow:'hidden'}}>
+                  <table style={{width:'100%', borderCollapse:'collapse', fontSize:13}}>
+                    <tbody>
+                      {items.map(p => {
+                        const lc = p.menu_product_lifecycle;
+                        const hasBOM = bomProductIds.has(p.id);
+                        return (
+                          <tr key={p.id} style={{borderTop:`1px solid ${WT.divider}`}}>
+                            <td style={{padding:'11px 16px', minWidth:200}}>
+                              <div style={{fontWeight:600, color:WT.textStrong}}>{p.name}</div>
+                              <div style={{fontSize:11, color:WT.textTertiary, marginTop:1,
+                                fontFamily:'monospace'}}>{p.internal_code}</div>
+                            </td>
+                            <td style={{padding:'11px 16px', color:WT.textSecondary, fontSize:12}}>
+                              {p.category_code?.replace(/_/g,' ')||'—'}
+                            </td>
+                            <td style={{padding:'11px 16px'}}>
+                              <LifecyclePill stage={lc?.lifecycle_stage} status={p.identity_status}/>
+                            </td>
+                            <td style={{padding:'11px 16px'}}>
+                              {hasBOM
+                                ? <span style={{fontSize:11, fontWeight:600, color:WT.success600,
+                                    background:WT.success050, padding:'2px 8px',
+                                    borderRadius:99, border:'1px solid #BBF7D0'}}>BOM ✓</span>
+                                : <span style={{fontSize:11, color:WT.textTertiary,
+                                    background:WT.bgSoft, padding:'2px 8px',
+                                    borderRadius:99, border:`1px solid ${WT.divider}`}}>No recipe</span>
+                              }
+                            </td>
+                            <td style={{padding:'11px 16px', color:WT.textTertiary, fontSize:11.5}}>
+                              {p.updated_at ? new Date(p.updated_at).toLocaleDateString() : '—'}
+                            </td>
+                            <td style={{padding:'11px 16px', textAlign:'right', whiteSpace:'nowrap'}}>
+                              {regStageAction(p, lc)}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </WtCard>
+              </div>
+            );
+          })
+      }
+    </div>
+  );
+
+}
+
+/* ── FOOD SAFETY PAGE ─────────────────────────────────────────────────── */
+const ALLERGEN_KEYS = [
+  {key:'gluten',      label:'Gluten (wheat, rye, barley, oats)'},
+  {key:'crustaceans', label:'Crustaceans (shrimp, crab, lobster)'},
+  {key:'eggs',        label:'Eggs'},
+  {key:'fish',        label:'Fish'},
+  {key:'peanuts',     label:'Peanuts'},
+  {key:'soy',         label:'Soy'},
+  {key:'dairy',       label:'Dairy (milk, lactose)'},
+  {key:'tree_nuts',   label:'Tree nuts (almonds, walnuts, cashews, coconut)'},
+  {key:'celery',      label:'Celery'},
+  {key:'mustard',     label:'Mustard'},
+  {key:'sesame',      label:'Sesame'},
+  {key:'sulphites',   label:'Sulphites / sulphur dioxide'},
+  {key:'lupin',       label:'Lupin'},
+  {key:'molluscs',    label:'Molluscs (squid, mussels, oysters)'},
+];
+
+function FoodSafetyPage({session, showToast, products, setPage}) {
+  const [selId,setSelId]               = useState('');
+  const [decl,setDecl]                 = useState(null);
+  const [profile,setProfile]           = useState(null);
+  const [controls,setControls]         = useState([]);
+  const [loading,setLoading]           = useState(false);
+  const [saving,setSaving]             = useState(false);
+  const [headerId,setHeaderId]         = useState(null);
+  // Section 3 — service requirements
+  const [assemblyMins,setAssemblyMins] = useState('');
+  const [deliveryMins,setDeliveryMins] = useState('');
+  const [svcCondition,setSvcCondition] = useState('');
+  const [sauceSep,setSauceSep]         = useState(false);
+  const [svcNotes,setSvcNotes]         = useState('');
+  // Section 4 — TD notes
+  const [crossContact,setCrossContact] = useState('');
+  const [labelWarnings,setLabelWarnings] = useState('');
+
+  const menuProducts = (products||[]).filter(p =>
+    p.menu_product_lifecycle?.lifecycle_stage &&
+    !['REJECTED','ARCHIVED_UNVIABLE'].includes(p.menu_product_lifecycle.lifecycle_stage)
+  );
+
+  const loadProduct = async (productId) => {
+    if(!productId) return;
+    setLoading(true);
+    // Get BOM header via SECURITY DEFINER RPC
+    const {data:recipes} = await SB.rpc('td_list_recipes',{p_kind:'MENU'});
+    const recipe = (recipes||[]).find(r=>r.product_id===productId);
+    const hId = recipe?.header_id;
+    setHeaderId(hId);
+
+    if(hId) {
+      // Get or create safety declaration (computes allergens from BOM)
+      const {data:declData} = await SB.rpc('td_get_or_create_safety_declaration',{
+        p_product_id: productId, p_bom_header_id: hId, p_kind: 'MENU',
+      });
+      if(declData) setDecl(declData);
+
+      // Get inherited safety controls from BOM
+      const {data:ctrl} = await SB.rpc('td_get_inherited_safety_controls',{
+        p_bom_header_id: hId, p_kind: 'MENU',
+      });
+      setControls(ctrl || []);
+    }
+
+    // Load service requirements profile via RPC (RLS blocks direct table access)
+    const {data:profResult} = await SB.rpc('td_get_safety_profile',{p_product_id: productId});
+    const prof = profResult;
+    if(prof) {
+      setProfile(prof);
+      setAssemblyMins(prof.assembly_to_service_mins||'5');
+      setDeliveryMins(prof.delivery_dispatch_mins||'');
+      setSvcCondition(prof.service_condition||'AMBIENT');
+      setSauceSep(prof.sauce_separate||false);
+      setSvcNotes(prof.service_notes||'');
+      setCrossContact(prof.cross_contact_notes||'');
+      setLabelWarnings(prof.label_warning_notes||'');
+    } else {
+      setAssemblyMins('5'); setSvcCondition('AMBIENT');
+    }
+    setLoading(false);
+  };
+
+  const save = async (complete) => {
+    if(!headerId){ showToast('No BOM found — build the recipe first','error'); return; }
+    setSaving(true);
+    // Save service requirements profile
+    await SB.rpc('td_save_safety_profile',{
+      p_product_id:              selId,
+      p_assembly_to_service_mins: assemblyMins?Number(assemblyMins):null,
+      p_delivery_dispatch_mins:   deliveryMins?Number(deliveryMins):null,
+      p_service_condition:        svcCondition||null,
+      p_sauce_separate:           sauceSep,
+      p_service_notes:            svcNotes||null,
+      p_cross_contact_notes:      crossContact||null,
+      p_label_warning_notes:      labelWarnings||null,
+    });
+    // Confirm allergen declaration
+    const allergens = {};
+    ALLERGEN_KEYS.forEach(a => { allergens[a.key] = decl?.computed_allergens?.[a.key]||false; });
+    const {error} = await SB.rpc('td_save_safety_declaration',{
+      p_product_id:          selId,
+      p_bom_header_id:       headerId,
+      p_confirmed_allergens: allergens,
+      p_cross_contact:       crossContact||null,
+      p_label_warnings:      labelWarnings||null,
+      p_no_ccp_required:     false,
+      p_complete:            complete,
+    });
+    setSaving(false);
+    if(error){ showToast(error.message,'error'); return; }
+    showToast(complete ? 'Food Safety declaration confirmed ✓' : 'Draft saved');
+    await loadProduct(selId);
+  };
+
+  const safetyStatus = decl?.status==='COMPLETE' ? 'CONFIRMED'
+    : decl ? (decl.material_change_detected ? 'NEEDS_REVIEW' : 'DRAFT') : 'MISSING';
+  const statusColor = {CONFIRMED:WT.success600,NEEDS_REVIEW:'#B45309',DRAFT:WT.textTertiary,MISSING:WT.error600};
+  const statusBg    = {CONFIRMED:WT.success050,NEEDS_REVIEW:'#FFFBEB',DRAFT:WT.bgSoft,MISSING:'#FFF5F5'};
+  const statusLabel = {CONFIRMED:'Confirmed ✓',NEEDS_REVIEW:'Needs Review — material change',DRAFT:'Draft',MISSING:'Missing'};
+
+  const ccps       = controls.filter(c=>c.is_ccp);
+  const ingredient = controls.filter(c=>!c.is_ccp && c.source==='INGREDIENT');
+  const sfCtrl     = controls.filter(c=>c.source==='SF');
+
+  return (
+    <div style={{padding:'28px 32px', fontFamily:WT.font, maxWidth:860}}>
+      <WtPageHeader title="Food Safety"
+        subtitle="System-derived allergen declarations · ingredient safety controls · service requirements"/>
+
+      {/* Product selector */}
+      <div style={{marginBottom:24}}>
+        <label style={{fontSize:11.5,fontWeight:700,color:WT.textTertiary,
+          textTransform:'uppercase',letterSpacing:'0.07em',display:'block',marginBottom:6}}>
+          Select product
+        </label>
+        <select value={selId} onChange={e=>{setSelId(e.target.value);setDecl(null);setControls([]);loadProduct(e.target.value);}}
+          style={{width:'100%',maxWidth:420,padding:'9px 12px',borderRadius:WT.rMd,
+            border:`1px solid ${WT.border}`,fontSize:13,fontFamily:WT.font,
+            background:WT.bgPanel,color:WT.textPrimary}}>
+          <option value="">— Choose a product —</option>
+          {menuProducts.map(p=>(
+            <option key={p.id} value={p.id}>{p.name} ({p.internal_code})</option>
+          ))}
+        </select>
+      </div>
+
+      {!selId && <WtEmpty icon="shield" title="Select a product"
+        subtitle="Choose a product to view its food safety declaration."/>}
+      {selId && loading && <WtEmpty icon="shield" title="Loading…"/>}
+
+      {selId && !loading && (
+        <div style={{display:'flex',flexDirection:'column',gap:20}}>
+
+          {/* Status bar */}
+          <div style={{display:'flex',alignItems:'center',gap:12,padding:'11px 16px',
+            borderRadius:WT.rMd,border:`1px solid ${WT.divider}`,
+            background:statusBg[safetyStatus]}}>
+            <span style={{fontSize:12,fontWeight:700,color:statusColor[safetyStatus]}}>
+              Food Safety: {statusLabel[safetyStatus]}
+            </span>
+            {decl?.confirmed_at && (
+              <span style={{fontSize:11.5,color:WT.textTertiary}}>
+                · Confirmed {new Date(decl.confirmed_at).toLocaleString()}
+              </span>
+            )}
+          </div>
+
+          {/* ── SECTION 1: Derived Allergens ── */}
+          <WtCard>
+            <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,
+              textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:4}}>
+              Section 1 — Allergen Declaration
+            </div>
+            <div style={{fontSize:11.5,color:WT.textTertiary,marginBottom:14}}>
+              Computed from BOM ingredients and SF components. Review and confirm.
+            </div>
+            {!headerId
+              ? <div style={{fontSize:13,color:WT.warning600}}>Build the recipe first — allergens are computed from the BOM.</div>
+              : <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:8}}>
+                  {ALLERGEN_KEYS.map(a=>{
+                    const present = decl?.computed_allergens?.[a.key] || false;
+                    return (
+                      <div key={a.key} style={{display:'flex',alignItems:'center',gap:10,
+                        padding:'8px 12px',borderRadius:WT.rSm,
+                        background:present?'#FFF5F5':WT.bgSoft,
+                        border:`1px solid ${present?'#FECACA':WT.divider}`}}>
+                        <span style={{fontSize:15,lineHeight:1}}>{present?'⚠️':'✓'}</span>
+                        <div>
+                          <div style={{fontSize:12,fontWeight:present?700:500,
+                            color:present?WT.error600:WT.textTertiary}}>{a.label}</div>
+                          <div style={{fontSize:10.5,color:WT.textTertiary}}>
+                            {present?'Present in this recipe':'Not detected in BOM'}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+            }
+          </WtCard>
+
+          {/* ── SECTION 2: Inherited Safety Controls ── */}
+          <WtCard>
+            <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,
+              textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:4}}>
+              Section 2 — Inherited Safety Controls
+            </div>
+            <div style={{fontSize:11.5,color:WT.textTertiary,marginBottom:14}}>
+              Derived from ingredient groups and SF production profiles in this recipe.
+            </div>
+            {controls.length===0
+              ? <div style={{fontSize:12.5,color:WT.textTertiary}}>
+                  No safety controls defined for ingredients in this recipe yet.
+                  Add safety notes to product groups to see them here.
+                </div>
+              : <>
+                  {ccps.length > 0 && (
+                    <div style={{marginBottom:14}}>
+                      <div style={{fontSize:10.5,fontWeight:700,color:WT.error600,
+                        textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:8}}>
+                        Critical Control Points
+                      </div>
+                      {ccps.map((c,i)=>(
+                        <div key={i} style={{padding:'10px 14px',marginBottom:6,
+                          background:'#FFF5F5',borderRadius:WT.rSm,
+                          border:'1px solid #FECACA',borderLeft:'3px solid #EF4444'}}>
+                          <div style={{fontSize:12,fontWeight:700,color:WT.error600,marginBottom:3}}>
+                            {c.name}
+                          </div>
+                          {c.safety_notes && <div style={{fontSize:12,color:'#7F1D1D'}}>{c.safety_notes}</div>}
+                          {c.handling_notes && <div style={{fontSize:11.5,color:WT.error600,marginTop:4,fontStyle:'italic'}}>{c.handling_notes}</div>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {ingredient.length > 0 && (
+                    <div style={{marginBottom:14}}>
+                      <div style={{fontSize:10.5,fontWeight:700,color:WT.warning600,
+                        textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:8}}>
+                        Ingredient Handling Controls
+                      </div>
+                      {ingredient.map((c,i)=>(
+                        <div key={i} style={{padding:'10px 14px',marginBottom:6,
+                          background:'#FFFBEB',borderRadius:WT.rSm,
+                          border:'1px solid #FDE68A',borderLeft:'3px solid #F59E0B'}}>
+                          <div style={{fontSize:12,fontWeight:600,color:'#92400E',marginBottom:3}}>{c.name}</div>
+                          {c.handling_notes && <div style={{fontSize:12,color:'#78350F'}}>{c.handling_notes}</div>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {sfCtrl.length > 0 && (
+                    <div>
+                      <div style={{fontSize:10.5,fontWeight:700,color:WT.blue600,
+                        textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:8}}>
+                        SF Production Safety Controls
+                      </div>
+                      {sfCtrl.map((c,i)=>(
+                        <div key={i} style={{padding:'10px 14px',marginBottom:6,
+                          background:WT.blue050,borderRadius:WT.rSm,
+                          border:'1px solid #BAE6FD',borderLeft:`3px solid ${WT.blue600}`}}>
+                          <div style={{fontSize:12,fontWeight:600,color:WT.blue600,marginBottom:3}}>{c.name}</div>
+                          {c.safety_notes && <div style={{fontSize:12,color:WT.textSecondary}}>{c.safety_notes}</div>}
+                          <div style={{display:'flex',gap:16,marginTop:6,flexWrap:'wrap'}}>
+                            {c.hold_temp_max && <span style={{fontSize:11,color:WT.textTertiary}}>Hold below {c.hold_temp_max}°C</span>}
+                            {c.use_within_hours && <span style={{fontSize:11,color:WT.textTertiary}}>Use within {c.use_within_hours}h of production</span>}
+                            {c.requires_timestamp && <span style={{fontSize:11,fontWeight:700,color:WT.blue600}}>Timestamp required</span>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+            }
+          </WtCard>
+
+          {/* ── SECTION 3: Service Requirements ── */}
+          <WtCard>
+            <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,
+              textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:4}}>
+              Section 3 — Service Requirements
+            </div>
+            <div style={{fontSize:11.5,color:WT.textTertiary,marginBottom:14}}>
+              Product-level. Applies from assembly to customer. Not storage — service.
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:12,marginBottom:12}}>
+              <div>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,display:'block',marginBottom:4}}>
+                  Assembly → service (mins)
+                </label>
+                <input type="number" value={assemblyMins} onChange={e=>setAssemblyMins(e.target.value)}
+                  placeholder="e.g. 5"
+                  style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                    border:`1px solid ${WT.border}`,fontSize:13,fontFamily:WT.font,
+                    outline:'none',background:WT.bgPanel}}/>
+              </div>
+              <div>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,display:'block',marginBottom:4}}>
+                  Delivery dispatch max (mins)
+                </label>
+                <input type="number" value={deliveryMins} onChange={e=>setDeliveryMins(e.target.value)}
+                  placeholder="e.g. 20"
+                  style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                    border:`1px solid ${WT.border}`,fontSize:13,fontFamily:WT.font,
+                    outline:'none',background:WT.bgPanel}}/>
+              </div>
+              <div>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,display:'block',marginBottom:4}}>
+                  Service condition
+                </label>
+                <select value={svcCondition} onChange={e=>setSvcCondition(e.target.value)}
+                  style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                    border:`1px solid ${WT.border}`,fontSize:13,fontFamily:WT.font,
+                    background:WT.bgPanel,color:WT.textPrimary}}>
+                  <option value="">— Select —</option>
+                  <option value="AMBIENT">Ambient</option>
+                  <option value="HOT">Hot</option>
+                  <option value="CHILLED_AT_SERVICE">Chilled at service</option>
+                  <option value="MIXED">Mixed (hot + cold components)</option>
+                </select>
+              </div>
+            </div>
+            <label style={{display:'flex',alignItems:'center',gap:8,marginBottom:10,cursor:'pointer'}}>
+              <input type="checkbox" checked={sauceSep} onChange={e=>setSauceSep(e.target.checked)}
+                style={{width:14,height:14,accentColor:WT.blue600}}/>
+              <span style={{fontSize:12.5,color:WT.textSecondary,fontWeight:500}}>
+                Sauce served separately (delivery/packaging requirement)
+              </span>
+            </label>
+            <div>
+              <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,display:'block',marginBottom:4}}>
+                Special service instructions
+              </label>
+              <textarea value={svcNotes} onChange={e=>setSvcNotes(e.target.value)}
+                placeholder="e.g. Hot components must be served immediately. Do not pre-assemble for delivery."
+                rows={2} style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                  border:`1px solid ${WT.border}`,fontSize:12.5,fontFamily:WT.font,
+                  resize:'vertical',outline:'none',background:WT.bgPanel}}/>
+            </div>
+          </WtCard>
+
+          {/* ── SECTION 4: TD Notes ── */}
+          <WtCard>
+            <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,
+              textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:14}}>
+              Section 4 — TD Notes & Label Warnings
+            </div>
+            <div style={{display:'flex',flexDirection:'column',gap:12}}>
+              <div>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,display:'block',marginBottom:4}}>
+                  Cross-contact notes
+                </label>
+                <textarea value={crossContact} onChange={e=>setCrossContact(e.target.value)}
+                  placeholder="e.g. Prepared on shared equipment with sesame products — allergen risk present even if not in recipe"
+                  rows={2} style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                    border:`1px solid ${WT.border}`,fontSize:12.5,fontFamily:WT.font,
+                    resize:'vertical',outline:'none',background:WT.bgPanel}}/>
+              </div>
+              <div>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,display:'block',marginBottom:4}}>
+                  Label warning notes
+                </label>
+                <textarea value={labelWarnings} onChange={e=>setLabelWarnings(e.target.value)}
+                  placeholder="e.g. May contain traces of nuts. Suitable for vegetarians."
+                  rows={2} style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                    border:`1px solid ${WT.border}`,fontSize:12.5,fontFamily:WT.font,
+                    resize:'vertical',outline:'none',background:WT.bgPanel}}/>
+              </div>
+            </div>
+          </WtCard>
+
+          {/* Actions */}
+          <div style={{display:'flex',justifyContent:'flex-end',gap:10}}>
+            <WtBtn variant="secondary" onClick={()=>save(false)} disabled={saving}>Save Draft</WtBtn>
+            <WtBtn variant="primary" onClick={()=>save(true)} disabled={saving}>
+              {saving?'Confirming…':'Confirm Safety Declaration ✓'}
+            </WtBtn>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── VALIDATION LAB PAGE ─────────────────────────────────────────────── */
+/* ── VALIDATION REPORT HTML BUILDER ─────────────────────────────────────── */
+function buildReportHTML(r) {
+  const ts = new Date(r.generated_at).toLocaleString('en-GB',{
+    day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'
+  });
+  const p   = r.product || {};
+  const br  = r.brief;
+  const rec = r.recipe || {};
+  const vs  = r.validation_summary || {};
+  const tl  = r.validation_timeline || [];
+  const fs  = r.food_safety || {};
+  const imp = r.impact_snapshot || {};
+
+  const ALLERGEN_LABELS = {
+    gluten:'Gluten',crustaceans:'Crustaceans',eggs:'Eggs',fish:'Fish',
+    peanuts:'Peanuts',soy:'Soy',dairy:'Dairy',tree_nuts:'Tree Nuts',
+    celery:'Celery',mustard:'Mustard',sesame:'Sesame',sulphites:'Sulphites',
+    lupin:'Lupin',molluscs:'Molluscs',
+  };
+
+  const TYPE_LABELS = {
+    TASTING:'Tasting',KITCHEN_TRIAL:'Kitchen Trial',PORTION_CHECK:'Portion Check',
+    HOLDING_CHECK:'Holding Check',ASSEMBLY_CHECK:'Assembly Check',OTHER:'Other',
+  };
+
+  // Status chips
+  const valStatus  = vs.status || 'INCOMPLETE';
+  const safeStatus = fs.declaration_status || 'MISSING';
+  const impStatus  = imp.status || 'CLEAN';
+
+  const VAL_COLOR  = {VALIDATED:'#059669',CONDITIONAL:'#D97706',INCOMPLETE:'#DC2626',FAIL:'#DC2626',NONE:'#6B7280'};
+  const SAF_COLOR  = {CONFIRMED:'#059669',NEEDS_REVIEW:'#D97706',DRAFT:'#6B7280',MISSING:'#DC2626'};
+  const IMP_COLOR  = {CLEAN:'#059669',ADVISORY:'#D97706',REVIEW_REQUIRED:'#D97706',SAFETY_RECONFIRMATION_REQUIRED:'#DC2626'};
+
+  // Present allergens
+  const allergenList = Object.entries(ALLERGEN_LABELS)
+    .filter(([k]) => (fs.allergens||{})[k] === true)
+    .map(([,v])=>v);
+
+  // BOM lines table rows
+  const bomRows = (rec.lines||[]).map(l=>`
+    <tr>
+      <td>${l.line_no}</td>
+      <td>${l.component_name||'—'}</td>
+      <td style="font-family:monospace;font-size:11px">${l.component_code||'—'}</td>
+      <td style="text-transform:uppercase;font-size:11px;color:#6B7280">${l.component_type==='SEMI_FINISHED'?'SF':'RAW'}</td>
+      <td>${l.quantity!=null?Number(l.quantity).toFixed(3):' —'} kg</td>
+      <td>${l.waste_factor!=null?Number(l.waste_factor).toFixed(4):'—'}</td>
+    </tr>`).join('');
+
+  // Validation timeline rows grouped by type
+  const tlByType = {};
+  tl.forEach(e=>{
+    if(!tlByType[e.validation_type]) tlByType[e.validation_type]=[];
+    tlByType[e.validation_type].push(e);
+  });
+  const tlHTML = Object.entries(tlByType).map(([type,evts])=>`
+    <div class="tl-type">
+      <div class="tl-type-label">${TYPE_LABELS[type]||type}</div>
+      ${evts.map(e=>{
+        const outcomeColor = e.outcome==='PASS'?'#059669':e.outcome==='FAIL'?'#DC2626':'#D97706';
+        return `<div class="tl-event">
+          <span class="tl-outcome" style="color:${outcomeColor};border-color:${outcomeColor}22;background:${outcomeColor}11">${e.outcome}</span>
+          <span class="tl-date">${new Date(e.validated_at).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}</span>
+          <span class="tl-actor">${e.validator||'—'}</span>
+          ${e.notes?`<span class="tl-note">${e.notes}</span>`:''}
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+
+  // Validation required vs completed chips
+  const reqTypes  = (vs.required_types||[]);
+  const passTypes = (vs.passed_types||[]);
+  const reqChips  = reqTypes.map(t=>{
+    const done = passTypes.includes(t);
+    return `<span class="req-chip" style="background:${done?'#D1FAE5':'#FEE2E2'};color:${done?'#065F46':'#991B1B'};border-color:${done?'#6EE7B7':'#FECACA'}">${done?'✓':' ✗'} ${TYPE_LABELS[t]||t}</span>`;
+  }).join('');
+
+  // ── Section 3 body — pre-built to avoid nested template literal issues ──
+  let sec3Body = '<div class="field-value muted">No recipe built yet.</div>';
+  if((rec.lines||[]).length > 0) {
+    let svcReq = '';
+    const sr = r.recipe?.service_requirements;
+    if(sr) {
+      const svcCond = (sr.service_condition||'—').replace(/_/g,' ');
+      const svcMins = sr.assembly_to_service_mins||'—';
+      svcReq = '<div style="margin-top:16px"><div class="field-label">Service Requirements</div>'
+        + '<div class="field-grid" style="margin-top:6px">'
+        + '<div class="field"><div class="field-label">Assembly → Service</div>'
+        + '<div class="field-value">' + svcMins + ' min</div></div>'
+        + '<div class="field"><div class="field-label">Service Condition</div>'
+        + '<div class="field-value">' + svcCond + '</div></div>'
+        + '</div></div>';
+    }
+    sec3Body = '<table>'
+      + '<thead><tr><th>#</th><th>Component</th><th>Code</th><th>Type</th><th>Qty (kg)</th><th>Waste Factor</th></tr></thead>'
+      + '<tbody>' + bomRows + '</tbody></table>'
+      + svcReq;
+  }
+
+  // ── Sentence-case display map for Change Impact values ──
+  const IMP_DISPLAY = {
+    CLEAN:                            'Clean',
+    ADVISORY:                         'Advisory',
+    REVIEW_REQUIRED:                  'Review required',
+    SAFETY_RECONFIRMATION_REQUIRED:   'Safety reconfirmation required',
+  };
+  const MARGIN_DISPLAY = {
+    WITHIN_TOLERANCE: 'Within tolerance',
+    BELOW_TARGET:     'Below target',
+    BELOW_FLOOR:      'Below floor',
+  };
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Validation Progress Report — ${p.name||'Product'}</title>
+<style>
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  html { font-size:13px; }
+  body {
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color:#111827; background:#fff;
+    margin:0; padding:0;
+  }
+
+  /* ── Page layout ── */
+  .page {
+    width:794px; /* A4 */
+    margin:0 auto;
+    padding:0;
+  }
+
+  /* ── Page header (repeated on every page via print) ── */
+  .doc-header {
+    background:#0D0E1A;
+    color:#fff;
+    padding:24px 40px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .doc-header .brand { font-size:11px; font-weight:700; letter-spacing:0.12em; color:#9CA3AF; text-transform:uppercase; margin-bottom:4px; }
+  .doc-header .doc-title { font-size:18px; font-weight:800; color:#fff; line-height:1.2; }
+  .doc-header .doc-sub { font-size:12px; color:#9CA3AF; margin-top:4px; }
+  .doc-header .meta { text-align:right; font-size:11px; color:#9CA3AF; line-height:1.7; }
+  .doc-header .meta strong { color:#E5E7EB; }
+
+  /* ── Status ribbon ── */
+  .status-ribbon {
+    background:#F9FAFB;
+    border-bottom:2px solid #E5E7EB;
+    padding:12px 40px;
+    display:flex;
+    gap:32px;
+    align-items:center;
+  }
+  .status-pill {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:4px 12px; border-radius:999px;
+    font-size:11px; font-weight:700; letter-spacing:0.04em;
+    border:1px solid;
+  }
+  .status-label { font-size:10px; color:#6B7280; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+
+  /* ── Content area ── */
+  .content { padding:32px 40px; }
+
+  /* ── Section ── */
+  .section { margin-bottom:32px; page-break-inside:avoid; }
+  .section-header {
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:14px; padding-bottom:8px;
+    border-bottom:1px solid #E5E7EB;
+  }
+  .section-num {
+    width:22px; height:22px; border-radius:50%;
+    background:#0D0E1A; color:#fff;
+    font-size:10px; font-weight:800;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .section-title { font-size:13px; font-weight:800; color:#111827; letter-spacing:0.01em; text-transform:uppercase; }
+
+  /* ── Field grid ── */
+  .field-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; }
+  .field-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px 20px; }
+  .field { }
+  .field-label { font-size:10px; font-weight:700; color:#6B7280; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:3px; }
+  .field-value { font-size:12.5px; color:#111827; }
+  .field-value.mono { font-family:monospace; font-size:11.5px; }
+  .field-value.muted { color:#6B7280; font-style:italic; }
+
+  /* ── Table ── */
+  table { width:100%; border-collapse:collapse; font-size:11.5px; margin-top:8px; }
+  thead tr { background:#F3F4F6; }
+  th { text-align:left; padding:7px 10px; font-size:10px; font-weight:700; color:#6B7280; text-transform:uppercase; letter-spacing:0.06em; border-bottom:2px solid #E5E7EB; }
+  td { padding:7px 10px; border-bottom:1px solid #F3F4F6; vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+
+  /* ── Allergen grid ── */
+  .allergen-grid { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .allergen-chip {
+    padding:3px 10px; border-radius:999px; font-size:11px; font-weight:600;
+    border:1px solid;
+  }
+  .allergen-present { background:#FEE2E2; color:#991B1B; border-color:#FECACA; }
+  .allergen-absent  { background:#F9FAFB; color:#9CA3AF; border-color:#E5E7EB; }
+
+  /* ── Validation requirements ── */
+  .req-chips { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 4px; }
+  .req-chip { padding:4px 12px; border-radius:999px; font-size:11.5px; font-weight:700; border:1px solid; }
+
+  /* ── Timeline ── */
+  .tl-type { margin-bottom:14px; }
+  .tl-type-label { font-size:10px; font-weight:700; color:#6B7280; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:6px; padding-bottom:4px; border-bottom:1px solid #F3F4F6; }
+  .tl-event { display:flex; align-items:baseline; gap:10px; padding:5px 0; font-size:11.5px; border-bottom:1px solid #F9FAFB; }
+  .tl-outcome { padding:2px 8px; border-radius:999px; font-size:10px; font-weight:800; border:1px solid; flex-shrink:0; }
+  .tl-date  { color:#6B7280; flex-shrink:0; min-width:90px; }
+  .tl-actor { color:#374151; flex-shrink:0; min-width:120px; }
+  .tl-note  { color:#6B7280; font-style:italic; flex:1; }
+
+  /* ── Impact snapshot ── */
+  .impact-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+  .impact-item { padding:10px 14px; border-radius:6px; border:1px solid #E5E7EB; background:#F9FAFB; }
+  .impact-item-label { font-size:10px; font-weight:700; color:#6B7280; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
+  .impact-item-value { font-size:12.5px; font-weight:700; }
+
+  /* ── Call-out box ── */
+  .callout { padding:10px 14px; border-radius:6px; border-left:3px solid; margin-top:8px; font-size:12px; line-height:1.5; }
+  .callout-warn { background:#FFFBEB; border-color:#F59E0B; color:#92400E; }
+  .callout-danger { background:#FFF5F5; border-color:#EF4444; color:#7F1D1D; }
+  .callout-ok    { background:#ECFDF5; border-color:#10B981; color:#064E3B; }
+
+  /* ── Divider ── */
+  .divider { height:1px; background:#E5E7EB; margin:8px 0; }
+
+  /* ── Footer ── */
+  .doc-footer {
+    background:#F9FAFB;
+    border-top:1px solid #E5E7EB;
+    padding:10px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:10px;
+    color:#9CA3AF;
+    margin-top:40px;
+  }
+  .doc-footer strong { color:#6B7280; }
+
+  /* ── Print rules ── */
+  @media print {
+    body { margin:0; }
+    .page { width:100%; }
+    .doc-header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .section { page-break-inside:avoid; }
+    .no-break { page-break-inside:avoid; }
+    @page {
+      size:A4;
+      margin:0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Document Header ── -->
+  <div class="doc-header">
+    <div>
+      <div class="brand">Green &amp; Protein · WT360</div>
+      <div class="doc-title">Validation Progress Report</div>
+      <div class="doc-sub">Technical Product Dossier · Confidential</div>
+    </div>
+    <div class="meta">
+      <div><strong>Generated</strong> ${ts}</div>
+      <div><strong>By</strong> ${r.generated_by||'—'}</div>
+      <div><strong>Product</strong> ${p.internal_code||'—'}</div>
+    </div>
+  </div>
+
+  <!-- ── Status Ribbon ── -->
+  <div class="status-ribbon">
+    <div>
+      <div class="status-label">Validation</div>
+      <span class="status-pill" style="color:${VAL_COLOR[valStatus]||'#6B7280'};border-color:${VAL_COLOR[valStatus]||'#6B7280'}33;background:${VAL_COLOR[valStatus]||'#6B7280'}11">
+        ${valStatus}
+      </span>
+    </div>
+    <div>
+      <div class="status-label">Food Safety</div>
+      <span class="status-pill" style="color:${SAF_COLOR[safeStatus]||'#6B7280'};border-color:${SAF_COLOR[safeStatus]||'#6B7280'}33;background:${SAF_COLOR[safeStatus]||'#6B7280'}11">
+        ${safeStatus}
+      </span>
+    </div>
+    <div>
+      <div class="status-label">Change Impact</div>
+      <span class="status-pill" style="color:${IMP_COLOR[impStatus]||'#6B7280'};border-color:${IMP_COLOR[impStatus]||'#6B7280'}33;background:${IMP_COLOR[impStatus]||'#6B7280'}11">
+        ${IMP_DISPLAY[impStatus]||impStatus}
+      </span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ── SECTION 1: Product Overview ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title">Product Overview</div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><div class="field-label">Product Name</div><div class="field-value">${p.name||'—'}</div></div>
+        <div class="field"><div class="field-label">Internal Code</div><div class="field-value mono">${p.internal_code||'—'}</div></div>
+        <div class="field"><div class="field-label">Category</div><div class="field-value">${(p.category_code||'—').replace(/_/g,' ')}</div></div>
+        <div class="field"><div class="field-label">Lifecycle Stage</div><div class="field-value">${(p.lifecycle_stage||'—').replace(/_/g,' ')}</div></div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 2: Brief Summary ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title">Marketing Brief</div>
+      </div>
+      ${br ? `
+      <div class="field-grid-3" style="margin-bottom:12px">
+        <div class="field"><div class="field-label">Target Price</div><div class="field-value">${br.target_selling_price||'—'} ALL</div></div>
+        <div class="field"><div class="field-label">Margin Floor</div><div class="field-value">${br.target_margin_floor||'—'}%</div></div>
+        <div class="field"><div class="field-label">Brief No.</div><div class="field-value mono">#${br.brief_no||'—'}</div></div>
+      </div>
+      ${br.positioning?`<div class="field"><div class="field-label">Positioning</div><div class="field-value">${br.positioning}</div></div>`:''}
+      ${br.mandatory_constraints?`<div class="field" style="margin-top:8px"><div class="field-label">Constraints</div><div class="field-value">${br.mandatory_constraints}</div></div>`:''}
+      ` : `<div class="field-value muted">No Marketing brief attached. TD-initiated draft.</div>`}
+    </div>
+
+    <!-- ── SECTION 3: Recipe Summary ── -->
+    <div class="section no-break">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title">Current Recipe</div>
+      </div>
+      ${sec3Body}
+    </div>
+
+    <!-- ── SECTION 4: Validation Summary ── -->
+    <div class="section no-break">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title">Validation Summary</div>
+      </div>
+      <div class="field-grid" style="margin-bottom:12px">
+        <div class="field"><div class="field-label">Category Template</div><div class="field-value">${(vs.category_code||'—').replace(/_/g,' ')}</div></div>
+        <div class="field"><div class="field-label">Overall Status</div>
+          <span class="status-pill" style="display:inline-flex;color:${VAL_COLOR[valStatus]||'#6B7280'};border-color:${VAL_COLOR[valStatus]||'#6B7280'}33;background:${VAL_COLOR[valStatus]||'#6B7280'}11;font-size:11px;padding:3px 10px">
+            ${valStatus}
+          </span>
+        </div>
+      </div>
+      ${vs.template_description?`<div style="font-size:11.5px;color:#6B7280;margin-bottom:10px;font-style:italic">${vs.template_description}</div>`:''}
+      <div class="field-label">Required Validations</div>
+      <div class="req-chips">${reqChips||'<span style="color:#9CA3AF;font-size:12px">No template requirements found</span>'}</div>
+      ${(vs.missing_types||[]).length>0?`
+      <div class="callout callout-warn" style="margin-top:10px">
+        <strong>Missing:</strong> ${(vs.missing_types||[]).map(t=>TYPE_LABELS[t]||t).join(', ')}
+      </div>`:
+      valStatus==='VALIDATED'?`
+      <div class="callout callout-ok" style="margin-top:10px">
+        All required validation types completed with PASS outcomes.
+      </div>`:''}
+    </div>
+
+    <!-- ── SECTION 5: Validation Timeline ── -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title">Validation Timeline</div>
+      </div>
+      ${tl.length===0
+        ? '<div class="field-value muted">No validation events logged yet.</div>'
+        : tlHTML}
+    </div>
+
+    <!-- ── SECTION 6: Food Safety Summary ── -->
+    <div class="section no-break">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div class="section-title">Food Safety</div>
+      </div>
+      <div class="field-grid" style="margin-bottom:14px">
+        <div class="field"><div class="field-label">Declaration Status</div>
+          <span class="status-pill" style="display:inline-flex;color:${SAF_COLOR[safeStatus]||'#6B7280'};border-color:${SAF_COLOR[safeStatus]||'#6B7280'}33;background:${SAF_COLOR[safeStatus]||'#6B7280'}11;font-size:11px;padding:3px 10px">
+            ${safeStatus}
+          </span>
+        </div>
+        ${fs.confirmed_at?`<div class="field"><div class="field-label">Confirmed At</div><div class="field-value">${new Date(fs.confirmed_at).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}</div></div>`:''}
+      </div>
+      <div class="field-label" style="margin-bottom:8px">Allergen Declaration</div>
+      <div class="allergen-grid">
+        ${allergenList.length > 0
+          ? allergenList.map(v=>`<span class="allergen-chip allergen-present">⚠ ${v}</span>`).join('')
+          : `<span style="font-size:12px;color:#6B7280;font-style:italic">None detected from current BOM</span>`
+        }
+      </div>
+      <div style="margin-top:6px;font-size:10.5px;color:#9CA3AF">
+        Derived automatically from BOM · confirmed by Technical Director
+      </div>
+      ${fs.cross_contact_notes?`<div style="margin-top:12px"><div class="field-label">Cross-Contact Notes</div><div class="field-value" style="margin-top:4px">${fs.cross_contact_notes}</div></div>`:''}
+      ${fs.label_warnings?`<div style="margin-top:8px"><div class="field-label">Label Warnings</div><div class="field-value" style="margin-top:4px">${fs.label_warnings}</div></div>`:''}
+      ${fs.ccp_notes&&!fs.no_ccp_required?`<div style="margin-top:8px"><div class="field-label">Critical Control Points</div><div class="field-value" style="margin-top:4px">${fs.ccp_notes}</div></div>`:''}
+      ${fs.no_ccp_required?`<div class="callout callout-ok" style="margin-top:10px">No CCP required for this product — declared by TD.</div>`:''}
+    </div>
+
+    <!-- ── SECTION 7: Change Impact Snapshot ── -->
+    <div class="section no-break">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <div class="section-title">Change Impact Snapshot</div>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-item">
+          <div class="impact-item-label">Overall Impact Status</div>
+          <div class="impact-item-value" style="color:${IMP_COLOR[impStatus]||'#6B7280'}">
+            ${IMP_DISPLAY[impStatus]||impStatus}
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-item-label">Safety Drift</div>
+          <div class="impact-item-value" style="color:${imp.has_safety_drift?'#DC2626':'#059669'}">
+            ${imp.has_safety_drift?'Open — reconfirmation required':'None detected'}
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-item-label">SF Lineage Impact</div>
+          <div class="impact-item-value" style="color:${imp.has_sf_impact?'#D97706':'#059669'}">
+            ${imp.has_sf_impact?'Open — recipe review advised':'None detected'}
+          </div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-item-label">Margin Status</div>
+          <div class="impact-item-value" style="color:${imp.margin_status==='BELOW_FLOOR'?'#DC2626':imp.margin_status==='BELOW_TARGET'?'#D97706':'#059669'}">
+            ${MARGIN_DISPLAY[imp.margin_status||'WITHIN_TOLERANCE']||'Within tolerance'}
+            ${imp.estimated_margin_pct!=null?` (${imp.estimated_margin_pct}%)`:''}
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:10.5px;color:#9CA3AF">
+        Snapshot captured at time of export: ${ts}
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- ── Document Footer ── -->
+  <div class="doc-footer">
+    <div><strong>Green &amp; Protein</strong> · WT360 Platform</div>
+    <div>Validation Progress Report · ${p.name||'—'} · ${p.internal_code||'—'}</div>
+    <div>Confidential · Generated ${ts}</div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>`;
+}
+
+function ValidationLabPage({session, showToast, products}) {
+  const [selId,setSelId]           = useState('');
+  const [selName,setSelName]       = useState('');
+  const [selCat,setSelCat]         = useState('');
+  const [events,setEvents]         = useState([]);
+  const [readiness,setReadiness]   = useState(null);
+  const [loading,setLoading]       = useState(false);
+  const [template,setTemplate]     = useState(null);
+  const [exporting,setExporting]   = useState(false);
+  // New event form
+  const [newType,setNewType]       = useState('TASTING');
+  const [newOutcome,setNewOutcome] = useState('PASS');
+  const [newNote,setNewNote]       = useState('');
+  const [logging,setLogging]       = useState(false);
+
+  const menuProducts = (products||[]).filter(p =>
+    ['RECIPE_DRAFT','RECIPE_REVISION'].includes(p.menu_product_lifecycle?.lifecycle_stage)
+  );
+
+  const loadProduct = async (productId) => {
+    if(!productId) return;
+    setLoading(true);
+    const p = menuProducts.find(x=>x.id===productId);
+    setSelName(p?.name||'');
+    setSelCat(p?.category_code||'');
+
+    // Load validation events
+    const {data:evts} = await SB
+      .from('recipe_rd_validation_events')
+      .select(`*, employees(first_name,last_name)`)
+      .eq('product_id', productId)
+      .order('validated_at', {ascending:false});
+    setEvents(evts||[]);
+
+    // Load readiness
+    const {data:rdy} = await SB.rpc('td_validation_readiness',{
+      p_product_id: productId,
+      p_category_code: p?.category_code||null,
+    });
+    setReadiness(rdy);
+
+    // Load category template
+    const {data:tmpl} = await SB
+      .from('category_validation_templates')
+      .select('required_types,description')
+      .eq('category_code', p?.category_code||'OTHER')
+      .single();
+    setTemplate(tmpl);
+
+    setLoading(false);
+  };
+
+  const logEvent = async () => {
+    if(!selId){ showToast('Select a product first','error'); return; }
+    setLogging(true);
+    const {error} = await SB.rpc('td_log_validation_event',{
+      p_product_id:      selId,
+      p_validation_type: newType,
+      p_outcome:         newOutcome,
+      p_notes:           newNote.trim()||null,
+    });
+    setLogging(false);
+    if(error){ showToast(error.message,'error'); return; }
+    showToast('Validation event logged ✓');
+    setNewNote('');
+    await loadProduct(selId);
+  };
+
+  const STATUS_COLORS = {
+    VALIDATED:  {bg:WT.success050,color:WT.success600,border:'#BBF7D0'},
+    INCOMPLETE: {bg:'#EBF8FF',color:WT.blue600,border:'#BAE6FD'},
+    CONDITIONAL:{bg:'#FFFBEB',color:WT.warning600,border:'#FDE68A'},
+    NONE:       {bg:WT.bgSoft,color:WT.textTertiary,border:WT.divider},
+    FAIL:       {bg:'#FFF5F5',color:WT.error600,border:'#FECACA'},
+  };
+
+  const OUTCOME_COLORS = {
+    PASS: WT.success600, FAIL: WT.error600, CONDITIONAL: WT.warning600
+  };
+
+  const TYPE_LABELS = {
+    TASTING:'Tasting', KITCHEN_TRIAL:'Kitchen Trial', PORTION_CHECK:'Portion Check',
+    HOLDING_CHECK:'Holding Check', ASSEMBLY_CHECK:'Assembly Check', OTHER:'Other',
+  };
+
+  // Group events by type
+  const grouped = {};
+  events.forEach(e => {
+    if(!grouped[e.validation_type]) grouped[e.validation_type] = [];
+    grouped[e.validation_type].push(e);
+  });
+
+  const exportReport = async () => {
+    if(!selId) return;
+    setExporting(true);
+    const {data:report, error} = await SB.rpc('td_get_validation_report',{p_product_id:selId});
+    if(error){ showToast(error.message,'error'); setExporting(false); return; }
+    // Render report in a new print window
+    const html = buildReportHTML(report);
+    const win = window.open('','_blank','width=900,height=700');
+    win.document.write(html);
+    win.document.close();
+    win.focus();
+    setTimeout(()=>{ win.print(); }, 800);
+    setExporting(false);
+  };
+
+  return (
+    <div style={{padding:'28px 32px', fontFamily:WT.font, maxWidth:860}}>
+      <div style={{display:'flex',alignItems:'flex-start',justifyContent:'space-between',gap:16,marginBottom:20}}>
+        <WtPageHeader title="Validation Lab"
+          subtitle="Structured validation history and readiness engine for TD → CFO handoff"/>
+        <WtBtn variant="secondary" size="sm" onClick={exportReport} disabled={!selId||exporting}>
+          <Icon name="download" size={14}/>
+          {exporting ? ' Generating…' : ' Export Report PDF'}
+        </WtBtn>
+      </div>
+
+      {/* Product selector — only in-development products */}
+      <div style={{marginBottom:24}}>
+        <label style={{fontSize:11.5,fontWeight:700,color:WT.textTertiary,
+          textTransform:'uppercase',letterSpacing:'0.07em',display:'block',marginBottom:6}}>
+          Select product in development
+        </label>
+        <select value={selId} onChange={e=>{setSelId(e.target.value);loadProduct(e.target.value);}}
+          style={{width:'100%',maxWidth:420,padding:'9px 12px',borderRadius:WT.rMd,
+            border:`1px solid ${WT.border}`,fontSize:13,fontFamily:WT.font,
+            background:WT.bgPanel,color:WT.textPrimary}}>
+          <option value="">— Choose a product —</option>
+          {menuProducts.map(p=>(
+            <option key={p.id} value={p.id}>{p.name} ({p.category_code||'?'})</option>
+          ))}
+        </select>
+      </div>
+
+      {!selId && <WtEmpty icon="testtube" title="Select a product"
+        subtitle="Only products in RECIPE_DRAFT or RECIPE_REVISION are shown."/>}
+
+      {selId && loading && <WtEmpty icon="testtube" title="Loading…"/>}
+
+      {selId && !loading && (
+        <div style={{display:'flex',flexDirection:'column',gap:20}}>
+
+          {/* ── Readiness summary ── */}
+          {readiness && (
+            <WtCard>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',gap:16}}>
+                <div>
+                  <div style={{fontSize:12,fontWeight:700,color:WT.textTertiary,
+                    textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:10}}>
+                    Readiness — {selCat||'No category'}
+                  </div>
+                  {template && (
+                    <div style={{fontSize:11.5,color:WT.textTertiary,marginBottom:12}}>
+                      {template.description}
+                    </div>
+                  )}
+                  <div style={{display:'flex',gap:8,flexWrap:'wrap',marginBottom:12}}>
+                    {(readiness.required||[]).map(t=>{
+                      const done = (readiness.passed||[]).includes(t);
+                      return (
+                        <span key={t} style={{fontSize:11,fontWeight:700,
+                          padding:'3px 10px',borderRadius:99,
+                          background:done?WT.success050:'#FFF5F5',
+                          color:done?WT.success600:WT.error600,
+                          border:`1px solid ${done?'#BBF7D0':'#FECACA'}`}}>
+                          {done?'✓ ':'✗ '}{TYPE_LABELS[t]||t}
+                        </span>
+                      );
+                    })}
+                  </div>
+                  {(readiness.missing||[]).length > 0 && (
+                    <div style={{fontSize:12,color:WT.error600}}>
+                      Missing: {readiness.missing.map(t=>TYPE_LABELS[t]||t).join(', ')}
+                    </div>
+                  )}
+                </div>
+                <div style={{flexShrink:0,textAlign:'center',padding:'12px 20px',
+                  borderRadius:WT.rMd,
+                  background:STATUS_COLORS[readiness.status]?.bg||WT.bgSoft,
+                  border:`1px solid ${STATUS_COLORS[readiness.status]?.border||WT.divider}`}}>
+                  <div style={{fontSize:11,fontWeight:700,
+                    color:STATUS_COLORS[readiness.status]?.color||WT.textTertiary,
+                    textTransform:'uppercase',letterSpacing:'0.06em'}}>
+                    {readiness.status}
+                  </div>
+                </div>
+              </div>
+            </WtCard>
+          )}
+
+          {/* ── Log new event ── */}
+          <WtCard>
+            <div style={{fontSize:12,fontWeight:700,color:WT.textTertiary,
+              textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:14}}>
+              Log Validation Event
+            </div>
+            <div style={{display:'flex',gap:10,alignItems:'flex-end',flexWrap:'wrap'}}>
+              <div>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,
+                  display:'block',marginBottom:4}}>Type</label>
+                <select value={newType} onChange={e=>setNewType(e.target.value)}
+                  style={{padding:'8px 10px',borderRadius:WT.rSm,border:`1px solid ${WT.border}`,
+                    fontSize:12.5,fontFamily:WT.font,background:WT.bgPanel,color:WT.textPrimary}}>
+                  {Object.entries(TYPE_LABELS).map(([k,v])=>(
+                    <option key={k} value={k}>{v}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,
+                  display:'block',marginBottom:4}}>Outcome</label>
+                <select value={newOutcome} onChange={e=>setNewOutcome(e.target.value)}
+                  style={{padding:'8px 10px',borderRadius:WT.rSm,border:`1px solid ${WT.border}`,
+                    fontSize:12.5,fontFamily:WT.font,background:WT.bgPanel,color:WT.textPrimary}}>
+                  <option value="PASS">Pass</option>
+                  <option value="FAIL">Fail</option>
+                  <option value="CONDITIONAL">Conditional</option>
+                </select>
+              </div>
+              <div style={{flex:1,minWidth:200}}>
+                <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,
+                  display:'block',marginBottom:4}}>Note (optional)</label>
+                <input value={newNote} onChange={e=>setNewNote(e.target.value)}
+                  placeholder="e.g. Texture slightly off — adjusted sauce ratio"
+                  style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                    border:`1px solid ${WT.border}`,fontSize:12.5,fontFamily:WT.font,
+                    outline:'none',background:WT.bgPanel,color:WT.textPrimary}}/>
+              </div>
+              <WtBtn variant="primary" onClick={logEvent} disabled={logging}>
+                {logging ? 'Logging…' : 'Log Event'}
+              </WtBtn>
+            </div>
+          </WtCard>
+
+          {/* ── Validation timeline ── */}
+          <WtCard>
+            <div style={{fontSize:12,fontWeight:700,color:WT.textTertiary,
+              textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:14}}>
+              Validation Timeline
+            </div>
+            {events.length===0
+              ? <div style={{fontSize:13,color:WT.textTertiary,padding:'8px 0'}}>
+                  No validation events logged yet.
+                </div>
+              : Object.entries(grouped).map(([type,evts])=>(
+                <div key={type} style={{marginBottom:16}}>
+                  <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,
+                    textTransform:'uppercase',letterSpacing:'0.07em',
+                    marginBottom:8,display:'flex',alignItems:'center',gap:8}}>
+                    {TYPE_LABELS[type]||type}
+                    <div style={{flex:1,height:1,background:WT.divider}}/>
+                  </div>
+                  {evts.map((e,i)=>(
+                    <div key={i} style={{display:'flex',alignItems:'flex-start',gap:12,
+                      padding:'10px 14px',marginBottom:6,
+                      background:WT.bgSoft,borderRadius:WT.rSm,
+                      border:`1px solid ${WT.divider}`,
+                      borderLeft:`3px solid ${OUTCOME_COLORS[e.outcome]||WT.textTertiary}`}}>
+                      <div style={{flex:1}}>
+                        <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:2}}>
+                          <span style={{fontSize:12,fontWeight:700,
+                            color:OUTCOME_COLORS[e.outcome]||WT.textTertiary}}>
+                            {e.outcome}
+                          </span>
+                          <span style={{fontSize:11.5,color:WT.textTertiary}}>
+                            by {e.employees?.first_name} {e.employees?.last_name}
+                          </span>
+                          <span style={{fontSize:11,color:WT.textTertiary,marginLeft:'auto'}}>
+                            {new Date(e.validated_at).toLocaleString()}
+                          </span>
+                        </div>
+                        {e.notes && (
+                          <div style={{fontSize:12,color:WT.textSecondary,fontStyle:'italic'}}>
+                            {e.notes}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))
+            }
+          </WtCard>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── CHANGE IMPACT PAGE ──────────────────────────────────────────────────── */
+function ChangeImpactPage({session, showToast, setPage, setActiveProductId}) {
+  const [data, setData]     = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    SB.rpc('td_get_change_impact').then(({data:d, error}) => {
+      if(error) showToast(error.message, 'error');
+      else setData(d);
+      setLoading(false);
+    });
+  }, []);
+
+  const goToSafety  = (productId) => { setActiveProductId(productId); setPage('safety'); };
+  const goToRecipes = (productId) => { setActiveProductId(productId); setPage('recipes'); };
+
+  const SEVERITY_STYLES = {
+    SAFETY_CRITICAL: {bg:'#FFF5F5', border:'#FECACA', accent:'#EF4444', label:'Safety Critical'},
+    FINANCE_RISK:    {bg:'#FFFBEB', border:'#FDE68A', accent:'#F59E0B', label:'Finance Risk'},
+    TECHNICAL_REVIEW:{bg:'#EBF8FF', border:'#BAE6FD', accent:'#3B82F6', label:'Technical Review'},
+    ADVISORY:        {bg:WT.bgSoft, border:WT.divider, accent:WT.textTertiary, label:'Advisory'},
+  };
+
+  const ImpactRow = ({item, severity, cta, onCta}) => {
+    const s = SEVERITY_STYLES[severity] || SEVERITY_STYLES.ADVISORY;
+    return (
+      <div style={{display:'flex', alignItems:'flex-start', gap:14,
+        padding:'12px 16px', marginBottom:8,
+        background:s.bg, borderRadius:WT.rMd,
+        border:`1px solid ${s.border}`, borderLeft:`3px solid ${s.accent}`}}>
+        <div style={{flex:1, minWidth:0}}>
+          <div style={{display:'flex', alignItems:'center', gap:8, marginBottom:3}}>
+            <span style={{fontSize:12.5, fontWeight:700, color:WT.textStrong,
+              overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap'}}>
+              {item.product_name}
+            </span>
+            <span style={{fontSize:10, fontWeight:700, padding:'1px 7px', borderRadius:99,
+              background:s.accent+'22', color:s.accent, border:`1px solid ${s.accent}44`,
+              flexShrink:0}}>
+              {s.label}
+            </span>
+          </div>
+          <div style={{fontSize:11.5, color:WT.textSecondary, marginBottom:2}}>
+            {item.impact_type || item.change_detail?.path || '—'}
+          </div>
+          {item.upstream_name && (
+            <div style={{fontSize:11, color:WT.textTertiary}}>
+              Upstream: <span style={{fontFamily:'monospace'}}>{item.upstream_name}</span>
+              {item.detected_at && ` · ${new Date(item.detected_at).toLocaleDateString()}`}
+            </div>
+          )}
+        </div>
+        {cta && (
+          <WtBtn variant="ghost" size="sm" onClick={()=>onCta(item.product_id)}
+            style={{flexShrink:0, fontSize:11.5}}>
+            {cta} →
+          </WtBtn>
+        )}
+      </div>
+    );
+  };
+
+  if(loading) return <div style={{padding:'28px 32px', fontFamily:WT.font}}>
+    <WtEmpty icon="zap" title="Loading impact data…"/>
+  </div>;
+
+  const safety  = data?.safety_reconfirm  || [];
+  const sf      = data?.sf_lineage_impact || [];
+  const margin  = data?.margin_drift      || [];
+  const total   = safety.length + sf.length + margin.length;
+
+  const Section = ({title, subtitle, items, accentColor, renderRow}) =>
+    items.length === 0 ? null : (
+      <div style={{marginBottom:28}}>
+        <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:10}}>
+          <div style={{width:3, height:18, background:accentColor, borderRadius:2}}/>
+          <div>
+            <div style={{fontSize:13, fontWeight:700, color:WT.textStrong}}>{title}</div>
+            <div style={{fontSize:11.5, color:WT.textTertiary}}>{subtitle}</div>
+          </div>
+          <span style={{fontSize:11, fontWeight:700, padding:'2px 9px', borderRadius:99,
+            background:accentColor+'22', color:accentColor,
+            border:`1px solid ${accentColor}44`, marginLeft:'auto'}}>
+            {items.length}
+          </span>
+        </div>
+        {items.map((item, i) => renderRow(item, i))}
+      </div>
+    );
+
+  return (
+    <div style={{padding:'28px 32px', fontFamily:WT.font, maxWidth:820}}>
+      <WtPageHeader title="Change Impact"
+        subtitle="Downstream consequence radar · read-only · navigate to act"/>
+
+      {/* Summary bar */}
+      <div style={{display:'flex', gap:12, marginBottom:28, flexWrap:'wrap'}}>
+        {[
+          {label:'Safety Re-Review', count:safety.length, color:'#EF4444'},
+          {label:'SF Lineage Impact', count:sf.length, color:WT.blue600},
+          {label:'Margin Drift', count:margin.length, color:'#F59E0B'},
+        ].map(s=>(
+          <div key={s.label} style={{display:'flex', alignItems:'center', gap:10,
+            padding:'10px 16px', borderRadius:WT.rMd, flex:1, minWidth:140,
+            background:WT.bgPanel, border:`1px solid ${WT.border}`}}>
+            <span style={{fontSize:20, fontWeight:800, color:s.count>0?s.color:WT.textTertiary}}>
+              {s.count}
+            </span>
+            <span style={{fontSize:12, color:WT.textSecondary, fontWeight:500}}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {total === 0 ? (
+        <WtEmpty icon="zap" title="No impact events detected"
+          subtitle="When allergen flags change, SF recipes are saved, or margin drifts below floor — this surface will show the downstream consequences."/>
+      ) : (
+        <>
+          {/* ── Section A: Safety Re-Review Required ── */}
+          <Section
+            title="Safety Re-Review Required"
+            subtitle="Products whose food safety declaration is stale due to upstream change. Act in Food Safety."
+            items={safety}
+            accentColor="#EF4444"
+            renderRow={(item, i) => (
+              <ImpactRow key={i} item={item} severity="SAFETY_CRITICAL"
+                cta="Open Food Safety" onCta={goToSafety}/>
+            )}
+          />
+
+          {/* ── Section B: SF Downstream Lineage ── */}
+          <Section
+            title="SF Downstream Impact"
+            subtitle="Recently changed SFs and the menu products that inherit them. Act in Recipe Studio."
+            items={sf}
+            accentColor={WT.blue600}
+            renderRow={(item, i) => (
+              <ImpactRow key={i} item={item} severity="TECHNICAL_REVIEW"
+                cta="Open Studio" onCta={goToRecipes}/>
+            )}
+          />
+
+          {/* ── Section C: Margin Drift ── */}
+          <Section
+            title="Margin Drift Watch"
+            subtitle="Products whose estimated margin fell below target floor due to ingredient price movement."
+            items={margin}
+            accentColor="#F59E0B"
+            renderRow={(item, i) => (
+              <div key={i} style={{display:'flex', alignItems:'center', gap:14,
+                padding:'12px 16px', marginBottom:8,
+                background:'#FFFBEB', borderRadius:WT.rMd,
+                border:'1px solid #FDE68A', borderLeft:'3px solid #F59E0B'}}>
+                <div style={{flex:1}}>
+                  <div style={{fontSize:12.5, fontWeight:700, color:WT.textStrong, marginBottom:3}}>
+                    {item.product_name}
+                    <span style={{fontSize:10, fontWeight:500, color:WT.textTertiary,
+                      marginLeft:8}}>{item.category_code}</span>
+                  </div>
+                  <div style={{display:'flex', gap:16, fontSize:11.5}}>
+                    <span style={{color:WT.textSecondary}}>
+                      Target: <strong>{item.target_price} L</strong>
+                    </span>
+                    <span style={{color:WT.textSecondary}}>
+                      Est. COGS: <strong>{item.estimated_cogs} L</strong>
+                    </span>
+                    <span style={{color:'#B45309', fontWeight:700}}>
+                      Margin: {item.estimated_margin_pct}%
+                      <span style={{fontWeight:400, marginLeft:4}}>
+                        (floor {item.floor_pct}%)
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <WtBtn variant="ghost" size="sm" onClick={()=>goToRecipes(item.product_id)}
+                  style={{flexShrink:0, fontSize:11.5}}>
+                  Open Studio →
+                </WtBtn>
+              </div>
+            )}
+          />
+        </>
+      )}
+    </div>
+  );
+}
+
+/* ── RequestGroupModal — command-palette style ───────────────────────────── */
+function RequestGroupModal({onClose, onRequestSubmitted, onSelectExisting, showToast}) {
+  const [step,setStep]         = useState('search'); // 'search' | 'confirm'
+  const [query,setQuery]       = useState('');
+  const [matches,setMatches]   = useState(null);
+  const [searching,setSearching] = useState(false);
+  const [notes,setNotes]       = useState('');
+  const [submitting,setSubmitting] = useState(false);
+  const inputRef = useRef(null);
+
+  useEffect(()=>{ setTimeout(()=>inputRef.current?.focus(),100); },[]);
+
+  const search = async (q) => {
+    if(!q.trim()){ setMatches(null); return; }
+    setSearching(true);
+    const {data} = await SB.rpc('search_product_groups_for_request',{p_query:q.trim()});
+    setSearching(false);
+    setMatches(data?.matches||[]);
+  };
+
+  const onQueryChange = (e) => {
+    const v = e.target.value;
+    setQuery(v);
+    clearTimeout(window._rgmTimer);
+    window._rgmTimer = setTimeout(()=>search(v),350);
+  };
+
+  const submit = async () => {
+    if(!query.trim()){ showToast('Name required','error'); return; }
+    setSubmitting(true);
+    const {data,error} = await SB.rpc('td_submit_group_request',{
+      p_proposed_name:query.trim(), p_notes:notes.trim()||null,
+    });
+    setSubmitting(false);
+    if(error){ showToast(error.message,'error'); return; }
+    if(data?.duplicate){
+      showToast('Existing open request reused — SC will review','info');
+      onRequestSubmitted({request_id:data.request_id,proposed_name:query.trim(),similar_matches:data.similar_matches||[]});
+      return;
+    }
+    showToast(`Request submitted — SC will review "${query.trim()}"`);
+    onRequestSubmitted({request_id:data.request_id,proposed_name:query.trim(),similar_matches:data.similar_matches||[]});
+  };
+
+  const exactMatch = (matches||[]).find(m=>m.match_type==='EXACT');
+  const otherMatches = (matches||[]).filter(m=>m.match_type!=='EXACT');
+  const noMatches = matches !== null && matches.length === 0;
+
+  return (
+    <WtModal open title="" onClose={onClose} width={520}>
+      <div style={{fontFamily:WT.font}}>
+
+        {/* Header */}
+        <div style={{marginBottom:20}}>
+          <div style={{fontSize:16,fontWeight:800,color:WT.textStrong,marginBottom:4}}>
+            Request ingredient group
+          </div>
+          <div style={{fontSize:12.5,color:WT.textTertiary}}>
+            Type the ingredient name — we will check if it already exists.
+            If not, submit a request for SC to create and approve it.
+          </div>
+        </div>
+
+        {/* Search input */}
+        <div style={{position:'relative',marginBottom:16}}>
+          <div style={{position:'absolute',left:12,top:'50%',transform:'translateY(-50%)',
+            pointerEvents:'none'}}>
+            <Icon name="search" size={16} color={WT.textTertiary}/>
+          </div>
+          <input ref={inputRef} value={query} onChange={onQueryChange}
+            placeholder="e.g. Biftek Vici, Falafel Mix, Sour Cream…"
+            style={{width:'100%',padding:'11px 14px 11px 38px',
+              borderRadius:WT.rMd,border:`2px solid ${query?WT.blue600:WT.border}`,
+              fontSize:14,fontFamily:WT.font,outline:'none',
+              background:WT.bgPanel,color:WT.textPrimary,
+              boxSizing:'border-box',transition:'border-color .15s'}}/>
+          {searching && (
+            <div style={{position:'absolute',right:12,top:'50%',transform:'translateY(-50%)',
+              fontSize:11,color:WT.textTertiary}}>Searching…</div>
+          )}
+        </div>
+
+        {/* Results area */}
+        {matches !== null && (
+          <div style={{marginBottom:16}}>
+
+            {/* Exact match */}
+            {exactMatch && (
+              <div style={{marginBottom:10}}>
+                <div style={{fontSize:10.5,fontWeight:700,color:WT.success600,
+                  textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:6}}>
+                  ✓ Exact match found
+                </div>
+                <div style={{display:'flex',alignItems:'center',gap:12,padding:'12px 14px',
+                  borderRadius:WT.rMd,background:WT.success050,
+                  border:'1px solid #BBF7D0',cursor:'pointer'}}
+                  onClick={()=>onSelectExisting(exactMatch)}>
+                  <div style={{flex:1}}>
+                    <div style={{fontSize:13.5,fontWeight:700,color:WT.textStrong}}>
+                      {exactMatch.group_name}
+                    </div>
+                    <div style={{fontSize:11.5,color:WT.textTertiary,marginTop:1}}>
+                      {exactMatch.group_code} · {exactMatch.category||'—'}
+                    </div>
+                  </div>
+                  <WtBtn variant="primary" size="sm">Use this group →</WtBtn>
+                </div>
+              </div>
+            )}
+
+            {/* Similar matches */}
+            {otherMatches.length > 0 && (
+              <div style={{marginBottom:10}}>
+                <div style={{fontSize:10.5,fontWeight:700,color:WT.textTertiary,
+                  textTransform:'uppercase',letterSpacing:'0.07em',marginBottom:6}}>
+                  Similar groups — is one of these what you need?
+                </div>
+                {otherMatches.slice(0,4).map((m,i)=>(
+                  <div key={i} style={{display:'flex',alignItems:'center',gap:12,
+                    padding:'9px 14px',marginBottom:4,borderRadius:WT.rSm,
+                    background:WT.bgSoft,border:`1px solid ${WT.divider}`,
+                    cursor:'pointer',transition:'background .1s'}}
+                    onMouseEnter={e=>e.currentTarget.style.background=WT.blue050}
+                    onMouseLeave={e=>e.currentTarget.style.background=WT.bgSoft}
+                    onClick={()=>onSelectExisting(m)}>
+                    <div style={{flex:1}}>
+                      <span style={{fontSize:13,fontWeight:600,color:WT.textStrong}}>
+                        {m.group_name}
+                      </span>
+                      <span style={{fontSize:11,color:WT.textTertiary,marginLeft:8}}>
+                        {m.group_code}
+                      </span>
+                    </div>
+                    <span style={{fontSize:10,color:WT.blue600,fontWeight:700,
+                      background:WT.blue050,padding:'2px 7px',borderRadius:99,
+                      border:`1px solid ${WT.blue200}`,flexShrink:0}}>
+                      Select
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* No matches — ready to request */}
+            {noMatches && (
+              <div style={{padding:'12px 14px',borderRadius:WT.rMd,
+                background:'#ECFDF5',border:'1px solid #6EE7B7',marginBottom:10}}>
+                <div style={{fontSize:12,fontWeight:700,color:WT.success600,marginBottom:2}}>
+                  No existing group found
+                </div>
+                <div style={{fontSize:11.5,color:'#065F46'}}>
+                  "{query}" appears to be genuinely new. Add a note below and submit to SC.
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Notes + submit — show when query exists and either no exact match or no matches */}
+        {query.trim() && matches !== null && !exactMatch && (
+          <div>
+            <div style={{marginBottom:12}}>
+              <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary,
+                display:'block',marginBottom:5}}>
+                Notes for SC (optional)
+              </label>
+              <textarea value={notes} onChange={e=>setNotes(e.target.value)}
+                placeholder="e.g. Veal fillet, used in premium bowl. Allergens unknown — SC to confirm."
+                rows={2} style={{width:'100%',padding:'8px 10px',borderRadius:WT.rSm,
+                  border:`1px solid ${WT.border}`,fontSize:12.5,fontFamily:WT.font,
+                  resize:'none',outline:'none',background:WT.bgPanel,
+                  boxSizing:'border-box'}}/>
+            </div>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',
+              padding:'10px 14px',borderRadius:WT.rMd,background:WT.bgSoft,
+              border:`1px solid ${WT.divider}`,marginBottom:16,fontSize:12,color:WT.textSecondary}}>
+              <span>A placeholder line will be added to your draft.</span>
+              <span style={{color:WT.error600,fontWeight:600}}>Official save blocked until approved.</span>
+            </div>
+            <div style={{display:'flex',justifyContent:'flex-end',gap:8}}>
+              <WtBtn variant="ghost" onClick={onClose}>Cancel</WtBtn>
+              <WtBtn variant="secondary" onClick={submit} disabled={submitting}>
+                {submitting?'Submitting…':`Request "${query.trim()}" →`}
+              </WtBtn>
+            </div>
+          </div>
+        )}
+
+        {/* Cancel only if no action yet */}
+        {(!query.trim() || matches === null) && (
+          <div style={{display:'flex',justifyContent:'flex-end'}}>
+            <WtBtn variant="ghost" onClick={onClose}>Cancel</WtBtn>
+          </div>
+        )}
+      </div>
+    </WtModal>
+  );
+}
+
+
+function ComboPicker({ label, value, options, onChange, placeholder='Search…', onRequestNew, requestLabel='Request new group' }) {
+  const [open,setOpen]   = useState(false);
+  const [q,setQ]         = useState('');
+  const [hi,setHi]       = useState(0);
+  const [rect,setRect]   = useState(null);
+  const boxRef   = useRef(null);
+  const inputRef = useRef(null);
+  const menuRef  = useRef(null);
+  const selected = options.find(o=>o.id===value);
+
+  const measure = useCallback(()=>{
+    if(inputRef.current) setRect(inputRef.current.getBoundingClientRect());
+  },[]);
+
+  useEffect(()=>{
+    const onDoc = e => {
+      const inBox  = boxRef.current  && boxRef.current.contains(e.target);
+      const inMenu = menuRef.current && menuRef.current.contains(e.target);
+      if(!inBox && !inMenu) setOpen(false);
+    };
+    document.addEventListener('mousedown', onDoc);
+    return ()=>document.removeEventListener('mousedown', onDoc);
+  },[]);
+
+  useEffect(()=>{
+    if(!open) return;
+    measure();
+    const onScroll = ()=>measure();
+    window.addEventListener('scroll', onScroll, true);
+    window.addEventListener('resize', onScroll);
+    return ()=>{
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('resize', onScroll);
+    };
+  },[open, measure]);
+
+  const ql = q.trim().toLowerCase();
+  const filtered = ql
+    ? options.filter(o=>`${o.label} ${o.sub||''}`.toLowerCase().includes(ql))
+    : options;
+  const shown = filtered.slice(0,50);
+
+  const pick = (o) => { onChange(o.id); setQ(''); setOpen(false); };
+  const onKey = (e) => {
+    if(!open && (e.key==='ArrowDown'||e.key==='Enter')){ setOpen(true); return; }
+    if(e.key==='ArrowDown'){ e.preventDefault(); setHi(h=>Math.min(h+1,shown.length-1)); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); setHi(h=>Math.max(h-1,0)); }
+    else if(e.key==='Enter'||e.key==='Tab'){ if(open&&shown[hi]){ e.preventDefault(); pick(shown[hi]); } }
+    else if(e.key==='Escape'){ setOpen(false); }
+  };
+
+  return (
+    <div ref={boxRef} style={{position:'relative'}}>
+      {label && <label style={{display:'block', fontSize:12, fontWeight:600, color:WT.textSecondary, marginBottom:6, fontFamily:WT.font}}>{label}</label>}
+      <input
+        ref={inputRef}
+        value={open ? q : (selected ? selected.label : '')}
+        onChange={e=>{ setQ(e.target.value); setHi(0); if(!open){ setOpen(true); measure(); } }}
+        onFocus={()=>{ setOpen(true); measure(); }}
+        onKeyDown={onKey}
+        placeholder={selected ? selected.label : placeholder}
+        style={{
+          width:'100%', padding:'10px 14px', border:`1px solid ${open?WT.blue600:WT.border}`,
+          borderRadius:WT.rMd, fontSize:13, fontFamily:WT.font, color:WT.textPrimary,
+          background:WT.bgPanel, outline:'none', boxSizing:'border-box'
+        }}/>
+      {open && rect && (
+        <div ref={menuRef} style={{
+          position:'fixed', zIndex:2000,
+          left: rect.left,
+          width: rect.width,
+          ...(() => {
+            const MENU_MAX = 240;
+            const spaceBelow = window.innerHeight - rect.bottom;
+            const flipUp = spaceBelow < (MENU_MAX + 8) && rect.top > spaceBelow;
+            return flipUp
+              ? { bottom: window.innerHeight - rect.top + 4, maxHeight: Math.min(MENU_MAX, rect.top - 8) }
+              : { top: rect.bottom + 4, maxHeight: Math.min(MENU_MAX, spaceBelow - 8) };
+          })(),
+          background:WT.bgPanel, border:`1px solid ${WT.border}`, borderRadius:WT.rMd,
+          boxShadow:WT.shadowModal, overflowY:'auto', fontFamily:WT.font
+        }}>
+          {shown.length===0 ? (
+            <div>
+              <div style={{padding:'10px 14px', fontSize:12.5, color:WT.textTertiary}}>No matches</div>
+              {onRequestNew && (
+                <div onMouseDown={()=>{ onRequestNew(q); setOpen(false); }}
+                  style={{padding:'9px 14px', fontSize:12.5, cursor:'pointer', display:'flex',
+                    alignItems:'center', gap:6, color:WT.blue600, fontWeight:600,
+                    borderTop:`1px solid ${WT.divider}`}}
+                  onMouseEnter={e=>e.currentTarget.style.background=WT.blue050}
+                  onMouseLeave={e=>e.currentTarget.style.background='transparent'}>
+                  <Icon name="plus" size={12}/> {requestLabel}
+                </div>
+              )}
+            </div>
+          ) : shown.map((o,idx)=>(
+            <div key={o.id} onMouseDown={()=>pick(o)} onMouseEnter={()=>setHi(idx)}
+              style={{padding:'9px 14px', fontSize:13, cursor:'pointer', display:'flex',
+                justifyContent:'space-between', gap:10, alignItems:'baseline',
+                background: idx===hi ? WT.blue050 : 'transparent',
+                color: o.id===value ? WT.blue600 : WT.textPrimary,
+                fontWeight: o.id===value ? 600 : 500}}>
+              <span>{o.label}</span>
+              {o.sub && <span style={{fontSize:11, color:WT.textTertiary, fontFamily:'monospace', flexShrink:0}}>{o.sub}</span>}
+            </div>
+          ))}
+          {filtered.length>50 && (
+            <div style={{padding:'8px 14px', fontSize:11, color:WT.textTertiary, borderTop:`1px solid ${WT.divider}`}}>
+              Showing first 50 — keep typing to narrow.
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RecipeStudio({ session, showToast, activeProductId, onConsumeActiveProduct }) {
+  const [kind,setKind]       = useState('SF');     // 'SF' | 'MENU'
+  const [recipes,setRecipes] = useState([]);
+  const [loading,setLoading] = useState(true);
+  const [groups,setGroups]   = useState([]);
+  const [baseSFs,setBaseSFs] = useState([]);       // raw-only SFs (for SF builder component picker)
+  const [allSFs,setAllSFs]   = useState([]);       // any SF (for menu builder)
+  const [editor,setEditor]   = useState(null);
+  const [history,setHistory] = useState(null);
+  const [query,setQuery]     = useState('');
+  const [rdHistory,setRdHistory]               = useState(null);
+  const [showCreateSF,setShowCreateSF]         = useState(false);
+  const [showCreateMenu,setShowCreateMenu]     = useState(false);
+  const [showRequestGroup,setShowRequestGroup] = useState(false);
+  const [requestingLineIdx,setRequestingLineIdx] = useState(null);
+  const [editorSafetyStatus,setEditorSafetyStatus]     = useState(null);
+  const [editorValidationStatus,setEditorValidationStatus] = useState(null);
+  const [rdNote,setRdNote]                     = useState('');
+  const [rdValidationType,setRdValidationType] = useState('NONE');
+  const [rdSaving,setRdSaving]                 = useState(false);
+
+  const loadRefs = async () => {
+    const [g,bsf,asf] = await Promise.all([
+      SB.rpc('td_list_groups'),
+      SB.rpc('td_list_sf_products',{p_base_only:true}),
+      SB.rpc('td_list_sf_products',{p_base_only:false}),
+    ]);
+    setGroups(g.data||[]); setBaseSFs(bsf.data||[]); setAllSFs(asf.data||[]);
+  };
+  const loadRecipes = async (k) => {
+    setLoading(true);
+    const { data } = await SB.rpc('td_list_recipes',{p_kind:k});
+    setRecipes(data||[]); setLoading(false);
+  };
+  useEffect(()=>{ loadRefs(); },[]);
+  useEffect(()=>{ loadRecipes(kind); },[kind]);
+
+  // Auto-open editor when arriving from inbox
+  useEffect(()=>{
+    if(!activeProductId || loading || recipes.length===0) return;
+    // Try current kind first, then switch to MENU if not found
+    const match = recipes.find(r=>r.product_id===activeProductId);
+    if(match){
+      openRecipe(match.header_id, match.product_id, match.product_name);
+      if(onConsumeActiveProduct) onConsumeActiveProduct();
+    } else if(kind==='SF'){
+      setKind('MENU'); // will re-trigger this effect via loadRecipes
+    } else {
+      if(onConsumeActiveProduct) onConsumeActiveProduct();
+    }
+  },[activeProductId, loading, recipes]);
+
+  const openRecipe = async (header_id, product_id, product_name) => {
+    const k_kind = kind;
+    const { data, error } = await SB.rpc('td_get_recipe',{p_kind:kind,p_header_id:header_id});
+    if(error){ showToast(error.message,'error'); return; }
+    const h = data.header||{};
+    // Fetch brief for this product
+    let brief = null;
+    if(kind==='MENU'){
+      const { data:pData } = await SB.from('menu_products')
+        .select('product_briefs(*)')
+        .eq('id', product_id).single();
+      const briefs = pData?.product_briefs||[];
+      brief = briefs.sort((a,b)=>b.brief_no-a.brief_no)[0]||null;
+    }
+    // Find lifecycle stage from recipes list
+    const recipeRow = recipes.find(r => r.header_id === header_id);
+    // Load safety and validation status for MENU products in development
+    if(k_kind === 'MENU' && recipeRow?.lifecycle_stage &&
+       ['RECIPE_DRAFT','RECIPE_REVISION'].includes(recipeRow.lifecycle_stage)) {
+      // Safety declaration status
+      SB.rpc('td_get_safety_declaration_status',{p_product_id: product_id, p_bom_header_id: header_id})
+        .then(({data}) => {
+          setEditorSafetyStatus(
+            data?.status==='COMPLETE' ? 'CONFIRMED'
+            : data ? (data.material_change_detected ? 'NEEDS_REVIEW' : 'DRAFT')
+            : 'MISSING'
+          );
+        });
+      // Validation readiness
+      SB.rpc('td_validation_readiness',{p_product_id: product_id})
+        .then(({data}) => setEditorValidationStatus(data?.status||'NONE'));
+    } else {
+      setEditorSafetyStatus(null);
+      setEditorValidationStatus(null);
+    }
+    setEditor({
+      header_id, kind, productId:product_id, productName:product_name||data.product?.name,
+      lifecycleStage: recipeRow?.lifecycle_stage || null,
+      brief,
+      yield_qty: h.target_yield_qty ?? '',
+      yield_uom: h.target_yield_uom || 'KG',
+      notes: h.notes || '',
+      lines: (data.lines||[]).map(l=>({
+        component_type: l.component_type,
+        raw_material_group_id: l.raw_material_group_id||'',
+        semi_finished_id: l.semi_finished_id||'',
+        component_name: l.component_name,
+        quantity: l.quantity ?? '',
+        waste_factor: l.waste_factor ?? 1,
+        is_legacy_nested_sf: l.is_legacy_nested_sf||false,
+      })),
+    });
+  };
+
+  const newLine = () => setEditor(e=>({...e, lines:[...e.lines,
+    { component_type:'RAW_MATERIAL', raw_material_group_id:'', semi_finished_id:'', quantity:'', waste_factor:1 }]}));
+  const setLine = (i,patch) => setEditor(e=>({...e, lines:e.lines.map((l,idx)=>idx===i?{...l,...patch}:l)}));
+  const delLine = (i) => setEditor(e=>({...e, lines:e.lines.filter((_,idx)=>idx!==i)}));
+
+  const save = async () => {
+    const e = editor;
+    for(const l of e.lines){
+      if(l.component_type==='PENDING'){
+        showToast('Cannot save official recipe — placeholder line present ('+(l.pending_name||'unnamed')+"). Wait for SC to approve the group request.",'error'); return;
+      }
+      if(l.component_type==='RAW_MATERIAL' && !l.raw_material_group_id){ showToast('Every raw line needs a group.','error'); return; }
+      if(l.component_type==='SEMI_FINISHED' && !l.semi_finished_id){ showToast('Every SF line needs a product.','error'); return; }
+      if(!l.quantity || Number(l.quantity)<=0){ showToast('Every line needs a quantity > 0.','error'); return; }
+    }
+    const payloadLines = e.lines.map(l=>({
+      component_type: l.component_type,
+      raw_material_group_id: l.component_type==='RAW_MATERIAL'?l.raw_material_group_id:null,
+      semi_finished_id: l.component_type==='SEMI_FINISHED'?l.semi_finished_id:null,
+      quantity: Number(l.quantity),
+      uom: 'KG',
+      waste_factor: Number(l.waste_factor)||1,
+    }));
+    try{
+      if(kind==='SF'){
+        const { error } = await SB.rpc('td_save_sf_recipe',{
+          p_header_id:e.header_id, p_sf_product_id:e.productId, p_yield_qty:Number(e.yield_qty)||null,
+          p_yield_uom:e.yield_uom||'KG', p_notes:e.notes||null, p_lines:payloadLines });
+        if(error) throw error;
+      }else{
+        const { error } = await SB.rpc('td_save_menu_recipe',{
+          p_header_id:e.header_id, p_menu_product_id:e.productId, p_lines:payloadLines });
+        if(error) throw error;
+      }
+      showToast('Recipe saved — change logged to audit trail');
+      setEditor(null); loadRecipes(kind);
+    }catch(err){ showToast(err.message,'error'); }
+  };
+
+  const viewHistory = async (header_id) => {
+    const { data, error } = await SB.rpc('td_recipe_history',{p_kind:kind,p_header_id:header_id});
+    if(error){ showToast(error.message,'error'); return; }
+    setHistory({ rows:data||[] });
+  };
+
+  const saveDraft = async () => {
+    if(!editor) return;
+    setRdSaving(true);
+    try {
+      const { data: draftData, error: draftErr } = await SB.rpc('td_save_rd_draft', {
+        p_product_id:   editor.productId,
+        p_product_type: editor.kind || kind,
+        p_bom_snapshot: editor.lines,
+        p_note:         rdNote.trim() || null,
+        p_tasting_done: false,
+      });
+      if(draftErr) throw draftErr;
+      showToast('Draft saved ✓');
+      setRdNote('');
+    } catch(e) { showToast(e.message,'error'); }
+    setRdSaving(false);
+  };
+
+  const markReady = async () => {
+    if(!editor) return;
+    // ── Hard readiness checks ──────────────────────────────────────────────
+    if(editor.lines.length === 0){
+      showToast('Recipe must have at least one ingredient before marking ready.','error'); return;
+    }
+    for(const l of editor.lines){
+      if(l.component_type==='RAW_MATERIAL' && !l.raw_material_group_id){
+        showToast('Every raw material line must have an ingredient group selected.','error'); return;
+      }
+      if(l.component_type==='SEMI_FINISHED' && !l.semi_finished_id){
+        showToast('Every semi-finished line must have a product selected.','error'); return;
+      }
+      if(!l.quantity || Number(l.quantity)<=0){
+        showToast('Every line must have a quantity greater than 0.','error'); return;
+      }
+    }
+    // Check at least one draft save exists
+    const { data: drafts } = await SB.rpc('td_get_rd_history',{p_product_id:editor.productId});
+    if(!drafts || drafts.length === 0){
+      showToast('Save at least one draft before marking ready for CFO.','error'); return;
+    }
+    // ── Save official recipe version ───────────────────────────────────────
+    await save();
+    // ── Advance lifecycle ──────────────────────────────────────────────────
+    try {
+      const { error } = await SB.rpc('td_mark_recipe_ready', {
+        p_product_id:   editor.productId,
+        p_tasting_done: false,
+        p_final_note:   rdNote.trim() || null,
+      });
+      if(error) {
+        // Only silently ignore "not in a state" for standalone SF recipes
+        if(error.message.includes('not in a state')) {
+          showToast('Recipe saved ✓');
+        } else {
+          showToast(error.message, 'error');
+        }
+        return;
+      }
+      showToast('Recipe marked ready — CFO notified ✓');
+      setRdNote(''); setRdValidationType('NONE');
+    } catch(e) {
+      showToast(e.message || 'Failed to mark ready', 'error');
+    }
+  };
+
+  const openRdHistory = async (productId, productName) => {
+    const { data, error } = await SB.rpc('td_get_rd_history',{p_product_id:productId});
+    if(error){ showToast(error.message,'error'); return; }
+    setRdHistory({ rows:data||[], name:productName });
+  };
+
+  const sfOptionsFor = () => kind==='SF' ? baseSFs : allSFs;
+
+  return (
+    <div style={{padding:'24px 28px', fontFamily:WT.font}}>
+      <WtPageHeader title="Recipe Studio"
+        subtitle="Build semi-finished and menu recipes. Quantities in KG, prep waste %, ingredients by group."/>
+
+      <div style={{display:'flex', gap:8, marginBottom:20, alignItems:'center', justifyContent:'space-between', flexWrap:'wrap'}}>
+        <div style={{display:'flex', gap:8}}>
+          {[['SF','Semi-Finished Recipes'],['MENU','Menu Recipes']].map(([k,l])=>(
+            <button key={k} onClick={()=>{setKind(k);setQuery('');}} style={{
+              padding:'9px 16px', borderRadius:WT.rMd, fontSize:13, fontWeight:600, fontFamily:WT.font,
+              cursor:'pointer', border:`1px solid ${kind===k?WT.blue600:WT.border}`,
+              background:kind===k?WT.blue050:WT.bgPanel, color:kind===k?WT.blue600:WT.textSecondary,
+            }}>{l}</button>
+          ))}
+        </div>
+        <div style={{display:'flex', gap:8}}>
+          <WtBtn variant="primary" size="sm" onClick={()=>setShowCreateSF(true)}>
+            <Icon name="plus" size={14}/> New SF Recipe
+          </WtBtn>
+          <WtBtn variant="ghost" size="sm" onClick={()=>setShowCreateMenu(true)}
+            style={{color:WT.textSecondary, fontSize:12}}>
+            + New Menu Draft
+          </WtBtn>
+        </div>
+      </div>
+
+      <RecipeList
+        recipes={recipes}
+        loading={loading}
+        kind={kind}
+        query={query}
+        setQuery={setQuery}
+        onEdit={(r)=>openRecipe(r.header_id, r.product_id, r.product_name)}
+        onHistory={(r)=>viewHistory(r.header_id)}
+        onRetire={async(r)=>{
+          const reason = window.prompt('Retire reason (required):');
+          if(!reason?.trim()) return;
+          const{error}=await SB.rpc('td_retire_recipe',{
+            p_header_id:r.header_id, p_kind:kind, p_reason:reason.trim()
+          });
+          if(error) showToast(error.message,'error');
+          else { showToast('Recipe version retired'); loadRecipes(kind); }
+        }}
+      />
+
+      <WtModal open={!!editor} onClose={()=>setEditor(null)}
+        title={editor ? `Edit recipe — ${editor.productName||''}` : ''} width={760}>
+        {editor && (
+          <div>
+            {/* ── Brief summary bar ── */}
+            {editor.brief && (
+              <div style={{display:'flex',alignItems:'center',gap:16,marginBottom:14,
+                padding:'9px 14px',background:WT.bgSoft,borderRadius:WT.rMd,
+                border:`1px solid ${WT.divider}`}}>
+                <div style={{fontSize:12,color:WT.textSecondary}}>
+                  <span style={{fontWeight:700,color:WT.textStrong}}>Target: </span>
+                  {editor.brief.target_selling_price} ALL
+                </div>
+                <div style={{width:1,height:14,background:WT.divider}}/>
+                <div style={{fontSize:12,color:WT.textSecondary}}>
+                  <span style={{fontWeight:700,color:WT.textStrong}}>Floor: </span>
+                  {editor.brief.target_margin_floor_pct}%
+                </div>
+                {editor.brief.positioning && <>
+                  <div style={{width:1,height:14,background:WT.divider}}/>
+                  <div style={{fontSize:12,color:WT.textTertiary,fontStyle:'italic',
+                    overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',flex:1}}>
+                    {editor.brief.positioning}
+                  </div>
+                </>}
+              </div>
+            )}
+            {/* ── Safety + Validation status chips ── */}
+            {(editorSafetyStatus || editorValidationStatus) && (
+              <div style={{display:'flex',gap:8,marginBottom:10}}>
+                {editorSafetyStatus && (
+                  <div style={{display:'flex',alignItems:'center',gap:6,
+                    padding:'5px 10px',borderRadius:WT.rMd,cursor:'default',
+                    background: editorSafetyStatus==='CONFIRMED'?WT.success050:editorSafetyStatus==='NEEDS_REVIEW'?'#FFFBEB':'#FFF5F5',
+                    border:`1px solid ${editorSafetyStatus==='CONFIRMED'?'#BBF7D0':editorSafetyStatus==='NEEDS_REVIEW'?'#FDE68A':'#FECACA'}`}}>
+                    <span style={{fontSize:11,fontWeight:700,
+                      color: editorSafetyStatus==='CONFIRMED'?WT.success600:editorSafetyStatus==='NEEDS_REVIEW'?'#B45309':WT.error600}}>
+                      Food Safety: {editorSafetyStatus==='CONFIRMED'?'Confirmed ✓':editorSafetyStatus==='NEEDS_REVIEW'?'Needs Review':'Missing'}
+                    </span>
+                  </div>
+                )}
+                {editorValidationStatus && (
+                  <div style={{display:'flex',alignItems:'center',gap:6,
+                    padding:'5px 10px',borderRadius:WT.rMd,cursor:'default',
+                    background: editorValidationStatus==='VALIDATED'?WT.success050:editorValidationStatus==='CONDITIONAL'?'#FFFBEB':editorValidationStatus==='INCOMPLETE'?'#EBF8FF':'#FFF5F5',
+                    border:`1px solid ${editorValidationStatus==='VALIDATED'?'#BBF7D0':editorValidationStatus==='CONDITIONAL'?'#FDE68A':editorValidationStatus==='INCOMPLETE'?'#BAE6FD':'#FECACA'}`}}>
+                    <span style={{fontSize:11,fontWeight:700,
+                      color: editorValidationStatus==='VALIDATED'?WT.success600:editorValidationStatus==='CONDITIONAL'?'#B45309':editorValidationStatus==='INCOMPLETE'?WT.blue600:WT.textTertiary}}>
+                      Validation: {editorValidationStatus}
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
+            {kind==='SF' && (
+              <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 2fr', gap:12, marginBottom:18}}>
+                <WtInput label="Target yield (KG)" type="number" value={editor.yield_qty}
+                  onChange={e=>setEditor({...editor,yield_qty:e.target.value})}/>
+                <WtField label="Yield unit" value="KG"/>
+                <WtInput label="Notes" value={editor.notes}
+                  onChange={e=>setEditor({...editor,notes:e.target.value})} placeholder="optional"/>
+              </div>
+            )}
+
+            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:10}}>
+              <div style={{fontSize:13, fontWeight:700, color:WT.textStrong}}>Ingredients</div>
+              <WtBtn variant="secondary" size="sm" onClick={newLine}><Icon name="plus" size={14}/> Add line</WtBtn>
+            </div>
+
+            {/* ── Legacy SF-of-SF warning ── */}
+            {editor.lines.some(l => l.is_legacy_nested_sf) && (
+              <div style={{display:'flex', alignItems:'flex-start', gap:10,
+                padding:'10px 14px', marginBottom:4,
+                background:'#FFFBEB', border:'1px solid #FDE68A',
+                borderLeft:'3px solid #F59E0B', borderRadius:WT.rMd}}>
+                <Icon name="warning" size={16} color="#B45309"/>
+                <div>
+                  <div style={{fontSize:12, fontWeight:700, color:'#92400E', marginBottom:2}}>
+                    Legacy nested SF components
+                  </div>
+                  <div style={{fontSize:11.5, color:'#78350F', lineHeight:1.5}}>
+                    This recipe contains SF-of-SF lines marked as legacy. These are tolerated but not the supported v1 pattern.
+                    New SF components cannot be added — only RAW material groups are supported for SF recipes.
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div style={{display:'flex', flexDirection:'column', gap:10}}>
+              {editor.lines.length===0 && (
+                <div style={{fontSize:12.5, color:WT.textTertiary, padding:'12px 0'}}>No ingredients yet — add a line.</div>
+              )}
+              {editor.lines.map((l,i)=>{
+                const isSF = l.component_type==='SEMI_FINISHED';
+                const isPending = l.component_type==='PENDING';
+                return (
+                  <div key={i} style={{
+                    background:WT.bgPanel, borderRadius:WT.rMd,
+                    border:`1px solid ${isPending?'#F59E0B':WT.border}`,
+                    overflow:'hidden', marginBottom:0,
+                  }}>
+                    {/* Line header */}
+                    <div style={{display:'flex',alignItems:'center',gap:10,
+                      padding:'7px 14px',borderBottom:`1px solid ${WT.divider}`,
+                      background:isPending?'#FFFBEB':WT.bgSoft}}>
+                      <span style={{fontSize:10,fontWeight:700,color:WT.textTertiary,
+                        background:WT.bgPanel,border:`1px solid ${WT.divider}`,
+                        borderRadius:99,padding:'1px 8px',flexShrink:0,minWidth:24,
+                        textAlign:'center'}}>
+                        {i+1}
+                      </span>
+                      {isPending ? (
+                        <div style={{display:'flex',alignItems:'center',gap:8,flex:1}}>
+                          <span style={{fontSize:11,fontWeight:700,color:'#B45309'}}>⏳ Awaiting SC Approval</span>
+                          <span style={{fontSize:12,color:'#92400E',fontWeight:600}}>{l.pending_name||'Unnamed request'}</span>
+                        </div>
+                      ) : kind==='SF' ? (
+                        <label style={{display:'flex',alignItems:'center',gap:7,
+                          fontSize:12,color:WT.textSecondary,fontWeight:600,cursor:'pointer',flex:1}}>
+                          <input type="checkbox" checked={isSF}
+                            onChange={e=>setLine(i,{component_type:e.target.checked?'SEMI_FINISHED':'RAW_MATERIAL',
+                              raw_material_group_id:'',semi_finished_id:''})}
+                            style={{accentColor:WT.blue600}}/>
+                          Uses a semi-finished component
+                        </label>
+                      ) : (
+                        <div style={{display:'flex',alignItems:'center',gap:8,flex:1}}>
+                          <span style={{fontSize:11.5,fontWeight:600,color:WT.textTertiary,flexShrink:0}}>Type</span>
+                          <select value={l.component_type}
+                            onChange={e=>setLine(i,{component_type:e.target.value,
+                              raw_material_group_id:'',semi_finished_id:''})}
+                            style={{padding:'3px 8px',borderRadius:WT.rSm,border:`1px solid ${WT.border}`,
+                              fontSize:12,fontFamily:WT.font,background:WT.bgPanel,color:WT.textPrimary}}>
+                            <option value="RAW_MATERIAL">Raw ingredient</option>
+                            <option value="SEMI_FINISHED">Semi-finished</option>
+                          </select>
+                        </div>
+                      )}
+                      <button onClick={()=>delLine(i)} title="Remove"
+                        style={{background:'none',border:'none',cursor:'pointer',
+                          color:WT.textTertiary,padding:'3px 6px',borderRadius:6,flexShrink:0,
+                          transition:'color .1s'}}
+                        onMouseEnter={e=>e.currentTarget.style.color=WT.error600}
+                        onMouseLeave={e=>e.currentTarget.style.color=WT.textTertiary}>
+                        <Icon name="trash" size={14}/>
+                      </button>
+                    </div>
+
+                    {/* Line body */}
+                    {isPending ? (
+                      <div style={{padding:'10px 14px',fontSize:12,color:'#78350F',
+                        background:'#FFFBEB'}}>
+                        Placeholder — official save blocked until SC approves this group request.
+                      </div>
+                    ) : (
+                      <div style={{display:'grid',
+                        gridTemplateColumns:'1fr 120px 160px 60px',
+                        alignItems:'stretch'}}>
+
+                        {/* Ingredient picker */}
+                        <div style={{padding:'12px 14px',borderRight:`1px solid ${WT.divider}`}}>
+                          {isSF ? (
+                            <ComboPicker label="Semi-finished component"
+                              value={l.semi_finished_id}
+                              placeholder="Search SF products…"
+                              options={sfOptionsFor().map(s=>({id:s.sf_id,label:s.product_name,sub:s.sku_code}))}
+                              onChange={id=>setLine(i,{semi_finished_id:id})}/>
+                          ) : (
+                            <ComboPicker label="Ingredient group"
+                              value={l.raw_material_group_id}
+                              placeholder="Search ingredient groups…"
+                              options={groups.map(g=>({id:g.group_id,label:g.group_name,sub:g.group_code}))}
+                              onChange={id=>{
+                                const grp=groups.find(g=>g.group_id===id);
+                                setLine(i,{raw_material_group_id:id,waste_factor:grp?.default_waste_factor??1});
+                              }}
+                              onRequestNew={()=>{setRequestingLineIdx(i);setShowRequestGroup(true);}}/>
+                          )}
+                        </div>
+
+                        {/* Quantity */}
+                        <div style={{padding:'12px 14px',borderRight:`1px solid ${WT.divider}`}}>
+                          <WtInput label="Qty (KG)" type="number" value={l.quantity}
+                            onChange={e=>setLine(i,{quantity:e.target.value})}/>
+                        </div>
+
+                        {/* Waste factor */}
+                        <div style={{padding:'12px 14px',borderRight:`1px solid ${WT.divider}`}}>
+                          <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:4}}>
+                            <label style={{fontSize:11.5,fontWeight:600,color:WT.textSecondary}}>Waste factor</label>
+                            <WasteBadge line={l} groups={groups}/>
+                          </div>
+                          <div style={{padding:'8px 10px',borderRadius:WT.rSm,
+                            border:`1px solid ${WT.divider}`,fontSize:13,fontFamily:WT.font,
+                            background:WT.bgSoft,color:WT.textSecondary,userSelect:'none'}}>
+                            {Number(l.waste_factor||1).toFixed(4)}
+                          </div>
+                        </div>
+
+                        {/* Est. cost */}
+                        <div style={{padding:'12px 10px',display:'flex',
+                          flexDirection:'column',alignItems:'flex-end',justifyContent:'flex-end'}}>
+                          <div style={{fontSize:9.5,color:WT.textTertiary,marginBottom:2}}>est.</div>
+                          <LineCostCell line={l} groups={groups} allSFs={allSFs}/>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* ── Footer: Cancel / Save ── */}
+            <div style={{display:'flex', justifyContent:'flex-end', alignItems:'center', gap:10,
+              marginTop:20, paddingTop:16, borderTop:`1px solid ${WT.divider}`}}>
+              <WtBtn variant="secondary" onClick={()=>setEditor(null)} disabled={rdSaving}>Cancel</WtBtn>
+              <WtBtn variant="primary" onClick={async()=>{ setRdSaving(true); try{ await save(); } finally{ setRdSaving(false); } }}
+                disabled={rdSaving}>
+                {rdSaving ? 'Saving…' : 'Save recipe'}
+              </WtBtn>
+            </div>
+          </div>
+        )}
+      </WtModal>
+
+      {showRequestGroup && (
+        <RequestGroupModal
+          showToast={showToast}
+          onClose={()=>{setShowRequestGroup(false);setRequestingLineIdx(null);}}
+          onSelectExisting={(grp)=>{
+            if(requestingLineIdx !== null) {
+              setLine(requestingLineIdx,{
+                raw_material_group_id:grp.group_id,
+                waste_factor:grp?.default_waste_factor??1,
+              });
+            }
+            setShowRequestGroup(false);setRequestingLineIdx(null);
+          }}
+          onRequestSubmitted={(req)=>{
+            // Insert placeholder line
+            if(requestingLineIdx !== null) {
+              setLine(requestingLineIdx,{
+                component_type:'PENDING',
+                pending_request_id:req.request_id,
+                pending_name:req.proposed_name,
+                raw_material_group_id:'',
+                waste_factor:1,
+              });
+            }
+            setShowRequestGroup(false);setRequestingLineIdx(null);
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
 function TechnicalDirectorCC({session, onSignOut}) {
   const brandId = session?.brand_id || 'a2911ac0-bcac-42c4-b39b-fed6813d321e';
   const empId   = session?.employee_id;
   const [page, setPage]   = useState('inbox');
   const [exp, setExp]     = useState(true);
   const { products, loading, reload } = useMLCData(SB, brandId);
-  const [rawMaterials, setRawMaterials] = useState([]);
+  const [activeProductId, setActiveProductId] = useState(null);
   const [toast, setToast] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [formulaLines, setFormulaLines] = useState([]);
-  const [loadingLines, setLoadingLines] = useState(false);
-  const [addLine, setAddLine] = useState({
-    component_type:'RAW_MATERIAL', raw_material_id:'',
-    semi_finished_product_id:'', quantity:'', uom:'g',
-    waste_factor:'1.0', role_in_formula:'BASE'
-  });
-  const [savingLine, setSavingLine] = useState(false);
+  const [regFilter, setRegFilter] = useState('ALL');
+  const [regQuery,  setRegQuery]  = useState('');
+  const [regRecipes, setRegRecipes] = useState([]);
 
+  // Fetch all BOM headers for Product Register BOM status badges
   useEffect(() => {
-    SB.from('master_products')
-      .select('id,sku_code,product_name,last_purchase_price,category_id')
-      .eq('brand_id', brandId).eq('status','ACTIVE').order('product_name')
-      .then(({data}) => setRawMaterials(data||[]));
-  }, []);
+    Promise.all([
+      SB.rpc('td_list_recipes', {p_kind:'SF'}),
+      SB.rpc('td_list_recipes', {p_kind:'MENU'}),
+    ]).then(([sf, menu]) => {
+      setRegRecipes([...(sf.data||[]), ...(menu.data||[])]);
+    });
+  }, [products]);
+
+
 
   const showToast = (msg, type='success') => {
     setToast({msg,type}); setTimeout(()=>setToast(null),3500);
   };
 
-  // The current editable formula version for a product
-  const getEditableFV = (p) =>
-    p?.formula_headers?.[0]?.formula_versions
-      ?.sort((a,b)=>b.version_no-a.version_no)
-      .find(v => ['DRAFT','REVISION'].includes(v.technical_status));
 
-  // Load formula lines when product selected
-  useEffect(() => {
-    const fv = getEditableFV(selectedProduct);
-    if (!fv) { setFormulaLines([]); return; }
-    setLoadingLines(true);
-    SB.from('formula_lines').select('*').eq('formula_version_id', fv.id).order('line_no')
-      .then(({data}) => { setFormulaLines(data||[]); setLoadingLines(false); });
-  }, [selectedProduct?.id, products]);
 
   const myInbox = products.filter(p =>
     ['BRIEF_SUBMITTED','RECIPE_DRAFT','RECIPE_REVISION','REACTIVATION_TECH_REVIEW']
@@ -14945,9 +19161,9 @@ function TechnicalDirectorCC({session, onSignOut}) {
     try {
       const {data, error} = await SB.rpc('mlc_td_accept_brief', {p_product_id:productId, p_actor_id:empId});
       if (error) throw error;
-      showToast('Brief accepted — formula studio opened');
-      const p = products.find(x=>x.id===productId);
-      if (p) { setSelectedProduct(p); setPage('studio'); }
+      showToast('Brief accepted — opening Recipe Studio');
+      setActiveProductId(productId);
+      setPage('recipes');
       reload();
     } catch(e) { showToast(e.message,'error'); }
   };
@@ -14962,64 +19178,11 @@ function TechnicalDirectorCC({session, onSignOut}) {
     } catch(e) { showToast(e.message,'error'); }
   };
 
-  const submitForTest = async () => {
-    const fv = getEditableFV(selectedProduct);
-    if (!fv) return;
-    try {
-      const {error} = await SB.rpc('mlc_submit_formula_for_testing', {p_formula_version_id:fv.id, p_actor_id:empId});
-      if (error) throw error;
-      showToast('Formula submitted for test batch'); reload();
-    } catch(e) { showToast(e.message,'error'); }
-  };
-
-  const submitForOpsReview = async () => {
-    const fv = getEditableFV(selectedProduct);
-    if (!fv) return;
-    try {
-      const {error} = await SB.rpc('mlc_submit_for_operational_review', {p_formula_version_id:fv.id, p_actor_id:empId});
-      if (error) throw error;
-      showToast('Submitted for operational review'); reload();
-    } catch(e) { showToast(e.message,'error'); }
-  };
-
-  const addIngredient = async () => {
-    const fv = getEditableFV(selectedProduct);
-    if (!fv) return;
-    if (!addLine.quantity || parseFloat(addLine.quantity)<=0) {
-      showToast('Enter a valid quantity','error'); return;
-    }
-    if (addLine.component_type==='RAW_MATERIAL' && !addLine.raw_material_id) {
-      showToast('Select a raw material','error'); return;
-    }
-    if (addLine.component_type==='SEMI_FINISHED' && !addLine.semi_finished_product_id) {
-      showToast('Select a semi-finished product','error'); return;
-    }
-    setSavingLine(true);
-    const nextLine = formulaLines.length>0 ? Math.max(...formulaLines.map(l=>l.line_no))+1 : 1;
-    const {error} = await SB.from('formula_lines').insert({
-      formula_version_id:fv.id, line_no:nextLine,
-      component_type:addLine.component_type,
-      raw_material_id:addLine.component_type==='RAW_MATERIAL'?addLine.raw_material_id:null,
-      semi_finished_product_id:addLine.component_type==='SEMI_FINISHED'?addLine.semi_finished_product_id:null,
-      quantity:parseFloat(addLine.quantity), uom:addLine.uom,
-      waste_factor:parseFloat(addLine.waste_factor)||1.0,
-      role_in_formula:addLine.role_in_formula, created_by:empId
-    });
-    if (error) { showToast(error.message,'error'); }
-    else {
-      showToast('Ingredient added');
-      setAddLine({component_type:'RAW_MATERIAL',raw_material_id:'',
-        semi_finished_product_id:'',quantity:'',uom:'g',waste_factor:'1.0',role_in_formula:'BASE'});
-      SB.from('formula_lines').select('*').eq('formula_version_id',fv.id).order('line_no')
-        .then(({data})=>setFormulaLines(data||[]));
-    }
-    setSavingLine(false);
-  };
 
   const NAV = [
     {id:'inbox',    label:`Inbox (${myInbox.length})`,  iconName:"inbox"},
     {id:'register', label:'Product Register',            iconName:"book"},
-    {id:'studio',   label:'Formula Studio',              iconName:"flask"},
+    {id:'recipes',  label:'Recipe Studio',               iconName:"flask"},
     {id:'safety',   label:'Food Safety',                 iconName:"shield"},
     {id:'testing',  label:'Validation Lab',              iconName:"testtube"},
     {id:'impact',   label:'Change Impact',               iconName:"zap"},
@@ -15064,343 +19227,126 @@ function TechnicalDirectorCC({session, onSignOut}) {
   );
 
   // ── Inbox page ──
+  const newBriefs       = products.filter(p => p.menu_product_lifecycle?.lifecycle_stage==='BRIEF_SUBMITTED');
+  const inDrafting      = products.filter(p => p.menu_product_lifecycle?.lifecycle_stage==='RECIPE_DRAFT' && p.menu_product_lifecycle?.td_work_status==='DRAFTING');
+  const inTested        = products.filter(p => p.menu_product_lifecycle?.lifecycle_stage==='RECIPE_DRAFT' && p.menu_product_lifecycle?.td_work_status==='TESTED');
+  const readyForFinance = products.filter(p => p.menu_product_lifecycle?.td_work_status==='READY_FOR_FINANCE' && p.menu_product_lifecycle?.lifecycle_stage!=='CFO_FINANCE_REVIEW');
+  const financeReturned = products.filter(p => p.menu_product_lifecycle?.cfo_returned_to==='TD' && ['RECIPE_DRAFT','RECIPE_REVISION'].includes(p.menu_product_lifecycle?.lifecycle_stage));
+  const reactivation    = products.filter(p => p.menu_product_lifecycle?.lifecycle_stage==='REACTIVATION_TECH_REVIEW');
+
+  const InboxCard = ({p, accentColor, actions, sub}) => {
+    const lc = p.menu_product_lifecycle;
+    const brief = p.product_briefs?.sort((a,b)=>b.brief_no-a.brief_no)[0];
+    return (
+      <div style={{display:'flex',alignItems:'center',gap:16,padding:'12px 16px',marginBottom:6,
+        background:WT.bgPanel,borderRadius:WT.rMd,border:`1px solid ${WT.border}`,
+        borderLeft:`3px solid ${accentColor}`}}>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:2}}>
+            <span style={{fontWeight:700,fontSize:13.5,color:WT.textStrong,
+              overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{p.name}</span>
+            <StagePill stage={lc?.lifecycle_stage}/>
+            {lc?.td_work_status && (
+              <span style={{fontSize:10,fontWeight:700,padding:'1px 7px',borderRadius:99,
+                background: lc.td_work_status==='TESTED'?WT.success050:lc.td_work_status==='READY_FOR_FINANCE'?WT.blue050:WT.bgSoft,
+                color: lc.td_work_status==='TESTED'?WT.success600:lc.td_work_status==='READY_FOR_FINANCE'?WT.blue600:WT.textTertiary,
+                border:`1px solid ${lc.td_work_status==='TESTED'?'#BBF7D0':lc.td_work_status==='READY_FOR_FINANCE'?WT.blue200:WT.divider}`}}>
+                {lc.td_work_status.replace(/_/g,' ')}
+              </span>
+            )}
+          </div>
+          <div style={{fontSize:11.5,color:WT.textTertiary}}>
+            {sub || (brief ? `Target ${brief.target_selling_price} ALL · Floor ${brief.target_margin_floor_pct}%` : '—')}
+          </div>
+        </div>
+        <div style={{display:'flex',gap:8,flexShrink:0}}>{actions}</div>
+      </div>
+    );
+  };
+
+  const inboxSection = (title, items, color, renderActions, renderSub) =>
+    items.length===0 ? null : (
+      <div style={{marginBottom:24}}>
+        <div style={{fontSize:11,fontWeight:700,color:WT.textTertiary,letterSpacing:'0.07em',
+          textTransform:'uppercase',marginBottom:8,display:'flex',alignItems:'center',gap:8}}>
+          {title}
+          <span style={{background:WT.bgSoft,borderRadius:99,padding:'1px 8px',
+            fontSize:10,color:WT.textTertiary}}>{items.length}</span>
+        </div>
+        {items.map(p => (
+          <InboxCard key={p.id} p={p} accentColor={color}
+            actions={renderActions(p)} sub={renderSub?.(p)}/>
+        ))}
+      </div>
+    );
+
   const inboxPage = (
-    <div style={{padding:'28px 32px', fontFamily:WT.font}}>
-      <WtPageHeader title="TD Inbox"
-        subtitle={`${myInbox.length} item${myInbox.length!==1?'s':''} requiring attention`}/>
-      {myInbox.length===0
+    <div style={{padding:'28px 32px', fontFamily:WT.font, maxWidth:800}}>
+      <WtPageHeader title="TD Inbox" subtitle="Product development queue"/>
+      {[...newBriefs,...inDrafting,...inTested,...readyForFinance,...financeReturned,...reactivation].length===0
         ? <WtEmpty icon="inbox" title="Inbox clear" subtitle="New briefs and revision requests appear here"/>
-        : myInbox.map(p => {
-          const lc = p.menu_product_lifecycle;
-          const brief = p.product_briefs?.sort((a,b)=>b.brief_no-a.brief_no)[0];
-          const isReact = lc?.lifecycle_stage === 'REACTIVATION_TECH_REVIEW';
-          return (
-            <WtCard key={p.id} style={{
-              marginBottom:12,
-              borderLeft:`3px solid ${isReact ? '#7C3AED' : WT.blue600}`
-            }}>
-              <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:16}}>
-                <div style={{flex:1}}>
-                  <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:8}}>
-                    <span style={{fontWeight:700, fontSize:15, color:WT.textStrong}}>{p.name}</span>
-                    <StagePill stage={lc?.lifecycle_stage}/>
-                  </div>
-                  {brief && (
-                    <div style={{fontSize:13, color:WT.textSecondary, marginBottom:6}}>
-                      {brief.working_title} · Target {brief.target_selling_price} ALL
-                      · Floor {brief.target_margin_floor_pct}%
-                    </div>
-                  )}
-                  {brief?.positioning && (
-                    <p style={{fontSize:12, color:WT.textTertiary, fontStyle:'italic',
-                      margin:'0 0 8px', lineHeight:1.5}}>"{brief.positioning}"</p>
-                  )}
-                  {brief?.mandatory_constraints && (
-                    <div style={{padding:'8px 12px', background:WT.warning050,
-                      borderRadius:WT.rMd, border:`1px solid #F6E2AF`,
-                      fontSize:12, color:'#92400E'}}>
-                      Constraints: {brief.mandatory_constraints}
-                    </div>
-                  )}
-                  {isReact && (
-                    <div style={{padding:'8px 12px', background:WT.info050,
-                      borderRadius:WT.rMd, border:`1px solid #BAE6FD`,
-                      fontSize:12, color:WT.info600, marginTop:6}}>
-                      Reactivation review — assess staleness and decide if new version is required
-                    </div>
-                  )}
-                </div>
-                <div style={{display:'flex', gap:8, flexShrink:0}}>
-                  {lc?.lifecycle_stage==='BRIEF_SUBMITTED' && <>
-                    <WtBtn size="sm" onClick={() => acceptBrief(p.id)}>Accept Brief</WtBtn>
-                    <WtBtn size="sm" variant="secondary" onClick={() => returnBrief(p.id)}>Return</WtBtn>
-                  </>}
-                  {['RECIPE_DRAFT','RECIPE_REVISION'].includes(lc?.lifecycle_stage) && (
-                    <WtBtn size="sm" variant="secondary" onClick={() => {
-                      setSelectedProduct(p); setPage('studio');
-                    }}>Open Studio</WtBtn>
-                  )}
-                  {isReact && <>
-                    <WtBtn size="sm" variant="success" onClick={async () => {
-                      const {error} = await SB.rpc('mlc_complete_tech_reactivation_review',
-                        {p_product_id:p.id, p_new_version_required:false, p_actor_id:empId});
-                      if (error) showToast(error.message,'error');
-                      else { showToast('Reactivation cleared'); reload(); }
-                    }}>Clear</WtBtn>
-                    <WtBtn size="sm" variant="secondary" onClick={async () => {
-                      const {error} = await SB.rpc('mlc_complete_tech_reactivation_review',
-                        {p_product_id:p.id, p_new_version_required:true, p_notes:'New version required', p_actor_id:empId});
-                      if (error) showToast(error.message,'error');
-                      else { showToast('Returned for new version'); reload(); }
-                    }}>New Version Req.</WtBtn>
-                  </>}
-                </div>
-              </div>
-            </WtCard>
-          );
-        })
+        : <>
+          {inboxSection('New Briefs', newBriefs, WT.blue600, p => <>
+            <WtBtn size="sm" onClick={() => acceptBrief(p.id)}>Accept</WtBtn>
+            <WtBtn size="sm" variant="secondary" onClick={() => returnBrief(p.id)}>Return</WtBtn>
+          </>)}
+          {inboxSection('Finance Returned', financeReturned, WT.error600, p => <>
+            <WtBtn size="sm" variant="secondary" onClick={() => {setActiveProductId(p.id);setPage('recipes');}}>
+              Open Studio →
+            </WtBtn>
+          </>, p => {
+            const lc = p.menu_product_lifecycle;
+            return `CFO returned: ${(lc?.cfo_return_reason||'').replace(/_/g,' ')}${lc?.cfo_return_notes?' — '+lc.cfo_return_notes:''}`;
+          })}
+          {inboxSection('In Development — Drafting', inDrafting, WT.textTertiary, p => <>
+            <WtBtn size="sm" variant="secondary" onClick={() => {setActiveProductId(p.id);setPage('recipes');}}>
+              Open Studio →
+            </WtBtn>
+          </>)}
+          {inboxSection('In Development — Tested', inTested, WT.success600, p => <>
+            <WtBtn size="sm" variant="secondary" onClick={() => {setActiveProductId(p.id);setPage('recipes');}}>
+              Open Studio →
+            </WtBtn>
+          </>)}
+          {inboxSection('Ready for Finance', readyForFinance, WT.blue600, p => <>
+            <WtBtn size="sm" onClick={async () => {
+              const {error} = await SB.rpc('td_mark_recipe_ready',{p_product_id:p.id});
+              if(error) showToast(error.message,'error');
+              else { showToast('Sent to CFO ✓'); reload(); }
+            }}>Send to CFO →</WtBtn>
+          </>)}
+          {inboxSection('Reactivation Review', reactivation, '#7C3AED', p => <>
+            <WtBtn size="sm" variant="success" onClick={async () => {
+              const {error} = await SB.rpc('mlc_complete_tech_reactivation_review',
+                {p_product_id:p.id,p_new_version_required:false,p_actor_id:empId});
+              if(error) showToast(error.message,'error');
+              else { showToast('Reactivation cleared'); reload(); }
+            }}>Clear</WtBtn>
+            <WtBtn size="sm" variant="secondary" onClick={async () => {
+              const {error} = await SB.rpc('mlc_complete_tech_reactivation_review',
+                {p_product_id:p.id,p_new_version_required:true,p_notes:'New version required',p_actor_id:empId});
+              if(error) showToast(error.message,'error');
+              else { showToast('Returned for new version'); reload(); }
+            }}>New Version</WtBtn>
+          </>)}
+        </>
       }
     </div>
   );
 
-  // ── Product Register ──
-  const registerProducts = products.filter(p =>
-    !['BRIEF_ABANDONED','ARCHIVED_UNVIABLE','RETIRED'].includes(p.menu_product_lifecycle?.lifecycle_stage)
-  );
   const registerPage = (
-    <div style={{padding:'28px 32px', fontFamily:WT.font}}>
-      <WtPageHeader title="Product Register"
-        subtitle={`${registerProducts.length} governed products`}/>
-      {registerProducts.length===0
-        ? <WtEmpty icon="book" title="No products yet" subtitle="Products created by Marketing appear here"/>
-        : (
-          <WtCard style={{padding:0, overflow:'hidden'}}>
-            <table style={{width:'100%', borderCollapse:'collapse', fontSize:13, fontFamily:WT.font}}>
-              <thead>
-                <tr style={{borderBottom:`2px solid ${WT.border}`}}>
-                  {['Product','Type','Category','Formula','Stage','Action'].map(h => (
-                    <th key={h} style={{padding:'12px 16px', textAlign:'left', fontWeight:600,
-                      color:WT.textTertiary, fontSize:11, textTransform:'uppercase',
-                      letterSpacing:'0.06em', background:WT.bgMuted}}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {registerProducts.map((p,i) => {
-                  const lc = p.menu_product_lifecycle;
-                  const fv = p.formula_headers?.[0]?.formula_versions
-                    ?.sort((a,b)=>b.version_no-a.version_no)[0];
-                  return (
-                    <tr key={p.id} style={{borderBottom:`1px solid ${WT.divider}`,
-                      background:i%2===0?WT.bgPanel:WT.bgSoft}}>
-                      <td style={{padding:'12px 16px'}}>
-                        <div style={{fontWeight:600, color:WT.textStrong}}>{p.name}</div>
-                        <div style={{fontSize:11, color:WT.textTertiary, marginTop:2}}>{p.internal_code}</div>
-                      </td>
-                      <td style={{padding:'12px 16px', color:WT.textSecondary}}>{p.product_type}</td>
-                      <td style={{padding:'12px 16px', color:WT.textSecondary}}>{p.category_code}</td>
-                      <td style={{padding:'12px 16px'}}>
-                        {fv
-                          ? <span style={{fontSize:12, fontWeight:600,
-                              color:fv.technical_status==='APPROVED'?WT.success600:WT.textSecondary}}>
-                              v{fv.version_no} · {fv.technical_status}
-                            </span>
-                          : <span style={{color:WT.textDisabled, fontSize:12}}>No formula</span>
-                        }
-                      </td>
-                      <td style={{padding:'12px 16px'}}><StagePill stage={lc?.lifecycle_stage}/></td>
-                      <td style={{padding:'12px 16px'}}>
-                        {['RECIPE_DRAFT','RECIPE_REVISION'].includes(lc?.lifecycle_stage) && (
-                          <WtBtn size="sm" variant="secondary" onClick={() => {
-                            setSelectedProduct(p); setPage('studio');
-                          }}>Studio</WtBtn>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </WtCard>
-        )
-      }
-    </div>
+    <ProductRegister
+      products={products}
+      recipes={regRecipes}
+      regFilter={regFilter} setRegFilter={setRegFilter}
+      regQuery={regQuery}   setRegQuery={setRegQuery}
+      setActiveProductId={setActiveProductId}
+      setPage={setPage}
+      acceptBrief={acceptBrief}
+    />
   );
 
   // ── Formula Studio ──
-  const studioProduct = selectedProduct ||
-    products.find(p => ['RECIPE_DRAFT','RECIPE_REVISION'].includes(p.menu_product_lifecycle?.lifecycle_stage));
-  const studioFV = getEditableFV(studioProduct);
-  const sfpOptions = products.filter(p => p.product_type==='SEMI_FINISHED');
-  const studioLc = studioProduct?.menu_product_lifecycle?.lifecycle_stage;
-
-  const studioPage = (
-    <div style={{padding:'28px 32px', fontFamily:WT.font}}>
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:24}}>
-        <div>
-          <h1 style={{fontSize:24, fontWeight:700, color:WT.textStrong, margin:0, letterSpacing:'-0.02em'}}>
-            Formula Studio
-          </h1>
-          <p style={{fontSize:14, color:WT.textSecondary, margin:'4px 0 0'}}>
-            Build and manage ingredient formulas
-          </p>
-        </div>
-        <WtSelect value={selectedProduct?.id||''} onChange={e => {
-          const p = products.find(x => x.id===e.target.value);
-          setSelectedProduct(p||null);
-        }} style={{minWidth:240}}>
-          <option value="">Select product...</option>
-          {products.filter(p =>
-            ['RECIPE_DRAFT','RECIPE_REVISION','TESTING','OPERATIONAL_REVIEW']
-              .includes(p.menu_product_lifecycle?.lifecycle_stage)
-          ).map(p => (
-            <option key={p.id} value={p.id}>{p.name}</option>
-          ))}
-        </WtSelect>
-      </div>
-
-      {!studioProduct
-        ? <WtEmpty icon="flask" title="Select a product to begin"
-            subtitle="Products in RECIPE_DRAFT or RECIPE_REVISION appear in the selector above"/>
-        : (
-          <>
-            {/* Product context card */}
-            <WtCard style={{marginBottom:20, background:WT.bgMuted, border:`1px solid ${WT.border}`}}>
-              <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-                <div>
-                  <div style={{fontWeight:700, fontSize:15, color:WT.textStrong, marginBottom:4}}>
-                    {studioProduct.name}
-                  </div>
-                  <div style={{display:'flex', gap:10, alignItems:'center'}}>
-                    <StagePill stage={studioLc}/>
-                    {studioFV && <span style={{fontSize:12, color:WT.textSecondary}}>
-                      Formula v{studioFV.version_no} · {studioFV.technical_status}
-                    </span>}
-                  </div>
-                </div>
-                <div style={{display:'flex', gap:8}}>
-                  {studioFV && studioLc==='RECIPE_DRAFT' && (
-                    <WtBtn size="sm" disabled={formulaLines.length===0} onClick={submitForTest}>
-                      Submit for Test
-                    </WtBtn>
-                  )}
-                  {studioFV && studioLc==='RECIPE_REVISION' && (
-                    <WtBtn size="sm" onClick={submitForOpsReview}>Submit for Ops Review</WtBtn>
-                  )}
-                </div>
-              </div>
-            </WtCard>
-
-            {/* Formula lines */}
-            {formulaLines.length>0 && (
-              <WtCard style={{marginBottom:20, padding:0, overflow:'hidden'}}>
-                <div style={{padding:'14px 20px', borderBottom:`1px solid ${WT.divider}`,
-                  fontWeight:600, fontSize:13, color:WT.textStrong, background:WT.bgMuted}}>
-                  Formula — {formulaLines.length} ingredient{formulaLines.length!==1?'s':''}
-                </div>
-                <table style={{width:'100%', borderCollapse:'collapse', fontSize:13, fontFamily:WT.font}}>
-                  <thead>
-                    <tr style={{borderBottom:`1px solid ${WT.divider}`}}>
-                      {['#','Type','Ingredient','Quantity','UOM','Waste','Role'].map(h => (
-                        <th key={h} style={{padding:'10px 16px', textAlign:'left', fontWeight:600,
-                          color:WT.textTertiary, fontSize:11, textTransform:'uppercase',
-                          letterSpacing:'0.06em'}}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {formulaLines.map((l,i) => {
-                      const rm  = rawMaterials.find(r=>r.id===l.raw_material_id);
-                      const sfp = products.find(p=>p.id===l.semi_finished_product_id);
-                      return (
-                        <tr key={l.id} style={{borderBottom:`1px solid ${WT.divider}`,
-                          background:i%2===0?WT.bgPanel:WT.bgSoft}}>
-                          <td style={{padding:'10px 16px', color:WT.textTertiary, fontVariantNumeric:'tabular-nums'}}>
-                            {l.line_no}
-                          </td>
-                          <td style={{padding:'10px 16px'}}>
-                            <span style={{
-                              fontSize:10, fontWeight:700, padding:'2px 7px', borderRadius:WT.rPill,
-                              background: l.component_type==='RAW_MATERIAL' ? WT.blue050 : '#F5F3FF',
-                              color: l.component_type==='RAW_MATERIAL' ? WT.blue600 : '#7C3AED',
-                              border: `1px solid ${l.component_type==='RAW_MATERIAL' ? WT.blue100 : '#DDD6FE'}`
-                            }}>
-                              {l.component_type==='RAW_MATERIAL' ? 'RM' : 'SFP'}
-                            </span>
-                          </td>
-                          <td style={{padding:'10px 16px', fontWeight:500, color:WT.textStrong}}>
-                            {rm?.product_name||sfp?.name||'—'}
-                          </td>
-                          <td style={{padding:'10px 16px', fontVariantNumeric:'tabular-nums', color:WT.textStrong}}>
-                            {l.quantity}
-                          </td>
-                          <td style={{padding:'10px 16px', color:WT.textSecondary}}>{l.uom}</td>
-                          <td style={{padding:'10px 16px', color:WT.textSecondary,
-                            fontVariantNumeric:'tabular-nums'}}>{l.waste_factor}×</td>
-                          <td style={{padding:'10px 16px', color:WT.textTertiary, fontSize:12}}>
-                            {l.role_in_formula}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </WtCard>
-            )}
-
-            {/* Add ingredient */}
-            {studioFV && (
-              <WtCard>
-                <div style={{fontWeight:600, fontSize:14, color:WT.textStrong, marginBottom:16}}>
-                  Add Ingredient
-                </div>
-                <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:14, marginBottom:14}}>
-                  <WtSelect label="Component Type" value={addLine.component_type}
-                    onChange={e => setAddLine(f=>({...f,component_type:e.target.value,
-                      raw_material_id:'',semi_finished_product_id:''}))}>
-                    <option value="RAW_MATERIAL">Raw Material</option>
-                    <option value="SEMI_FINISHED">Semi-Finished (SFP)</option>
-                  </WtSelect>
-                  <div>
-                    <label style={{display:'block', fontSize:12, fontWeight:600,
-                      color:WT.textSecondary, marginBottom:6, fontFamily:WT.font}}>
-                      {addLine.component_type==='RAW_MATERIAL' ? 'Raw Material' : 'SFP Product'}
-                    </label>
-                    {addLine.component_type==='RAW_MATERIAL'
-                      ? <select value={addLine.raw_material_id}
-                          onChange={e => setAddLine(f=>({...f,raw_material_id:e.target.value}))}
-                          style={{width:'100%',padding:'10px 14px',border:`1px solid ${WT.border}`,
-                            borderRadius:WT.rMd,fontSize:13,fontFamily:WT.font,
-                            background:WT.bgPanel,color:WT.textPrimary}}>
-                          <option value="">Select...</option>
-                          {rawMaterials.map(r=>(
-                            <option key={r.id} value={r.id}>{r.product_name} ({r.sku_code})</option>
-                          ))}
-                        </select>
-                      : <select value={addLine.semi_finished_product_id}
-                          onChange={e => setAddLine(f=>({...f,semi_finished_product_id:e.target.value}))}
-                          style={{width:'100%',padding:'10px 14px',border:`1px solid ${WT.border}`,
-                            borderRadius:WT.rMd,fontSize:13,fontFamily:WT.font,
-                            background:WT.bgPanel,color:WT.textPrimary}}>
-                          <option value="">Select SFP...</option>
-                          {sfpOptions.map(s=>(
-                            <option key={s.id} value={s.id}>{s.name}</option>
-                          ))}
-                        </select>
-                    }
-                  </div>
-                  <WtSelect label="Role" value={addLine.role_in_formula}
-                    onChange={e => setAddLine(f=>({...f,role_in_formula:e.target.value}))}>
-                    {['BASE','PROTEIN','SAUCE','GARNISH','PACKAGING','OTHER'].map(r => (
-                      <option key={r} value={r}>{r}</option>
-                    ))}
-                  </WtSelect>
-                  <WtInput label="Quantity *" type="number" value={addLine.quantity}
-                    onChange={e => setAddLine(f=>({...f,quantity:e.target.value}))}
-                    placeholder="e.g. 180"/>
-                  <WtSelect label="UOM" value={addLine.uom}
-                    onChange={e => setAddLine(f=>({...f,uom:e.target.value}))}>
-                    {['g','kg','ml','l','piece','tbsp','tsp'].map(u => (
-                      <option key={u} value={u}>{u}</option>
-                    ))}
-                  </WtSelect>
-                  <WtInput label="Waste Factor" type="number" value={addLine.waste_factor}
-                    onChange={e => setAddLine(f=>({...f,waste_factor:e.target.value}))}
-                    placeholder="1.0 = no waste"/>
-                </div>
-                <div style={{display:'flex', justifyContent:'flex-end'}}>
-                  <WtBtn onClick={addIngredient} disabled={savingLine}>
-                    {savingLine ? 'Adding...' : 'Add Ingredient'}
-                  </WtBtn>
-                </div>
-              </WtCard>
-            )}
-          </>
-        )
-      }
-    </div>
-  );
-
   const placeholderPage = (iconName, title, subtitle) => (
     <div style={{padding:'28px 32px', fontFamily:WT.font}}>
       <WtPageHeader title={title}/>
@@ -15409,12 +19355,15 @@ function TechnicalDirectorCC({session, onSignOut}) {
   );
 
   const pages = {
-    inbox: inboxPage,
+    inbox:   inboxPage,
     register: registerPage,
-    studio: studioPage,
-    safety:  placeholderPage('shield',   'Food Safety',     'Select a product with an approved formula'),
-    testing: placeholderPage('testtube', 'Validation Lab',  'Test batch recording — next sprint'),
-    impact:  placeholderPage('zap',      'Change Impact',   'Upstream change monitoring active — no alerts'),
+    recipes: <RecipeStudio session={session} showToast={showToast}
+               activeProductId={activeProductId}
+               onConsumeActiveProduct={()=>setActiveProductId(null)}/>,
+    safety:  <FoodSafetyPage session={session} showToast={showToast} products={products} setPage={setPage}/>,
+    testing: <ValidationLabPage session={session} showToast={showToast} products={products}/>,
+    impact:  <ChangeImpactPage session={session} showToast={showToast}
+                setPage={setPage} setActiveProductId={setActiveProductId}/>,
   };
 
   return (
@@ -15462,11 +19411,9 @@ function CFOMenuReviewPage({session, SB}) {
   const deferredProducts  = products.filter(p => p.menu_product_lifecycle?.lifecycle_stage==='DEFERRED');
 
   // Live margin preview
-  const getMargin = (product, price) => {
-    const fv = product?.formula_headers?.[0]?.formula_versions?.find(v => v.technical_status==='APPROVED');
-    if (!fv?.tested_cogs_last || !price || parseFloat(price)<=0) return null;
-    return Math.round(((parseFloat(price) - fv.tested_cogs_last) / parseFloat(price)) * 1000) / 10;
-  };
+  // COGS margin preview in decision modal uses entered price vs floor only in v1
+  // Full BOM-computed COGS will be injected server-side in a future sprint
+  const getMargin = (product, price) => null;
 
   const submitDecision = async () => {
     const p = decisionModal;
@@ -15482,17 +19429,29 @@ function CFOMenuReviewPage({session, SB}) {
     }
     setSubmitting(true);
     try {
-      const {error} = await SB.rpc('mlc_cfo_decision', {
-        p_product_id:         p.id,
-        p_decision:           f.decision,
-        p_approved_price:     f.approved_price ? parseFloat(f.approved_price) : null,
-        p_rejection_code:     f.rejection_code || null,
-        p_decision_notes:     f.notes || null,
-        p_deferred_reason:    f.deferred_reason || null,
-        p_deferred_until:     f.deferred_until ? new Date(f.deferred_until).toISOString() : null,
-        p_deferred_review_due:f.deferred_due   ? new Date(f.deferred_due).toISOString()   : null,
-        p_actor_id:           empId
-      });
+      // Route REJECT through structured mlc_cfo_return RPC for correct routing
+      let error;
+      if(f.decision === 'REJECT') {
+        const res = await SB.rpc('mlc_cfo_return', {
+          p_product_id: p.id,
+          p_reason:     f.rejection_code || 'STRUCTURALLY_UNVIABLE',
+          p_notes:      f.notes || null,
+        });
+        error = res.error;
+      } else {
+        const res = await SB.rpc('mlc_cfo_decision', {
+          p_product_id:         p.id,
+          p_decision:           f.decision,
+          p_approved_price:     f.approved_price ? parseFloat(f.approved_price) : null,
+          p_rejection_code:     f.rejection_code || null,
+          p_decision_notes:     f.notes || null,
+          p_deferred_reason:    f.deferred_reason || null,
+          p_deferred_until:     f.deferred_until ? new Date(f.deferred_until).toISOString() : null,
+          p_deferred_review_due:f.deferred_due   ? new Date(f.deferred_due).toISOString()   : null,
+          p_actor_id:           empId
+        });
+        error = res.error;
+      }
       if (error) throw error;
       showToast(`Decision recorded: ${f.decision}`);
       setDecisionModal(null); reload();
@@ -15534,12 +19493,11 @@ function CFOMenuReviewPage({session, SB}) {
           )
           : financeQueue.map(p => {
             const brief = p.product_briefs?.sort((a,b)=>b.brief_no-a.brief_no)[0];
-            const fv    = p.formula_headers?.[0]?.formula_versions?.find(v => v.technical_status==='APPROVED');
-            const margin = brief?.target_selling_price && fv?.tested_cogs_last
-              ? Math.round(((brief.target_selling_price - fv.tested_cogs_last) / brief.target_selling_price) * 1000) / 10
-              : null;
             const floor = brief?.target_margin_floor_pct || 30;
-            const marginOk = margin !== null && margin >= floor;
+            // COGS from live BOM will be computed server-side in future;
+            // for now show target price and floor — margin preview via decision modal
+            const margin = null;
+            const marginOk = false;
             return (
               <WtCard key={p.id} style={{
                 marginBottom:12,
@@ -15552,15 +19510,14 @@ function CFOMenuReviewPage({session, SB}) {
                       <span style={{fontSize:11, fontWeight:500, color:WT.textTertiary,
                         marginLeft:10}}>{p.internal_code}</span>
                     </div>
-                    <div style={{display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16}}>
+                    <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:16}}>
                       <WtField label="Target Price"
                         value={brief?.target_selling_price ? `${brief.target_selling_price} ALL` : '—'}/>
-                      <WtField label="Tested COGS"
-                        value={fv?.tested_cogs_last ? `${fv.tested_cogs_last} ALL` : '—'}/>
-                      <WtField label="Est. Margin"
-                        value={margin !== null ? `${margin}%` : '—'}
-                        sub={!marginOk && margin !== null ? `Below ${floor}% floor` : marginOk ? 'Above floor ✓' : undefined}/>
-                      <WtField label="Margin Floor" value={`${floor}%`}/>
+                      <WtField label="Margin Floor"
+                        value={brief?.target_margin_floor_pct ? `${brief.target_margin_floor_pct}%` : '—'}/>
+                      <WtField label="Est. COGS"
+                        value="—"
+                        sub="Computed from live BOM on review"/>
                     </div>
                     {brief?.positioning && (
                       <p style={{fontSize:12, color:WT.textTertiary, fontStyle:'italic',
@@ -15749,10 +19706,10 @@ function CFOMenuReviewPage({session, SB}) {
           <WtSelect label="Rejection Reason *" value={form.rejection_code}
             onChange={e => setForm(f=>({...f,rejection_code:e.target.value}))}
             style={{marginBottom:16}}>
-            <option value="RECIPE_COST">Recipe Cost — route to TD for recipe revision</option>
-            <option value="PRICE_TOO_LOW">Price Too Low — route to Marketing</option>
-            <option value="STRUCTURALLY_UNVIABLE">Structurally Unviable — archive</option>
-            <option value="TIMING">Timing / Portfolio — defer or hold</option>
+            <option value="RECIPE_COST_TOO_HIGH">Recipe Cost Too High → TD queue</option>
+            <option value="PRICE_TOO_LOW">Price Too Low → Marketing queue</option>
+            <option value="STRUCTURALLY_UNVIABLE">Structurally Unviable → archived (dead end)</option>
+            <option value="DEFERRED">Defer → hold queue (no active owner)</option>
           </WtSelect>
         )}
 
