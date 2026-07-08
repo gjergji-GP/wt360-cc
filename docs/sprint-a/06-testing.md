@@ -1,5 +1,9 @@
 # Shipment Engine — Testing
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 ## The harness
 
 `SELECT * FROM run_shipment_engine_tests();` → returns `(test_case, passed)` for 18 cases.

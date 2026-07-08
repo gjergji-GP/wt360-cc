@@ -1,5 +1,9 @@
 # Shipment Engine — Watchdogs
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 Four engine-native watchdog views (M5), keyed off the domain spine. They **coexist** with the
 legacy task-based `v_watchdog_*` family — the legacy `v_watchdog_receiving_without_invoice_stale`
 (which watches the task system) is untouched. Firewall: engine watchdogs read engine columns.

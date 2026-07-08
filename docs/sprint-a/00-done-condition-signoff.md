@@ -1,5 +1,9 @@
 # Sprint A — Done-Condition Sign-Off
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 **Shipment / Receipt / Acceptance Engine · WT360 · `knquzjqxhduyxxljuede`**
 
 ## Completion checklist

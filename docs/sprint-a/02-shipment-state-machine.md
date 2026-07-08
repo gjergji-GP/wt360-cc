@@ -1,5 +1,9 @@
 # Shipment Engine — State Machine
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 Two **independent** status fields on `receiving_tickets`, meeting at reconciliation. Two fields
 = two owners: this separation IS the SC/Finance boundary, made physical. Enforced by the
 column-aware trigger `guard_rt_domain_transitions` (M3).

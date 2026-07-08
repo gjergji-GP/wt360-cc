@@ -1,5 +1,9 @@
 # Shipment Engine — SC / Finance Boundary
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 ## The core separation
 
 ```

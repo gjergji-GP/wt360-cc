@@ -1,5 +1,9 @@
 # Shipment Engine — Adapter Contract
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 **The interface every adapter (Vendor, CK, Warehouse, Returns, …) must satisfy before calling
 the engine.** This is the authoritative integration spec. Where rules were previously spread
 across docs 01–06, this consolidates them into one checklist an adapter passes or fails.

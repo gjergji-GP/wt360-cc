@@ -3,6 +3,8 @@
 **WT360 Shipment / Receipt / Acceptance Engine**
 Project: `knquzjqxhduyxxljuede` · Reconciled against live production schema.
 Status: **Task 0 complete. No migrations written. This document gates all Sprint A DDL.**
+Version: 1.0
+Last Updated: 2026-07-08
 
 ---
 

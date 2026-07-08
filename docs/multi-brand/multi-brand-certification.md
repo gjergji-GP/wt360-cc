@@ -2,6 +2,8 @@
 
 **WT360 · Green & Protein · Supabase `knquzjqxhduyxxljuede`**
 Status: **ARCHITECTURE ARTIFACT — not a remediation ticket.** No code changes proposed here; this defines *what must be true* before a second brand, and *how we prove it*.
+Version: 1.0
+Last Updated: 2026-07-08
 
 Two governing principles (both load-bearing):
 - **Stages 1–2 are a loop, not a waterfall.** The sovereignty/shared matrices and the capability audit refine each other. A capability audit will expose a shared edge the matrix missed (the Central Kitchen is the canonical example — its status changes the correct answer for five capabilities at once). Draft → test against capabilities → revise → repeat until stable.

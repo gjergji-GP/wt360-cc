@@ -1,5 +1,9 @@
 # Shipment Engine — Frozen API (Sprint A)
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 **The supported interface.** These 10 RPCs are the stable surface adapters target. Everything
 else — helper functions, guards, the test harness internals — is **internal implementation** and
 may change without notice. Signatures below are pulled live from the deployed database.

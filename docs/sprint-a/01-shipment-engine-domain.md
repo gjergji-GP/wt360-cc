@@ -2,6 +2,8 @@
 
 **Sprint A · WT360 · Project `knquzjqxhduyxxljuede`**
 Status: **BUILT & VERIFIED** (18/18 harness cases passing).
+Version: 1.0
+Last Updated: 2026-07-08
 
 ## Governing principles
 

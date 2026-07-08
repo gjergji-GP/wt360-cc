@@ -1,5 +1,9 @@
 # Shipment Engine — Ledger & Event Matrix
 
+Status: Frozen
+Version: 1.0
+Last Updated: 2026-07-08
+
 ## The mandatory ledger gateway
 
 `stock_ledger` is triple-guarded; direct INSERT is impossible from a normal session. The
