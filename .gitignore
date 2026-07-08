@@ -26,3 +26,7 @@ dist-ssr
 .env
 node_modules/
 dist/
+
+# WT360 app-transfer artifacts (deploy scratch, not source)
+app_b64_*.txt
+wt360-docs-snapshot.tar.gz
