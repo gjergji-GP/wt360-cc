@@ -2,8 +2,8 @@
 
 Status: Proposed (v0.9 — proving period)
 Owner: Product / Platform Architecture
-Version: 0.9
-Last Updated: 2026-07-09
+Version: 0.9.2
+Last Updated: 2026-07-10
 Depends On: docs/product/WT360-PRODUCT-CONSTITUTION.md
 
 ---
@@ -74,3 +74,21 @@ In a discussion with the CEO of a highly admired company, he described his own r
 ## Proving-period note
 
 At v0.9, several principles (1, 2, 4, 12) rest on architectural reasoning plus partial or indirect evidence, honestly marked above. As the constitution is applied across Inventory Count, Waste, Transfers, and Procurement, each application appends new dated evidence here, and new Purpose-level incidents are numbered (#002, #003, …). When every principle carries direct production evidence across multiple modules, the constitution is ready to freeze at v1.0.
+
+---
+
+## Watched candidates (NOT yet constitutional)
+
+Ideas that recur and may earn principle status once a real build proves they change a design decision. Held here per the moratorium — observed, not yet adopted. Argument is not evidence; a build is.
+
+### Candidate — "Operational knowledge should move toward the moment it is created."
+
+Every minute knowledge stays in a human head, its entropy increases; capture it at the moment of creation, not reconstructed later. Appears to explain, in one law: count-once, accept-now, reason-on-rejection, temperature-at-receipt, waste-at-declaration, inventory-during-counting, maintenance-immediately-after-failure. **Status:** watched. It may be a distinct principle, or it may simply be another face of Knowledge Debt. Decision deferred until it demonstrably forces a design decision across Waste, Inventory Count, or Production that the existing principles did not already cover. Recorded so it is not lost.
+
+### Candidate — Capability scorecard (Capture / Validate / Distribute / Preserve / Improve, /5 per module)
+
+A per-module maturity rubric more actionable than "we're at Stage 3." To be built as its own document and used to score Receiving, Waste, Inventory, and others; if after several modules it predicts reality usefully, it may be referenced constitutionally. **Status:** evidence candidate, separate document.
+
+### Candidate — The flywheel as normative (not just explanatory)
+
+The Reality→Capture→Validate→Execute→Measure→Learn→Improve loop (with preservation as gravity) is currently explanatory — it describes what the system does. Whether it should become *normative* (a rule every module must visibly implement each phase) awaits evidence from modules beyond Receiving. **Status:** explanatory now; watched for normative promotion.

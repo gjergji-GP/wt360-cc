@@ -2,8 +2,8 @@
 
 Status: Proposed (v0.9 — proving period)
 Owner: Product / Platform Architecture
-Version: 0.9
-Last Updated: 2026-07-09
+Version: 0.9.2
+Last Updated: 2026-07-10
 Depends On: docs/product/WT360-PRODUCT-CONSTITUTION-EVIDENCE.md
 
 ---
@@ -16,21 +16,52 @@ Every principle, ADR, invariant, workflow, and future capability below ultimatel
 
 ### WT360 exists to institutionalize operational excellence.
 
+**What an operating system is:** a system that continuously converts operational reality into institutional knowledge, and institutional knowledge back into daily execution. This single definition explains every module WT360 will ever contain — Receiving, Waste, Inventory, Production, Maintenance, Finance, HR — because each one is the same loop: reality becomes knowledge, knowledge guides execution, execution produces evidence, evidence sharpens knowledge. The alternative every module replaces is: reality → spreadsheet → forgotten.
+
+Though the first domain is restaurants, nothing in these principles is restaurant-specific. They describe how any organization captures reality, retains knowledge, coordinates people, and improves over time. The voice of this document stays concrete and operational — goods arriving during lunch rush, not abstractions — because the concreteness is its power; but the bones generalize.
+
 Operational excellence must live in the operating system — not inside the memories, habits, or heroics of individuals. The role of the software is to capture operational knowledge, enforce operational truth, and continuously reduce operational friction, so that excellence becomes repeatable, teachable, and scalable.
 
 When the operating system becomes stronger: people become more independent, teams become more coordinated, leadership spends less time firefighting, and the business becomes more resilient.
 
 The goal is not to reduce dependence on people. The goal is to **preserve excellence** so it does not leave when a person goes home. Reduced dependence follows as a consequence — and it protects people as much as the business: no one becomes a single point of failure, and no one is trapped as indispensable. Leadership's role does not disappear; it *shifts* — from resolving daily friction to building the next location, the next capability, the next improvement. The system absorbs operational variability so that people can spend their attention on leverage rather than firefighting.
 
-### Software stores operational knowledge, not merely data.
+### WT360 captures, validates, distributes, and preserves operational knowledge.
 
-This is the distinction that defines what WT360 is becoming — the company's institutional memory, not a database.
+This is the distinction that defines what WT360 is becoming — the company's institutional memory, not a database. A notebook *preserves* knowledge; a database *stores* it. WT360 does four distinct jobs: it **captures** operational knowledge as it happens, **validates** it (mapping, acceptance, accountability), **distributes** it to the next role who needs it, and **preserves** it as permanent, reusable institutional memory — and over time, improves it through the evidence loop.
+
+The difference between data and operational knowledge:
 
 - A temperature reading is *data*. Knowing that a temperature deviation requires rejection is *operational knowledge*.
 - A received quantity is *data*. Knowing who must acknowledge ownership before stock moves is *operational knowledge*.
 - A purchase invoice is *data*. Knowing how Finance, Supply Chain, and Restaurant Management cooperate around that invoice is *operational knowledge*.
 
 WT360 captures the knowledge, not just the data.
+
+### The loop, and the gravity beneath it
+
+The operating system runs a continuous loop:
+
+```
+                          P R E S E R V A T I O N
+                    (the immutable foundation of every phase)
+                                    │
+   Reality → Capture → Validate → Execute → Measure → Learn → Improve → Reality
+```
+
+Every phase feeds the next, and the cycle returns to a changed reality — the business becomes measurably better each turn. Preservation is **not a step in the loop**. It is the substrate beneath all of them — gravity, not a phase. Capture is preserved, validation is preserved, execution is preserved, measurement is preserved, learning is preserved. This is why the append-only doctrine (ledgers and events that cannot be deleted, only compensated) is not a technical detail but a constitutional property: nothing WT360 does is ever un-preserved, so everything it does can be learned from and audited. Learning is the goal; preservation is what makes the learning trustworthy.
+
+### Knowledge Debt — the liability no accounting system records
+
+Software has technical debt. Operations suffer something worse: **Knowledge Debt** — operational knowledge trapped inside a single person's head.
+
+- Only one person knows how supplier X's invoices work.
+- Only one RM truly understands receiving.
+- Only one cook knows the fryer calibration.
+- Only Finance understands a given reconciliation.
+
+Every one of these is an unrecorded liability: if that person is absent, the operation degrades or stops. WT360 exists to continuously **pay down Knowledge Debt** — to move knowledge out of heads and into the operating system, where it is preserved, distributed, and improvable. This reframes what a feature *is*: not "which feature do we build next," but **"which Knowledge Debt does this pay down."** That question changes engineering priorities, because it points at the knowledge still trapped in people rather than the feature that seems most interesting.
+
 
 ### The organizational maturity this drives toward
 
@@ -288,3 +319,21 @@ Question 4 turns each module into a designed experiment: predict which principle
 ## Amendment and proving period
 
 During v0.9, principles may be refined or added freely as real use reveals what's precise; each change is recorded in the evidence ledger. At v1.0 and after, Layer A principles change only when operational reality changes — rarely, with recorded reasoning. Layer B rules evolve without ceremony. A new Layer A principle may be added only when backed by production evidence — never argument alone. This mirrors ADR-005: implementation drives documentation; here, operational reality drives the constitution.
+
+### The moratorium (a governance rule, not a suggestion)
+
+**No new constitutional principle may be added until at least three more modules have been built under v0.9** (Case B, Waste, Inventory Count are the first three). After each module, the kickoff asks one question: *did the Constitution force a different design decision?* If yes, append the evidence. If no, either the Constitution is incomplete, or the idea was never constitutional. Ideas may accumulate as **watched candidates** in the evidence ledger during the moratorium, but they do not become principles until a real build proves they change decisions.
+
+The test for any proposed principle: **what production decision would have been different if this principle already existed?** If the answer is "none," it is not constitutional yet.
+
+### What this document must remain
+
+This Constitution is not a collection of brilliant ideas. It is a collection of **expensive lessons**. Its authority comes from the fact that nearly every sentence exists because a specific decision in production proved it — not because it sounded wise. Anyone can write principles; very few organizations can point to a sentence and say "that exists because we made that exact mistake." Protect that. The moment this becomes a document of clever aspirations rather than distilled experience, it loses the only thing that makes it worth obeying.
+
+---
+
+## Closing
+
+> **The goal is not to build software that people use. The goal is to build an operating system that makes the business continuously better — one that captures operational reality, preserves it permanently, and turns it back into sharper daily execution, so that excellence survives any individual and compounds over time.**
+
+Software is the mechanism. The operating system is the point. An organization that learns faster than it forgets is the destination.
