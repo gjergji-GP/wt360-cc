@@ -8484,206 +8484,6 @@ function RMGrnModal({session,onClose,onDone}){
 }
 
 
-// ===== Phase 1.1 Confirm Arrival (shipment-engine receiving) =====
-function rcAgo(d) {
-  if (!d) return "—";
-  const m = Math.floor((Date.now() - new Date(d)) / 60000);
-  if (m < 60) return m + "m ago";
-  if (m < 1440) return Math.floor(m / 60) + "h ago";
-  return Math.floor(m / 1440) + "d ago";
-}
-
-function ReceivingQueue({ session, onOpenShipment, refreshKey }) {
-  const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState("");
-  const load = useCallback(async () => {
-    setLoading(true); setErr("");
-    try {
-      const { data, error } = await SB.rpc("list_receivable_shipments", {
-        p_auth_user_id: session.auth_user_id, p_limit: 50, p_offset: 0,
-      });
-      if (error) { setErr(error.message); setRows([]); }
-      else { setRows(data || []); }
-    } catch (e) { setErr(e.message || "Failed to load receivable shipments."); setRows([]); }
-    finally { setLoading(false); }
-  }, [session?.auth_user_id]);
-  useEffect(() => { load(); }, [load, refreshKey]);
-  if (loading) return (
-    <div style={{ padding: 40, textAlign: "center", color: "var(--wt-muted)" }}>
-      <div className="spinner" style={{ margin: "0 auto 12px" }} />Loading receivable shipments…
-    </div>
-  );
-  if (err) return (
-    <div style={{ padding: 24 }}>
-      <div style={{ padding: "12px 16px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 14, fontWeight: 600 }}>{err}</div>
-      <button onClick={load} className="rm-btn-p" style={{ marginTop: 16 }}>Retry</button>
-    </div>
-  );
-  if (rows.length === 0) return (
-    <div style={{ padding: 48, textAlign: "center" }}>
-      <div style={{ fontSize: 15, fontWeight: 700, color: "var(--wt-ink)", marginBottom: 6 }}>Nothing to receive right now</div>
-      <div style={{ fontSize: 13, color: "var(--wt-muted)" }}>Dispatched shipments for {session?.location_name || "your location"} will appear here.</div>
-    </div>
-  );
-  return (
-    <div>
-      <div style={{ marginBottom: 16 }}>
-        <div style={{ fontSize: 18, fontWeight: 700, color: "var(--wt-ink)" }}>Incoming Shipments</div>
-        <div style={{ fontSize: 12, color: "var(--wt-muted)", marginTop: 2 }}>
-          {rows.length} shipment{rows.length === 1 ? "" : "s"} awaiting arrival at {session?.location_name || "your location"}
-        </div>
-      </div>
-      <div style={{ border: "1px solid var(--wt-border)", borderRadius: 12, overflow: "hidden" }}>
-        {rows.map((s, i) => (
-          <div key={s.shipment_id} onClick={() => onOpenShipment && onOpenShipment(s.shipment_id)}
-            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 16px", cursor: "pointer", borderTop: i === 0 ? "none" : "1px solid var(--wt-border)", background: "var(--bg)" }}>
-            <div>
-              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wt-ink)" }}>{s.source_location_name} → {s.destination_location_name}</div>
-              <div style={{ fontSize: 12, color: "var(--wt-muted)", marginTop: 3 }}>
-                {s.line_count} line{s.line_count === 1 ? "" : "s"} · {s.total_expected_qty} expected · dispatched {rcAgo(s.dispatched_at)}
-              </div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: ".04em", padding: "3px 10px", borderRadius: 999, background: "rgba(0,157,224,.10)", color: "var(--acc)" }}>{s.status}</span>
-              <Icon name="chevron-right" size={16} color="var(--wt-muted)" />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ReceivingDetail({ session, shipmentId, onBack, onSubmitted }) {
-  const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState("");
-  const [qty, setQty] = useState({});
-  const [busy, setBusy] = useState(false);
-  const [submitErr, setSubmitErr] = useState("");
-  const load = useCallback(async () => {
-    setLoading(true); setErr("");
-    try {
-      const { data, error } = await SB.rpc("get_receivable_shipment", {
-        p_auth_user_id: session.auth_user_id, p_shipment_id: shipmentId,
-      });
-      if (error) { setErr(error.message); setRows([]); }
-      else { setRows(data || []); }
-    } catch (e) { setErr(e.message || "Failed to load shipment."); setRows([]); }
-    finally { setLoading(false); }
-  }, [shipmentId, session?.auth_user_id]);
-  useEffect(() => { load(); }, [load]);
-  const header = rows[0] || null;
-  const lines = rows.filter(r => r.line_id);
-  const allEntered = lines.length > 0 && lines.every(ln => {
-    const v = qty[ln.line_id];
-    return v !== undefined && v !== "" && !Number.isNaN(Number(v)) && Number(v) >= 0;
-  });
-  const zeroLines = lines.filter(ln => {
-    const v = qty[ln.line_id];
-    return v !== undefined && v !== "" && Number(v) === 0;
-  });
-  const submit = async () => {
-    if (!allEntered || busy) return;
-    setBusy(true); setSubmitErr("");
-    try {
-      const p_lines = lines.map(ln => ({
-        product_id: ln.product_id, shipment_line_id: ln.line_id,
-        received_qty: Number(qty[ln.line_id]), uom: ln.uom,
-      }));
-      const { data, error } = await SB.rpc("submit_receipt", {
-        p_auth_user_id: session.auth_user_id, p_shipment_id: shipmentId,
-        p_location_id: session.home_location_id, p_lines, p_header_note: null,
-      });
-      if (error) { setSubmitErr(error.message); setBusy(false); return; }
-      onSubmitted && onSubmitted(data);
-    } catch (e) { setSubmitErr(e.message || "Failed to submit receipt."); setBusy(false); }
-  };
-  const BackBar = (
-    <button onClick={onBack} disabled={busy} className="rm-btn-p"
-      style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 16, background: "transparent", color: "var(--wt-muted)", padding: "6px 10px", opacity: busy ? 0.5 : 1 }}>
-      <Icon name="arrow-left" size={14} color="var(--wt-muted)" /> Back to queue
-    </button>
-  );
-  if (loading) return (<div>{BackBar}<div style={{ padding: 40, textAlign: "center", color: "var(--wt-muted)" }}><div className="spinner" style={{ margin: "0 auto 12px" }} />Loading shipment…</div></div>);
-  if (err) return (<div>{BackBar}<div style={{ padding: "12px 16px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 14, fontWeight: 600 }}>{err}</div></div>);
-  if (!header) return (<div>{BackBar}<div style={{ padding: 40, textAlign: "center", color: "var(--wt-muted)" }}>Shipment not found.</div></div>);
-  return (
-    <div>
-      {BackBar}
-      <div style={{ marginBottom: 20 }}>
-        <div style={{ fontSize: 18, fontWeight: 700, color: "var(--wt-ink)" }}>{header.source_location_name} → {header.destination_location_name}</div>
-        <div style={{ fontSize: 12, color: "var(--wt-muted)", marginTop: 3 }}>
-          Dispatched {rcAgo(header.dispatched_at)} · {lines.length} line{lines.length === 1 ? "" : "s"} · enter the quantity that actually arrived
-        </div>
-      </div>
-      <div style={{ border: "1px solid var(--wt-border)", borderRadius: 12, overflow: "hidden" }}>
-        <div style={{ display: "flex", padding: "10px 16px", background: "var(--bg)", borderBottom: "1px solid var(--wt-border)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: "var(--wt-muted)" }}>
-          <div style={{ flex: 1 }}>PRODUCT</div>
-          <div style={{ width: 90, textAlign: "right" }}>EXPECTED</div>
-          <div style={{ width: 130, textAlign: "right" }}>RECEIVED</div>
-        </div>
-        {lines.map((ln, i) => (
-          <div key={ln.line_id} style={{ display: "flex", alignItems: "center", padding: "12px 16px", borderTop: i === 0 ? "none" : "1px solid var(--wt-border)" }}>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "var(--wt-ink)" }}>{ln.product_name || "—"}</div>
-              {ln.sku_code && <div style={{ fontSize: 11, color: "var(--wt-muted)", marginTop: 2, fontFamily: "ui-monospace, monospace" }}>{ln.sku_code}</div>}
-            </div>
-            <div style={{ width: 90, textAlign: "right", fontSize: 14, color: "var(--wt-muted)" }}>{ln.expected_qty} <span style={{ fontSize: 11 }}>{ln.uom}</span></div>
-            <div style={{ width: 130, textAlign: "right" }}>
-              <input type="number" min="0" step="any" inputMode="decimal" placeholder="—"
-                value={qty[ln.line_id] ?? ""} disabled={busy}
-                onChange={e => setQty(q => ({ ...q, [ln.line_id]: e.target.value }))}
-                style={{ width: 90, textAlign: "right", padding: "6px 8px", borderRadius: 8, border: "1px solid var(--wt-border)", fontSize: 14, color: "var(--wt-ink)", background: busy ? "var(--bg)" : "#fff" }} />
-              <span style={{ fontSize: 11, color: "var(--wt-muted)", marginLeft: 4 }}>{ln.uom}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      {zeroLines.length > 0 && !busy && (
-        <div style={{ marginTop: 16, padding: "10px 14px", borderRadius: 8, background: "rgba(245,158,11,.10)", color: "var(--wt-warn, #b45309)", fontSize: 13, fontWeight: 600 }}>
-          {zeroLines.length} line{zeroLines.length === 1 ? " is" : "s are"} marked as 0 received — confirm this is intended (short or not arrived).
-        </div>
-      )}
-      {submitErr && (
-        <div style={{ marginTop: 16, padding: "12px 16px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 14, fontWeight: 600 }}>{submitErr}</div>
-      )}
-      <div style={{ marginTop: 20, display: "flex", justifyContent: "flex-end", gap: 12 }}>
-        <button onClick={submit} disabled={!allEntered || busy} className="rm-btn-p"
-          style={{ opacity: (!allEntered || busy) ? 0.5 : 1, cursor: (!allEntered || busy) ? "not-allowed" : "pointer", minWidth: 160 }}>
-          {busy ? "Confirming…" : "Confirm Arrival"}
-        </button>
-      </div>
-      {!allEntered && !busy && (
-        <div style={{ marginTop: 8, textAlign: "right", fontSize: 12, color: "var(--wt-muted)" }}>Enter a received quantity for every line to confirm arrival.</div>
-      )}
-    </div>
-  );
-}
-
-function RMReceivePage({ session }) {
-  const [sel, setSel] = useState(null);
-  const [toast, setToast] = useState("");
-  const [refreshKey, setRefreshKey] = useState(0);
-  const onSubmitted = (receiptId) => {
-    setSel(null);
-    setRefreshKey(k => k + 1);
-    setToast("Arrival confirmed. Awaiting inventory acceptance.");
-    setTimeout(() => setToast(""), 3000);
-  };
-  return (
-    <div>
-      {toast && <div className="wt-toast wt-toast-g">{toast}</div>}
-      {sel
-        ? <ReceivingDetail session={session} shipmentId={sel} onBack={() => setSel(null)} onSubmitted={onSubmitted} />
-        : <ReceivingQueue session={session} refreshKey={refreshKey} onOpenShipment={(id) => setSel(id)} />}
-    </div>
-  );
-}
-// ===== end Confirm Arrival =====
-
-
 function RMReceiving({session,receiveTasks,onReload}){
   const [sel,setSel]=useState(null);  // selected task
   const [done,setDone]=useState(false);
@@ -9158,7 +8958,7 @@ function RestaurantManagerCC({session,onSignOut}){
                 {page==='rm-home'&&<RMHome session={session} team={team} onboardReqs={onboardReqs} offboardReqs={offboardReqs} schedules={schedules} receiveTasks={receiveTasks} wasteLogs={wasteLogs}/>}
                 {page==='rm-team'&&<RMTeam session={session} team={team} onboardReqs={onboardReqs} offboardReqs={offboardReqs} onReload={load}/>}
                 {page==='rm-shifts'&&<RMShifts session={session} team={team}/>}
-                {page==='rm-receive'&&<RMReceivePage session={session}/>}
+                {page==='rm-receive'&&<RMReceiving session={session} receiveTasks={receiveTasks} onReload={load}/>}
                 {page==='rm-waste'&&<RMWaste session={session} wasteLogs={wasteLogs}/>}
               </>
             )}
@@ -10434,7 +10234,7 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
     setMprBusy(true); setMprErr('');
     try {
       const {data:mp,error:mpErr} = await SB.from('master_products').insert({
-        product_name: form.product_name.trim().replace(/\s+/g,' '),
+        product_name: form.product_name.trim(),
         product_type: 'RI',
         category_id: form.category_id,
         group_id:    form.group_id,
@@ -10466,7 +10266,7 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
         master_product_id: mp.id,
         vendor_id:         vendorId||null,
         seller_nipt:       nipt||null,
-        vendor_item_name:  (form.vendor_item_name||selLine.product_name_raw||'').trim().replace(/\s+/g,' '),
+        vendor_item_name:  form.vendor_item_name||selLine.product_name_raw||'',
         vendor_item_code:  form.vendor_item_code||null,
         vendor_uom:        form.vendor_uom||form.purchase_uom,
         conversion_factor: parseFloat(form.purchase_to_inventory_factor),
@@ -10654,8 +10454,8 @@ function SCQuarUnknownDetail({ticket,onClose,onResolved}) {
                   </div>
                   <div style={{fontSize:10,color:'var(--muted)',marginTop:3}}>System-assigned — cannot be edited</div>
                 </div>
-                <_MprTextInput label="Product Name *" value={form.product_name} readOnly
-                  hint="Locked to the eBills invoice text — not editable (prevents duplicate SKUs)"/>
+                <_MprTextInput label="Product Name *" value={form.product_name} onChange={e=>set('product_name',e.target.value)}
+                  hint="Your system's canonical name (not vendor's)"/>
               </div>
               <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginBottom:4}}>
                 <div>
