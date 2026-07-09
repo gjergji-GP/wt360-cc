@@ -9018,7 +9018,7 @@ function RMReceivePage({ session }) {
         <div style={{ maxWidth: 560, margin: "48px auto", textAlign: "center", padding: 32, border: "1px solid var(--wt-border)", borderRadius: 12, background: "var(--bg)" }}>
           <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wt-ink)", marginBottom: 6 }}>Arrival confirmed</div>
           <div style={{ fontSize: 13, color: "var(--wt-muted)", marginBottom: 24 }}>
-            Accept all as counted to post stock now, or review to reject or adjust individual lines.
+            Accept all as counted to post stock now, review to reject or adjust lines, or accept later — the receipt waits under To Accept either way.
           </div>
           {acceptErr && (
             <div style={{ marginBottom: 16, padding: "10px 14px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 13, fontWeight: 600 }}>{acceptErr}</div>
@@ -9034,7 +9034,7 @@ function RMReceivePage({ session }) {
             </button>
             <button onClick={backToIncoming} disabled={acceptBusy} className="rm-btn-p"
               style={{ background: "transparent", color: "var(--wt-muted)", border: "1px solid var(--wt-border)", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700, opacity: acceptBusy ? 0.5 : 1 }}>
-              Back to Incoming
+              Accept later
             </button>
           </div>
         </div>
