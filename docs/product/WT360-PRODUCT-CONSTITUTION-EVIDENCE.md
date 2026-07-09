@@ -77,6 +77,29 @@ At v0.9, several principles (1, 2, 4, 12) rest on architectural reasoning plus p
 
 ---
 
+## Purpose-level evidence — continued
+
+### Evidence #002 — A feature with no successful production execution must be treated as UNBUILT
+
+**2026-07-10 · Case B (blind / missing-invoice receiving).** Case B was documented as "~85% built and inert," based on reading function bodies. Attempting to actually execute it revealed the functions were written against a schema that never shipped. The mismatches surfaced one at a time, each only after the previous was fixed:
+1. Phantom columns on `receiving_tickets` (`blind_vendor_name`, `blind_note` — do not exist).
+2. `source` CHECK rejected `BLIND` / `UNPLANNED`.
+3. `receiving_lines.line_type` CHECK rejected `BLIND` / `UNPLANNED`.
+4. `tasks` has no `notes` column — note content belongs in `payload` (structured context, not a human string).
+5. A phantom reference `v_ticket.blind_vendor_name` inside the allocation function.
+6. The four Case B task types were never registered in the `task_types` catalog — enforced by a trigger (`block_inactive_task_type`), invisible to column/constraint reconciliation.
+
+Even a thorough *static* reconciliation of columns and constraints missed #6, because it lives in a data catalog + trigger, not in a column definition. Only attempted execution surfaced it.
+
+**Decision:** stop patching one blocker at a time (that is how silent ledger bugs are born), treat Case B as unbuilt, and resume it later as an execution-first build. Safe additive changes made this session were kept (allocation `receiving_line_id` key + by-ID back-fill, `source`/`line_type` CHECK additions, task-type registration); no ledger was ever posted.
+
+**Lesson (constitutional weight):**
+> A feature with no successful production execution must be treated as UNBUILT, not "almost done." Reconciliation must verify: **columns, constraints, triggers, catalog rows, permissions, AND one minimal execution path.** Static reconciliation is necessary but not sufficient — only execution proves the path. "Integration validation" is not the same evidence category as "migration dry-run"; neither substitutes for one real end-to-end run.
+
+This corrects an earlier optimistic assessment in RECEIVING-FLOW-RECONCILIATION and CASE-B-SCHEMA-RECONCILIATION that called the remaining work "bounded." It was bounded only relative to what each reconciliation had checked; the true bound was found by execution.
+
+---
+
 ## Watched candidates (NOT yet constitutional)
 
 Ideas that recur and may earn principle status once a real build proves they change a design decision. Held here per the moratorium — observed, not yet adopted. Argument is not evidence; a build is.
