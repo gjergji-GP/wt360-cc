@@ -8933,6 +8933,8 @@ function RMReceivePage({ session }) {
   // to accept it now (no tab-switch/reopen) or return to Incoming. Two statements
   // stay separate — this only removes navigation friction, not the decision.
   const [justConfirmed, setJustConfirmed] = useState(null); // receipt_id or null
+  const [acceptBusy, setAcceptBusy] = useState(false);
+  const [acceptErr, setAcceptErr] = useState("");
 
   const onSubmitted = (receiptId) => { // Confirm Arrival success
     setSelShip(null);
@@ -8940,11 +8942,48 @@ function RMReceivePage({ session }) {
     setAcceptRefresh(k => k + 1); // a new receipt now awaits acceptance
     setJustConfirmed(receiptId || null);
   };
-  const acceptNow = () => {
+  // Option B: "Accept all now" posts acceptance immediately using the quantities
+  // just confirmed as received (accepted = received, no rejections). The RM counted
+  // these seconds ago at Confirm Arrival, so this is a conscious acceptance, not a
+  // rubber-stamp. Exceptions (rejections) go through the full To Accept screen.
+  const acceptAllNow = async () => {
+    const rid = justConfirmed;
+    if (!rid || acceptBusy) return;
+    setAcceptBusy(true); setAcceptErr("");
+    try {
+      // fetch the receipt's lines to accept exactly what was received
+      const { data: det, error: detErr } = await SB.rpc("get_acceptable_receipt", {
+        p_auth_user_id: session.auth_user_id, p_receipt_id: rid,
+      });
+      if (detErr) { setAcceptErr(detErr.message); setAcceptBusy(false); return; }
+      const lines = (det || []).filter(r => r.receiving_line_id).map(ln => ({
+        receiving_line_id: ln.receiving_line_id,
+        accepted_qty: Number(ln.received_qty),
+        rejected_qty: 0,
+      }));
+      const { data: res, error } = await SB.rpc("operationally_accept_receipt", {
+        p_auth_user_id: session.auth_user_id, p_receipt_id: rid, p_lines: lines,
+      });
+      if (error) { setAcceptErr(error.message); setAcceptBusy(false); return; }
+      // success: clear panel, refresh queues, toast
+      setJustConfirmed(null);
+      setAcceptBusy(false);
+      setIncomingRefresh(k => k + 1);
+      setAcceptRefresh(k => k + 1);
+      setTab("incoming");
+      const partial = res && res.status === "PARTIALLY_ACCEPTED";
+      fireToast(partial ? "Inventory partially accepted. Accepted stock posted." : "Inventory accepted. Stock posted.");
+    } catch (e) {
+      setAcceptErr(e.message || "Failed to accept inventory.");
+      setAcceptBusy(false);
+    }
+  };
+  // "Review & edit" path: go to the full To Accept screen for this receipt (exceptions).
+  const reviewAndEdit = () => {
     const rid = justConfirmed;
     setJustConfirmed(null);
     setTab("accept");
-    setSelReceipt(rid); // opens AcceptDetail for the same receipt (accepted prefilled = received)
+    setSelReceipt(rid);
   };
   const backToIncoming = () => {
     setJustConfirmed(null);
@@ -8976,18 +9015,25 @@ function RMReceivePage({ session }) {
           <Segment id="incoming" label="Incoming" />
           <Segment id="accept" label="To Accept" />
         </div>
-        <div style={{ maxWidth: 520, margin: "48px auto", textAlign: "center", padding: 32, border: "1px solid var(--wt-border)", borderRadius: 12, background: "var(--bg)" }}>
+        <div style={{ maxWidth: 560, margin: "48px auto", textAlign: "center", padding: 32, border: "1px solid var(--wt-border)", borderRadius: 12, background: "var(--bg)" }}>
           <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wt-ink)", marginBottom: 6 }}>Arrival confirmed</div>
           <div style={{ fontSize: 13, color: "var(--wt-muted)", marginBottom: 24 }}>
-            Awaiting inventory acceptance. Stock is not posted until you accept it.
+            Accept all as counted to post stock now, or review to reject or adjust individual lines.
           </div>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
-            <button onClick={acceptNow} className="rm-btn-p"
-              style={{ background: "var(--acc)", color: "#fff", border: "none", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700 }}>
-              Accept now
+          {acceptErr && (
+            <div style={{ marginBottom: 16, padding: "10px 14px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 13, fontWeight: 600 }}>{acceptErr}</div>
+          )}
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <button onClick={acceptAllNow} disabled={acceptBusy} className="rm-btn-p"
+              style={{ background: "var(--acc)", color: "#fff", border: "none", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700, opacity: acceptBusy ? 0.6 : 1, cursor: acceptBusy ? "wait" : "pointer" }}>
+              {acceptBusy ? "Posting stock…" : "Accept all now"}
             </button>
-            <button onClick={backToIncoming} className="rm-btn-p"
-              style={{ background: "transparent", color: "var(--wt-muted)", border: "1px solid var(--wt-border)", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700 }}>
+            <button onClick={reviewAndEdit} disabled={acceptBusy} className="rm-btn-p"
+              style={{ background: "transparent", color: "var(--wt-ink)", border: "1px solid var(--wt-border)", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700, opacity: acceptBusy ? 0.5 : 1 }}>
+              Review &amp; edit
+            </button>
+            <button onClick={backToIncoming} disabled={acceptBusy} className="rm-btn-p"
+              style={{ background: "transparent", color: "var(--wt-muted)", border: "1px solid var(--wt-border)", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700, opacity: acceptBusy ? 0.5 : 1 }}>
               Back to Incoming
             </button>
           </div>
