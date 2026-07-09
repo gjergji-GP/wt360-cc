@@ -8662,25 +8662,318 @@ function ReceivingDetail({ session, shipmentId, onBack, onSubmitted }) {
   );
 }
 
-function RMReceivePage({ session }) {
-  const [sel, setSel] = useState(null);
-  const [toast, setToast] = useState("");
-  const [refreshKey, setRefreshKey] = useState(0);
-  const onSubmitted = (receiptId) => {
-    setSel(null);
-    setRefreshKey(k => k + 1);
-    setToast("Arrival confirmed. Awaiting inventory acceptance.");
-    setTimeout(() => setToast(""), 3000);
-  };
+// ===== Phase 2 Accept Inventory + segmented RMReceivePage =====
+const REJECTION_REASONS = [
+  "DAMAGED", "TEMPERATURE", "EXPIRED", "WRONG_ITEM",
+  "SHORT_SHIPMENT", "QUALITY", "PACKAGING", "CONTAMINATION", "OTHER",
+];
+
+
+// ============================================================================
+// ACCEPT — QUEUE  (submitted receipts awaiting acceptance)
+// ============================================================================
+function AcceptQueue({ session, onOpenReceipt, refreshKey }) {
+  const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState("");
+
+  const load = useCallback(async () => {
+    setLoading(true); setErr("");
+    try {
+      const { data, error } = await SB.rpc("list_acceptable_receipts", {
+        p_auth_user_id: session.auth_user_id, p_limit: 50, p_offset: 0,
+      });
+      if (error) { setErr(error.message); setRows([]); }
+      else { setRows(data || []); }
+    } catch (e) { setErr(e.message || "Failed to load receipts awaiting acceptance."); setRows([]); }
+    finally { setLoading(false); }
+  }, [session?.auth_user_id]);
+
+  useEffect(() => { load(); }, [load, refreshKey]);
+
+  if (loading) return (
+    <div style={{ padding: 40, textAlign: "center", color: "var(--wt-muted)" }}>
+      <div className="spinner" style={{ margin: "0 auto 12px" }} />Loading receipts to accept…
+    </div>
+  );
+  if (err) return (
+    <div style={{ padding: 24 }}>
+      <div style={{ padding: "12px 16px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 14, fontWeight: 600 }}>{err}</div>
+      <button onClick={load} className="rm-btn-p" style={{ marginTop: 16 }}>Retry</button>
+    </div>
+  );
+  if (rows.length === 0) return (
+    <div style={{ padding: 48, textAlign: "center" }}>
+      <div style={{ fontSize: 15, fontWeight: 700, color: "var(--wt-ink)", marginBottom: 6 }}>Nothing to accept right now</div>
+      <div style={{ fontSize: 13, color: "var(--wt-muted)" }}>Confirmed arrivals awaiting inventory acceptance will appear here.</div>
+    </div>
+  );
+
   return (
     <div>
-      {toast && <div className="wt-toast wt-toast-g">{toast}</div>}
-      {sel
-        ? <ReceivingDetail session={session} shipmentId={sel} onBack={() => setSel(null)} onSubmitted={onSubmitted} />
-        : <ReceivingQueue session={session} refreshKey={refreshKey} onOpenShipment={(id) => setSel(id)} />}
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 18, fontWeight: 700, color: "var(--wt-ink)" }}>To Accept</div>
+        <div style={{ fontSize: 12, color: "var(--wt-muted)", marginTop: 2 }}>
+          {rows.length} receipt{rows.length === 1 ? "" : "s"} awaiting inventory acceptance at {session?.location_name || "your location"}
+        </div>
+      </div>
+      <div style={{ border: "1px solid var(--wt-border)", borderRadius: 12, overflow: "hidden" }}>
+        {rows.map((r, i) => (
+          <div key={r.receipt_id} onClick={() => onOpenReceipt && onOpenReceipt(r.receipt_id)}
+            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 16px", cursor: "pointer", borderTop: i === 0 ? "none" : "1px solid var(--wt-border)", background: "var(--bg)" }}>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "var(--wt-ink)" }}>{r.source_location_name} → {r.destination_location_name}</div>
+              <div style={{ fontSize: 12, color: "var(--wt-muted)", marginTop: 3 }}>
+                {r.line_count} line{r.line_count === 1 ? "" : "s"} · {r.total_received_qty} received · confirmed {rcAgo(r.submitted_at)}
+              </div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: ".04em", padding: "3px 10px", borderRadius: 999, background: "rgba(0,157,224,.10)", color: "var(--acc)" }}>AWAITING ACCEPTANCE</span>
+              <Icon name="chevron-right" size={16} color="var(--wt-muted)" />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
+
+// ============================================================================
+// ACCEPT — DETAIL  (per-line accept/reject + reason; posts stock on accept)
+// accepted_qty defaults to received_qty; rejected_qty defaults to 0.
+// ============================================================================
+function AcceptDetail({ session, receiptId, onBack, onAccepted }) {
+  const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState("");
+  const [lineState, setLineState] = useState({}); // line_id -> {accepted, rejected, reason, note}
+  const [busy, setBusy] = useState(false);
+  const [submitErr, setSubmitErr] = useState("");
+
+  const load = useCallback(async () => {
+    setLoading(true); setErr("");
+    try {
+      const { data, error } = await SB.rpc("get_acceptable_receipt", {
+        p_auth_user_id: session.auth_user_id, p_receipt_id: receiptId,
+      });
+      if (error) { setErr(error.message); setRows([]); }
+      else {
+        setRows(data || []);
+        // default: accept all received, reject 0
+        const init = {};
+        (data || []).filter(r => r.receiving_line_id).forEach(ln => {
+          init[ln.receiving_line_id] = { accepted: String(ln.received_qty), rejected: "0", reason: "", note: "" };
+        });
+        setLineState(init);
+      }
+    } catch (e) { setErr(e.message || "Failed to load receipt."); setRows([]); }
+    finally { setLoading(false); }
+  }, [receiptId, session?.auth_user_id]);
+
+  useEffect(() => { load(); }, [load]);
+
+  const header = rows[0] || null;
+  const lines = rows.filter(r => r.receiving_line_id);
+
+  const setLine = (id, patch) => setLineState(s => ({ ...s, [id]: { ...s[id], ...patch } }));
+
+  // Validation mirrors server rules (server is authoritative; this just gates the button).
+  const lineValid = (ln) => {
+    const st = lineState[ln.receiving_line_id]; if (!st) return false;
+    const acc = Number(st.accepted), rej = Number(st.rejected);
+    if (st.accepted === "" || st.rejected === "" || Number.isNaN(acc) || Number.isNaN(rej)) return false;
+    if (acc < 0 || rej < 0) return false;
+    if (acc + rej > Number(ln.received_qty)) return false;
+    if (rej > 0 && !st.reason) return false;
+    if (rej > 0 && st.reason === "OTHER" && !st.note.trim()) return false;
+    return true;
+  };
+  const allValid = lines.length > 0 && lines.every(lineValid);
+  const anyRejected = lines.some(ln => { const st = lineState[ln.receiving_line_id]; return st && Number(st.rejected) > 0; });
+
+  const submit = async () => {
+    if (!allValid || busy) return;
+    setBusy(true); setSubmitErr("");
+    try {
+      const p_lines = lines.map(ln => {
+        const st = lineState[ln.receiving_line_id];
+        const rej = Number(st.rejected);
+        const line = {
+          receiving_line_id: ln.receiving_line_id,
+          accepted_qty: Number(st.accepted),
+          rejected_qty: rej,
+        };
+        if (rej > 0) {
+          line.reason_code = st.reason;
+          if (st.reason === "OTHER") line.reason_note = st.note.trim();
+        }
+        return line;
+      });
+      const { data, error } = await SB.rpc("operationally_accept_receipt", {
+        p_auth_user_id: session.auth_user_id,
+        p_receipt_id: receiptId,
+        p_lines,
+      });
+      if (error) { setSubmitErr(error.message); setBusy(false); return; }
+      onAccepted && onAccepted(data);
+    } catch (e) { setSubmitErr(e.message || "Failed to accept receipt."); setBusy(false); }
+  };
+
+  const BackBar = (
+    <button onClick={onBack} disabled={busy} className="rm-btn-p"
+      style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 16, background: "transparent", color: "var(--wt-muted)", padding: "6px 10px", opacity: busy ? 0.5 : 1 }}>
+      <Icon name="arrow-left" size={14} color="var(--wt-muted)" /> Back to queue
+    </button>
+  );
+
+  if (loading) return (<div>{BackBar}<div style={{ padding: 40, textAlign: "center", color: "var(--wt-muted)" }}><div className="spinner" style={{ margin: "0 auto 12px" }} />Loading receipt…</div></div>);
+  if (err) return (<div>{BackBar}<div style={{ padding: "12px 16px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 14, fontWeight: 600 }}>{err}</div></div>);
+  if (!header) return (<div>{BackBar}<div style={{ padding: 40, textAlign: "center", color: "var(--wt-muted)" }}>Receipt not found.</div></div>);
+
+  return (
+    <div>
+      {BackBar}
+      <div style={{ marginBottom: 20 }}>
+        <div style={{ fontSize: 18, fontWeight: 700, color: "var(--wt-ink)" }}>{header.source_location_name} → {header.destination_location_name}</div>
+        <div style={{ fontSize: 12, color: "var(--wt-muted)", marginTop: 3 }}>
+          Confirmed {rcAgo(header.submitted_at)} · {lines.length} line{lines.length === 1 ? "" : "s"} · accepting posts stock to inventory
+        </div>
+      </div>
+
+      <div style={{ border: "1px solid var(--wt-border)", borderRadius: 12, overflow: "hidden" }}>
+        <div style={{ display: "flex", padding: "10px 16px", background: "var(--bg)", borderBottom: "1px solid var(--wt-border)", fontSize: 11, fontWeight: 700, letterSpacing: ".04em", color: "var(--wt-muted)" }}>
+          <div style={{ flex: 1 }}>PRODUCT</div>
+          <div style={{ width: 80, textAlign: "right" }}>RECEIVED</div>
+          <div style={{ width: 100, textAlign: "right" }}>ACCEPTED</div>
+          <div style={{ width: 100, textAlign: "right" }}>REJECTED</div>
+        </div>
+        {lines.map((ln, i) => {
+          const st = lineState[ln.receiving_line_id] || {};
+          const rej = Number(st.rejected);
+          const showReason = rej > 0;
+          return (
+            <div key={ln.receiving_line_id} style={{ borderTop: i === 0 ? "none" : "1px solid var(--wt-border)", padding: "12px 16px" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: "var(--wt-ink)" }}>{ln.product_name || "—"}</div>
+                  {ln.sku_code && <div style={{ fontSize: 11, color: "var(--wt-muted)", marginTop: 2, fontFamily: "ui-monospace, monospace" }}>{ln.sku_code}</div>}
+                </div>
+                <div style={{ width: 80, textAlign: "right", fontSize: 14, color: "var(--wt-muted)" }}>{ln.received_qty} <span style={{ fontSize: 11 }}>{ln.uom}</span></div>
+                <div style={{ width: 100, textAlign: "right" }}>
+                  <input type="number" min="0" step="any" inputMode="decimal" disabled={busy}
+                    value={st.accepted ?? ""} onChange={e => setLine(ln.receiving_line_id, { accepted: e.target.value })}
+                    style={{ width: 72, textAlign: "right", padding: "6px 8px", borderRadius: 8, border: "1px solid var(--wt-border)", fontSize: 14, color: "var(--wt-ink)", background: busy ? "var(--bg)" : "#fff" }} />
+                </div>
+                <div style={{ width: 100, textAlign: "right" }}>
+                  <input type="number" min="0" step="any" inputMode="decimal" disabled={busy}
+                    value={st.rejected ?? ""} onChange={e => setLine(ln.receiving_line_id, { rejected: e.target.value })}
+                    style={{ width: 72, textAlign: "right", padding: "6px 8px", borderRadius: 8, border: rej > 0 ? "1px solid var(--neg)" : "1px solid var(--wt-border)", fontSize: 14, color: "var(--wt-ink)", background: busy ? "var(--bg)" : "#fff" }} />
+                </div>
+              </div>
+
+              {showReason && (
+                <div style={{ display: "flex", gap: 10, marginTop: 10, paddingLeft: 2, alignItems: "center" }}>
+                  <select disabled={busy} value={st.reason || ""} onChange={e => setLine(ln.receiving_line_id, { reason: e.target.value })}
+                    style={{ padding: "6px 10px", borderRadius: 8, border: !st.reason ? "1px solid var(--neg)" : "1px solid var(--wt-border)", fontSize: 13, color: "var(--wt-ink)", background: "#fff" }}>
+                    <option value="">Rejection reason…</option>
+                    {REJECTION_REASONS.map(rc => <option key={rc} value={rc}>{rc.replace(/_/g, " ")}</option>)}
+                  </select>
+                  {st.reason === "OTHER" && (
+                    <input type="text" disabled={busy} placeholder="Describe reason (required)" value={st.note || ""}
+                      onChange={e => setLine(ln.receiving_line_id, { note: e.target.value })}
+                      style={{ flex: 1, padding: "6px 10px", borderRadius: 8, border: !st.note.trim() ? "1px solid var(--neg)" : "1px solid var(--wt-border)", fontSize: 13, color: "var(--wt-ink)", background: "#fff" }} />
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {submitErr && (
+        <div style={{ marginTop: 16, padding: "12px 16px", borderRadius: 8, background: "rgba(239,68,68,.08)", color: "var(--neg)", fontSize: 14, fontWeight: 600 }}>{submitErr}</div>
+      )}
+
+      <div style={{ marginTop: 20, display: "flex", justifyContent: "flex-end", gap: 12 }}>
+        <button onClick={submit} disabled={!allValid || busy} className="rm-btn-p"
+          style={{ opacity: (!allValid || busy) ? 0.5 : 1, cursor: (!allValid || busy) ? "not-allowed" : "pointer", minWidth: 180 }}>
+          {busy ? "Accepting…" : (anyRejected ? "Accept Inventory (with rejections)" : "Accept Inventory")}
+        </button>
+      </div>
+      {!allValid && !busy && (
+        <div style={{ marginTop: 8, textAlign: "right", fontSize: 12, color: "var(--wt-muted)" }}>
+          Each line needs valid quantities (accepted + rejected ≤ received). Rejections require a reason.
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+// ============================================================================
+// RMReceivePage — segmented: Incoming (Confirm Arrival) | To Accept (Accept Inventory)
+// REPLACES the Phase 1.1 RMReceivePage. One Receiving module, two statements.
+// ============================================================================
+function RMReceivePage({ session }) {
+  const [tab, setTab] = useState("incoming"); // 'incoming' | 'accept'
+
+  // Incoming (Confirm Arrival) state
+  const [selShip, setSelShip] = useState(null);
+  const [incomingRefresh, setIncomingRefresh] = useState(0);
+
+  // To Accept (Accept Inventory) state
+  const [selReceipt, setSelReceipt] = useState(null);
+  const [acceptRefresh, setAcceptRefresh] = useState(0);
+
+  const [toast, setToast] = useState("");
+  const fireToast = (msg) => { setToast(msg); setTimeout(() => setToast(""), 3000); };
+
+  const onSubmitted = () => { // Confirm Arrival success
+    setSelShip(null);
+    setIncomingRefresh(k => k + 1);
+    setAcceptRefresh(k => k + 1); // a new receipt now awaits acceptance
+    fireToast("Arrival confirmed. Awaiting inventory acceptance.");
+  };
+  const onAccepted = (res) => { // Accept Inventory success
+    setSelReceipt(null);
+    setAcceptRefresh(k => k + 1);
+    const partial = res && res.status === "PARTIALLY_ACCEPTED";
+    fireToast(partial ? "Inventory partially accepted. Accepted stock posted." : "Inventory accepted. Stock posted.");
+  };
+
+  const Segment = ({ id, label }) => (
+    <button onClick={() => { setTab(id); }} className="rm-btn-p"
+      style={{
+        background: tab === id ? "var(--acc)" : "transparent",
+        color: tab === id ? "#fff" : "var(--wt-muted)",
+        border: tab === id ? "none" : "1px solid var(--wt-border)",
+        padding: "7px 18px", borderRadius: 999, fontSize: 13, fontWeight: 700,
+      }}>{label}</button>
+  );
+
+  return (
+    <div>
+      {toast && <div className="wt-toast wt-toast-g">{toast}</div>}
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
+        <Segment id="incoming" label="Incoming" />
+        <Segment id="accept" label="To Accept" />
+      </div>
+
+      {tab === "incoming" ? (
+        selShip
+          ? <ReceivingDetail session={session} shipmentId={selShip} onBack={() => setSelShip(null)} onSubmitted={onSubmitted} />
+          : <ReceivingQueue session={session} refreshKey={incomingRefresh} onOpenShipment={(id) => setSelShip(id)} />
+      ) : (
+        selReceipt
+          ? <AcceptDetail session={session} receiptId={selReceipt} onBack={() => setSelReceipt(null)} onAccepted={onAccepted} />
+          : <AcceptQueue session={session} refreshKey={acceptRefresh} onOpenReceipt={(id) => setSelReceipt(id)} />
+      )}
+    </div>
+  );
+}
+
 // ===== end Confirm Arrival =====
 
 
