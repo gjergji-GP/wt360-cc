@@ -8929,11 +8929,27 @@ function RMReceivePage({ session }) {
   const [toast, setToast] = useState("");
   const fireToast = (msg) => { setToast(msg); setTimeout(() => setToast(""), 3000); };
 
-  const onSubmitted = () => { // Confirm Arrival success
+  // After Confirm Arrival: hold the just-created receipt so the RM can choose
+  // to accept it now (no tab-switch/reopen) or return to Incoming. Two statements
+  // stay separate — this only removes navigation friction, not the decision.
+  const [justConfirmed, setJustConfirmed] = useState(null); // receipt_id or null
+
+  const onSubmitted = (receiptId) => { // Confirm Arrival success
     setSelShip(null);
     setIncomingRefresh(k => k + 1);
     setAcceptRefresh(k => k + 1); // a new receipt now awaits acceptance
-    fireToast("Arrival confirmed. Awaiting inventory acceptance.");
+    setJustConfirmed(receiptId || null);
+  };
+  const acceptNow = () => {
+    const rid = justConfirmed;
+    setJustConfirmed(null);
+    setTab("accept");
+    setSelReceipt(rid); // opens AcceptDetail for the same receipt (accepted prefilled = received)
+  };
+  const backToIncoming = () => {
+    setJustConfirmed(null);
+    setTab("incoming");
+    setSelShip(null);
   };
   const onAccepted = (res) => { // Accept Inventory success
     setSelReceipt(null);
@@ -8951,6 +8967,34 @@ function RMReceivePage({ session }) {
         padding: "7px 18px", borderRadius: 999, fontSize: 13, fontWeight: 700,
       }}>{label}</button>
   );
+
+  // After Confirm Arrival, intercept with a conscious choice: accept now, or return.
+  if (justConfirmed) {
+    return (
+      <div>
+        <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
+          <Segment id="incoming" label="Incoming" />
+          <Segment id="accept" label="To Accept" />
+        </div>
+        <div style={{ maxWidth: 520, margin: "48px auto", textAlign: "center", padding: 32, border: "1px solid var(--wt-border)", borderRadius: 12, background: "var(--bg)" }}>
+          <div style={{ fontSize: 16, fontWeight: 700, color: "var(--wt-ink)", marginBottom: 6 }}>Arrival confirmed</div>
+          <div style={{ fontSize: 13, color: "var(--wt-muted)", marginBottom: 24 }}>
+            Awaiting inventory acceptance. Stock is not posted until you accept it.
+          </div>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+            <button onClick={acceptNow} className="rm-btn-p"
+              style={{ background: "var(--acc)", color: "#fff", border: "none", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700 }}>
+              Accept now
+            </button>
+            <button onClick={backToIncoming} className="rm-btn-p"
+              style={{ background: "transparent", color: "var(--wt-muted)", border: "1px solid var(--wt-border)", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 700 }}>
+              Back to Incoming
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
